@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpsq4xcv2non1"
-path="res://.godot/imported/light.png-06e94102f0cce323cff7daad56cf3030.ctex"
+uid="uid://dugfy5yahxp0y"
+path="res://.godot/imported/disfraz2.png-2441409e76bfacca6b6036660dc2d518.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://light.png"
-dest_files=["res://.godot/imported/light.png-06e94102f0cce323cff7daad56cf3030.ctex"]
+source_file="res://assets/disfraz2.png"
+dest_files=["res://.godot/imported/disfraz2.png-2441409e76bfacca6b6036660dc2d518.ctex"]
 
 [params]
 
