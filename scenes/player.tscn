@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqo6q3330yn1x"]
+[gd_scene load_steps=6 format=3 uid="uid://dqo6q3330yn1x"]
 
 [ext_resource type="Texture2D" uid="uid://ddrlatm1sas1" path="res://icon.svg" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dr2ro3ebk62xy" path="res://scenes/player.gd" id="1_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://light.png" id="2_g2els"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
@@ -41,6 +43,7 @@ animations = [{
 size = Vector2(117, 113)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qhqgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g2els")
@@ -48,3 +51,8 @@ animation = &"back"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.07
+texture = ExtResource("2_g2els")
+texture_scale = 3.8
