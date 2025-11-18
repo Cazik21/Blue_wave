@@ -16,6 +16,12 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(1, 0.2763351, 0.27401027, 1)
 boot_splash/image="uid://dugfy5yahxp0y"
 config/icon="res://assets/icon.svg"
+run/stretch/mode="disabled"
+run/size/window_height_override=0
+run/size/window_width_override=0
+run/size/viewport_height=648
+run/size/viewport_width=1152
+run/bg_color=Color(0.14, 0.14, 0.14, 1)
 
 [autoload]
 
@@ -23,10 +29,10 @@ Messenger="*res://scripts/messenger.gd"
 
 [display]
 
-window/size/viewport_width=384
-window/size/viewport_height=192
-window/size/window_width_override=1152
-window/size/window_height_override=576
+window/size/viewport_width=416
+window/size/viewport_height=234
+window/size/window_width_override=1248
+window/size/window_height_override=702
 window/stretch/mode="canvas_items"
 
 [input]
@@ -72,7 +78,12 @@ shoot_right={
 ]
 }
 
+[physics]
+
+2d/default_gravity=0.0
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

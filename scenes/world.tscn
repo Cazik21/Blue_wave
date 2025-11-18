@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxghx7pn87w4x"]
+[gd_scene load_steps=3 format=3 uid="uid://dxghx7pn87w4x"]
 
 [ext_resource type="PackedScene" uid="uid://dqo6q3330yn1x" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="Texture2D" uid="uid://c54g43vlsn2u0" path="res://assets/Wall.png" id="2_rwgxs"]
 
 [node name="world" type="Node2D"]
 
@@ -10,8 +11,12 @@ position = Vector2(96, 88)
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 384.0
 offset_bottom = 224.0
-color = Color(0.15554118, 0.25598574, 0.29185402, 1)
+color = Color(0.15597928, 0.1955533, 0.3652001, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.06646836, 0.08704566, 0.17245167, 1)
+color = Color(0.07830178, 0.10165807, 0.19517708, 1)
+
+[node name="Wall" type="Sprite2D" parent="."]
+position = Vector2(207, 118)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_rwgxs")
