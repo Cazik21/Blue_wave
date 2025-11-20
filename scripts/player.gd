@@ -1,14 +1,21 @@
 extends CharacterBody2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@export var bullet_scene : PackedScene
 
-var speed = 100
-var shoot = preload("res://scenes/shoot.tscn")
+var can_shoot : bool = true
+var shoot_colldown : float = 0.3
+
+var speed : float = 100
+
+func _ready() -> void:
+	Messenger.player = self
 
 func _physics_process(_delta: float) -> void:
-	Messenger.direction_for_the_shoot = int(anim.flip_h) - int(int(anim.flip_h) == 0)
+	var mouse_dir = get_global_mouse_position() - global_position
+	if Input.is_action_just_pressed("shoot") and can_shoot:
+		shoot(mouse_dir)
 	move()
-	shooting()
 
 func move() -> void:
 	var direction_vector = Vector2(
@@ -19,19 +26,13 @@ func move() -> void:
 	velocity = direction_vector * speed
 	move_and_slide()
 
-func shooting() -> void:
-	Messenger.shoot_direction = Vector2(
-		Input.get_action_strength("shoot_right") - Input.get_action_strength("shoot_left"),
-		Input.get_action_strength("shoot_down") - Input.get_action_strength("shoot_up")
-		)
-	print(Messenger.shoot_direction)
-	if Messenger.shoot_direction > Vector2(0.0, 0.0):
-		var shoot_intantiate = shoot.instantiate()
-		add_child(shoot_intantiate)
-		print(Messenger.direction_for_the_shoot)
+func shoot(direction):
+	can_shoot = false
 	
-	elif Messenger.shoot_direction < Vector2(0.0, 0.0):
-		var shoot_intantiate = shoot.instantiate()
-		add_sibling(shoot_intantiate)
-		shoot_intantiate.global_position = global_position
-		print(Messenger.direction_for_the_shoot)
+	var bullet_instance = bullet_scene.instantiate()
+	get_tree().current_scene.add_child(bullet_instance)
+	bullet_instance.global_position = global_position
+	bullet_instance.set_direction(direction)
+	
+	await get_tree().create_timer(shoot_colldown).timeout
+	can_shoot = true

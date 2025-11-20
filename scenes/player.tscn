@@ -1,59 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqo6q3330yn1x"]
+[gd_scene load_steps=7 format=3 uid="uid://dqo6q3330yn1x"]
 
-[ext_resource type="Texture2D" uid="uid://ddrlatm1sas1" path="res://assets/icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dr2ro3ebk62xy" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bvedovtjluph" path="res://prefabs/bullet.tscn" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://r8g54jdsx34l" path="res://assets/player1.png" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(29, 29)
+size = Vector2(14.5, 14.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
+"duration": 5.0,
+"texture": ExtResource("3_qhqgy")
 }],
 "loop": true,
-"name": &"back",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": true,
-"name": &"front",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": true,
-"name": &"left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3vyb7")
-}],
-"loop": true,
-"name": &"right",
+"name": &"idle",
 "speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 script = ExtResource("1_qhqgy")
+bullet_scene = ExtResource("2_dqkch")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("2_g2els")
+texture_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-5.9604645e-08, 4.7683716e-07)
-scale = Vector2(0.22656254, 0.22656253)
+position = Vector2(7.450581e-09, 7.450581e-09)
+scale = Vector2(0.43090817, 0.43090817)
 sprite_frames = SubResource("SpriteFrames_g2els")
-animation = &"back"
+animation = &"idle"
+frame_progress = 0.2977439
