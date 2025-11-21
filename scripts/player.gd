@@ -10,11 +10,15 @@ var can_shoot : bool = true
 var shoot_colldown : float = 0.3
 var can_instantiate_waves : bool = true
 var walking : bool = false
+var lifes : int = 5
+
+var org_color
 
 var speed : float = 100
 
 func _ready() -> void:
 	Messenger.player = self
+	org_color = Color.WHITE
 
 func _physics_process(_delta: float) -> void:
 	var mouse_dir = get_global_mouse_position() - global_position
@@ -61,3 +65,16 @@ func create_miniwaves():
 		wave_instance.global_position = global_position
 		await get_tree().create_timer(0.2).timeout
 		can_instantiate_waves = true
+
+
+func hit_flash():
+	anim.modulate = 262626
+	await get_tree().create_timer(0.1).timeout
+	anim.modulate = org_color
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemies"):
+		hit_flash()
+		lifes -= 1
+	if lifes <= 0:
+		get_tree().reload_current_scene()

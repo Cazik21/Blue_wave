@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqo6q3330yn1x"]
+[gd_scene load_steps=10 format=3 uid="uid://dqo6q3330yn1x"]
 
 [ext_resource type="Script" uid="uid://dr2ro3ebk62xy" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://bvedovtjluph" path="res://prefabs/bullet.tscn" id="2_dqkch"]
@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://r8g54jdsx34l" path="res://assets/player1.png" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="3_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://cq3iigeaocb76" path="res://assets/walking-fast-in-water-168151.mp3" id="6_tuyoq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(14.5, 14.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
@@ -21,18 +18,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(12, 12)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 script = ExtResource("1_qhqgy")
 bullet_scene = ExtResource("2_dqkch")
 waves_scene = ExtResource("3_qlg0r")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-texture = ExtResource("2_g2els")
-texture_scale = 2.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.450581e-09, 7.450581e-09)
@@ -41,5 +37,20 @@ sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"idle"
 frame_progress = 0.2977439
 
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("RectangleShape2D_tuyoq")
+debug_color = Color(0.9941798, 0, 0.23337513, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("2_g2els")
+texture_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qhqgy")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_tuyoq")
+
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
