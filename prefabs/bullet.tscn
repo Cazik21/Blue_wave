@@ -8,6 +8,7 @@
 radius = 3.0
 
 [node name="bullet" type="Area2D"]
+z_index = 1
 script = ExtResource("1_lv25w")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]

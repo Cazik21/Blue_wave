@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://vuan0hr8ktyu"]
+
+[ext_resource type="Texture2D" uid="uid://bus0vcnowjk62" path="res://assets/partiqule square (1).png" id="1_2x0e1"]
+[ext_resource type="Script" uid="uid://de56mgv7ebm5c" path="res://scripts/particles.gd" id="2_b6v3i"]
+
+[sub_resource type="Curve" id="Curve_kqrua"]
+_data = [Vector2(0.51526713, 0.7821012), 0.0, 0.0, 0, 0, Vector2(0.99618316, 0.9844358), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="particles" type="CPUParticles2D"]
+position = Vector2(3.7550928e-06, 2.1457672e-06)
+scale = Vector2(0.2, 0.2)
+amount = 16
+texture = ExtResource("1_2x0e1")
+lifetime = 0.2
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 0.3
+local_coords = true
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 850.0
+scale_amount_min = 0.8
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_kqrua")
+color = Color(0.101960786, 0.101960786, 0.101960786, 0.6901961)
+script = ExtResource("2_b6v3i")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

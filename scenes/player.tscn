@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqo6q3330yn1x"]
+[gd_scene load_steps=9 format=3 uid="uid://dqo6q3330yn1x"]
 
 [ext_resource type="Script" uid="uid://dr2ro3ebk62xy" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://bvedovtjluph" path="res://prefabs/bullet.tscn" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://r8g54jdsx34l" path="res://assets/player1.png" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="3_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://cq3iigeaocb76" path="res://assets/walking-fast-in-water-168151.mp3" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(14.5, 14.5)
@@ -23,6 +25,7 @@ animations = [{
 z_index = 5
 script = ExtResource("1_qhqgy")
 bullet_scene = ExtResource("2_dqkch")
+waves_scene = ExtResource("3_qlg0r")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("2_g2els")
@@ -37,3 +40,6 @@ scale = Vector2(0.43090817, 0.43090817)
 sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"idle"
 frame_progress = 0.2977439
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tuyoq")

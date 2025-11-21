@@ -1,11 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://by6tii7albfd4"]
+[gd_scene load_steps=27 format=3 uid="uid://by6tii7albfd4"]
 
 [ext_resource type="Script" uid="uid://db4nw25ges0ey" path="res://scripts/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://c48aefisbai4w" path="res://assets/slime 1 (1).png" id="2_c4w8v"]
+[ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_md484"]
 [ext_resource type="Texture2D" uid="uid://7g5lg3lduuk5" path="res://assets/slime 13 (3) (1).png" id="2_xwavj"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_c4w8v"]
-[ext_resource type="Texture2D" uid="uid://lmuyyentvun7" path="res://assets/slime 1 (2).png" id="3_xwavj"]
-[ext_resource type="Texture2D" uid="uid://cr1fdvyc8gxvp" path="res://assets/slime 1 (3).png" id="4_nenq2"]
+[ext_resource type="Texture2D" uid="uid://5v8te6nnis5o" path="res://assets/New Piskel.png" id="5_nenq2"]
+[ext_resource type="Texture2D" uid="uid://ohlbd4qksu6b" path="res://assets/New Piskel (1).png" id="6_md484"]
+[ext_resource type="Texture2D" uid="uid://cfcjeug7i83jn" path="res://assets/New Piskel (2).png" id="7_ipns3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
 size = Vector2(16, 14)
@@ -138,20 +140,20 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_c4w8v")
+"duration": 3.0,
+"texture": ExtResource("5_nenq2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_xwavj")
+"texture": ExtResource("6_md484")
 }, {
 "duration": 1.8,
-"texture": ExtResource("4_nenq2")
+"texture": ExtResource("7_ipns3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_xwavj")
+"texture": ExtResource("6_md484")
 }, {
-"duration": 3.0,
-"texture": ExtResource("2_c4w8v")
+"duration": 1.0,
+"texture": ExtResource("5_nenq2")
 }],
 "loop": true,
 "name": &"jumping",
@@ -159,24 +161,25 @@ animations = [{
 }]
 
 [node name="enemy" type="CharacterBody2D" groups=["enemies"]]
+z_index = 2
 script = ExtResource("1_4ra3w")
-health = 20
+waves_scene = ExtResource("2_md484")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xwavj")
 
-[node name="anim" type="AnimatedSprite2D" parent="CollisionShape2D"]
-modulate = Color(1, 0, 0.016666412, 1)
-position = Vector2(0, -1)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_md484")
-animation = &"born"
-autoplay = "born"
-frame = 8
-frame_progress = 1.0
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 energy = 0.2
 texture = ExtResource("3_c4w8v")
 texture_scale = 0.5
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.15, 0.15, 0.15, 1)
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_md484")
+animation = &"jumping"
+autoplay = "born"
+frame_progress = 0.61562926
