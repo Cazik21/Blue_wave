@@ -7,6 +7,7 @@ const PARTICLES = preload("uid://vuan0hr8ktyu")
 @export var waves_scene : PackedScene
 
 @onready var anim: AnimatedSprite2D = $anim
+@onready var reborn_timer: Timer = $"reborn _timer"
 
 var direction : Vector2 = Vector2.ZERO
 var player = null
@@ -59,8 +60,5 @@ func take_damage(amount: int, sourece_position: Vector2):
 		add_sibling(particles)
 		particles.global_position = global_position
 		particles.rotation = direction.angle() + PI
+		Messenger.enemies_f -=1
 		queue_free()
-
-func entering_in_safe_area():
-	anim.play("desborn")
-	queue_free()

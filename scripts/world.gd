@@ -1,10 +1,13 @@
 extends Node2D
 
 @onready var player: CharacterBody2D = $Player
+@onready var spawn_timer: Timer = $spawn_timer
 
 @export var enemy_scene : PackedScene
 @export var spawn_margin = 40
 
+func _ready() -> void:
+	Messenger.diminuir_timer.connect(troca_de_wave)
 
 func spawn_enemies():
 	var enemy = enemy_scene.instantiate()
@@ -26,3 +29,6 @@ func calculate_spawn_pos() -> Vector2:
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
+
+func troca_de_wave():
+	spawn_timer.wait_time -= 0.1

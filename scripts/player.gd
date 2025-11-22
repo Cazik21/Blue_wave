@@ -10,7 +10,6 @@ var can_shoot : bool = true
 var shoot_colldown : float = 0.3
 var can_instantiate_waves : bool = true
 var walking : bool = false
-var lifes : int = 5
 
 var org_color
 
@@ -75,6 +74,8 @@ func hit_flash():
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		hit_flash()
-		lifes -= 1
-	if lifes <= 0:
+		Messenger.player_lifes -= 1
+	if Messenger.player_lifes <= 0:
+		Messenger.player_lifes = 5
+		Messenger.wave = 1
 		get_tree().reload_current_scene()
