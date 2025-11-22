@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddojtmgtopup3"]
+[gd_scene load_steps=9 format=3 uid="uid://ddojtmgtopup3"]
 
 [ext_resource type="Texture2D" uid="uid://dh6ywqx20pfpa" path="res://assets/Water walking (4).png" id="1_yrerp"]
-[ext_resource type="Texture2D" uid="uid://bs57bcmsa7rb3" path="res://assets/Water walking (3).png" id="2_vh71v"]
+[ext_resource type="Texture2D" uid="uid://bynp320kb4jyr" path="res://assets/Water walking (3).png" id="2_vh71v"]
 [ext_resource type="Texture2D" uid="uid://crs7yi8rb0x0r" path="res://assets/Water walking (2).png" id="3_ppvmk"]
 [ext_resource type="Texture2D" uid="uid://j5sjfskig4kr" path="res://assets/Water walking (1).png" id="4_jfqxb"]
 [ext_resource type="Texture2D" uid="uid://crekdokahv3sf" path="res://assets/Water walking.png" id="5_nteer"]
 [ext_resource type="Script" uid="uid://bg37dg3nup4cu" path="res://animated_sprite_2d.gd" id="6_86p6u"]
+[ext_resource type="PackedScene" uid="uid://b08rahbbi0b02" path="res://prefabs/enemy2.tscn" id="7_vh71v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_taymj"]
 animations = [{
@@ -37,3 +38,9 @@ animation = &"1"
 frame = 4
 frame_progress = 1.0
 script = ExtResource("6_86p6u")
+enemy_scene = ExtResource("7_vh71v")
+
+[node name="spawn_floor_enemy" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="spawn_floor_enemy" to="." method="_on_spawn_floor_enemy_timeout"]
