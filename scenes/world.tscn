@@ -23,7 +23,7 @@ color = Color(0.2, 0.2, 0.2, 1)
 position = Vector2(198, 182)
 
 [node name="spawn_timer" type="Timer" parent="."]
-wait_time = 3.1
+wait_time = 2.6
 autostart = true
 
 [node name="UI" parent="." instance=ExtResource("4_k0juu")]
