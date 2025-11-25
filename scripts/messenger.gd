@@ -7,3 +7,5 @@ var enemies_f
 var player_lifes : int = 5
 
 signal diminuir_timer
+
+signal change_enemy_speed
