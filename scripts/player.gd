@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 @export var bullet_scene : PackedScene
 @export var waves_scene : PackedScene
@@ -16,12 +17,15 @@ var org_color
 var speed : float = 100
 
 func _ready() -> void:
+	if OS.get_name() == "macOS":
+		point_light_2d.energy = 2
+	else:
+		point_light_2d.energy = 1
 	Messenger.player = self
 	org_color = Color.WHITE
 
 func _physics_process(_delta: float) -> void:
 	var mouse_dir = get_global_mouse_position() - global_position
-	Messenger.point_to_shoot = get_global_mouse_position()
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		shoot(mouse_dir)
 	move()
@@ -48,11 +52,9 @@ func move() -> void:
 
 func shoot(direction):
 	can_shoot = false
-	
 	var bullet_instance = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = global_position
-	bullet_instance.set_direction(direction)
 	
 	await get_tree().create_timer(shoot_colldown).timeout
 	can_shoot = true

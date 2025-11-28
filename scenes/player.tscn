@@ -44,6 +44,7 @@ shape = SubResource("RectangleShape2D_tuyoq")
 debug_color = Color(0.9941798, 0, 0.23337513, 0.41960785)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
 texture = ExtResource("2_g2els")
 texture_scale = 2.0
 

@@ -1,7 +1,6 @@
 extends Control
 
 @onready var label: Label = $waves/text
-@onready var label2: Label = $lifes/text
 
 func _ready() -> void:
 	waves()

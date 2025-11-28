@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxghx7pn87w4x"]
+[gd_scene load_steps=6 format=3 uid="uid://dxghx7pn87w4x"]
 
 [ext_resource type="Script" uid="uid://cq5nii0on47gt" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dqo6q3330yn1x" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://by6tii7albfd4" path="res://scenes/enemy.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://dfvu4r5emojw" path="res://prefabs/waves.tscn" id="4_k0juu"]
+[ext_resource type="PackedScene" uid="uid://ylqcdxpl38as" path="res://prefabs/hearts.tscn" id="5_71j4m"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_4wyf3")
@@ -26,6 +27,10 @@ position = Vector2(198, 182)
 wait_time = 2.6
 autostart = true
 
-[node name="UI" parent="." instance=ExtResource("4_k0juu")]
+[node name="UI" type="Node" parent="."]
+
+[node name="waves" parent="UI" instance=ExtResource("4_k0juu")]
+
+[node name="hearts" parent="UI" instance=ExtResource("5_71j4m")]
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

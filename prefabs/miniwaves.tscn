@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://crs7yi8rb0x0r" path="res://assets/Water walking (2).png" id="3_ppvmk"]
 [ext_resource type="Texture2D" uid="uid://j5sjfskig4kr" path="res://assets/Water walking (1).png" id="4_jfqxb"]
 [ext_resource type="Texture2D" uid="uid://crekdokahv3sf" path="res://assets/Water walking.png" id="5_nteer"]
-[ext_resource type="Script" uid="uid://bg37dg3nup4cu" path="res://animated_sprite_2d.gd" id="6_86p6u"]
+[ext_resource type="Script" uid="uid://bg37dg3nup4cu" path="res://scripts/animated_sprite_2d.gd" id="6_86p6u"]
 [ext_resource type="Texture2D" uid="uid://7g5lg3lduuk5" path="res://assets/slime 13 (3) (1).png" id="7_86p6u"]
 [ext_resource type="Texture2D" uid="uid://c48aefisbai4w" path="res://assets/slime 1 (1).png" id="8_taymj"]
 [ext_resource type="Texture2D" uid="uid://5v8te6nnis5o" path="res://assets/New Piskel.png" id="9_vtc7g"]

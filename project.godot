@@ -31,7 +31,7 @@ Messenger="*res://scripts/messenger.gd"
 
 window/size/viewport_width=416
 window/size/viewport_height=234
-window/size/mode=2
+window/size/mode=1
 window/size/initial_position_type=0
 window/size/window_width_override=1248
 window/size/window_height_override=702
