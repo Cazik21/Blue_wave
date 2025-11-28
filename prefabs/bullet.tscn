@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvedovtjluph"]
+[gd_scene load_steps=6 format=3 uid="uid://bvedovtjluph"]
 
 [ext_resource type="Script" uid="uid://0askscbgtuuu" path="res://scripts/bullet.gd" id="1_lv25w"]
 [ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="2_7rc6x"]
+[ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_44iiu"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_7rc6x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_44iiu"]
@@ -10,6 +11,7 @@ radius = 3.0
 [node name="bullet" type="Area2D"]
 z_index = 1
 script = ExtResource("1_lv25w")
+ondas = ExtResource("2_44iiu")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_44iiu")
