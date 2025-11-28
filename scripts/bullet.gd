@@ -21,14 +21,6 @@ func _ready() -> void:
 		.set_trans(Tween.TRANS_LINEAR)
 
 
-
-func _process(delta: float) -> void:
-	pass
-	#if position.distance_to(self.get_parent().get_node("Player").position) < distance:
-		#position += direction.rotated(rotation) * bullet_speed * delta
-	#else:
-		#Messenger.ondinhas.emit()
-
 func set_direction(new_direction):
 	direction = new_direction.normalized()
 

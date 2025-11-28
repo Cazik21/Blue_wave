@@ -25,9 +25,8 @@ func _ready() -> void:
 	org_color = Color.WHITE
 
 func _physics_process(_delta: float) -> void:
-	var mouse_dir = get_global_mouse_position() - global_position
 	if Input.is_action_just_pressed("shoot") and can_shoot:
-		shoot(mouse_dir)
+		shoot()
 	move()
 	create_miniwaves()
 	
@@ -50,7 +49,7 @@ func move() -> void:
 		walking = false
 		#audio.stop()
 
-func shoot(direction):
+func shoot():
 	can_shoot = false
 	var bullet_instance = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
