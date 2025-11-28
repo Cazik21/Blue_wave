@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var mouse_dir = get_global_mouse_position() - global_position
+	Messenger.point_to_shoot = get_global_mouse_position()
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		shoot(mouse_dir)
 	move()
