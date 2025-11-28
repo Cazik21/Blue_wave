@@ -19,13 +19,14 @@ func _ready() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", target_pos, duration)\
 		.set_trans(Tween.TRANS_LINEAR)
-
+	tween.finished.connect(bullet_finished)
 
 func set_direction(new_direction):
 	direction = new_direction.normalized()
 
-func _on_screen_notifier_screen_exited() -> void:
+func bullet_finished() -> void:
 	queue_free()
+	
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
