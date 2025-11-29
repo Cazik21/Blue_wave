@@ -59,6 +59,18 @@ func alterar_colisao():
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.take_damage(1, global_position)
+<<<<<<< Updated upstream
+=======
+
+func equacao_q_n_lembro(vector1, vector2) -> float:
+	return sqrt(((vector1.x - vector2.x) ** 2) + ((vector1.y - vector2.y) ** 2))
+
+func dar_dano():
+	pass
+	if equacao_q_n_lembro(get_parent().get_node("Player").position, self.position) < 17 and can_dano_player:
+		Messenger.dano_player.emit()
+
+>>>>>>> Stashed changes
 		anim.play("default_wave")
 		audio.play()
 		self.get_node("PointLight2D").energy = 0
