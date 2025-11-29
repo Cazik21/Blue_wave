@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3 uid="uid://cejbxgdvkinlm"]
+
+[ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="1_hkbxb"]
+[ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="2_xo13d"]
+[ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="3_2o6u0"]
+[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_hvj2l"]
+[ext_resource type="Script" uid="uid://b013v57xihjio" path="res://scripts/start.gd" id="5_whubj"]
+[ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scenes/options.gd" id="6_8cyla"]
+[ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_87508"]
+[ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scenes/selecionador.gd" id="7_j2f2k"]
+
+[sub_resource type="Theme" id="Theme_hvj2l"]
+
+[node name="Tela_inicial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fundo" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 436.0
+offset_bottom = 285.0
+color = Color(0.06, 0.06, 0.06, 1)
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="black waves" type="Label" parent="Menu"]
+offset_left = 104.0
+offset_top = 34.0
+offset_right = 252.0
+offset_bottom = 50.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("1_hkbxb")
+text = "Black Waves"
+
+[node name="baixo" type="TextureRect" parent="Menu"]
+offset_left = 98.0
+offset_top = 59.999996
+offset_right = 329.65002
+offset_bottom = 76.0
+texture = ExtResource("2_xo13d")
+
+[node name="cima" type="TextureRect" parent="Menu"]
+offset_left = 98.0
+offset_top = 11.0
+offset_right = 329.65002
+offset_bottom = 27.0
+texture = ExtResource("3_2o6u0")
+
+[node name="iluminação" type="PointLight2D" parent="Menu"]
+position = Vector2(215.49998, 43)
+scale = Vector2(2.6874998, 0.6071428)
+energy = 2.0
+texture = ExtResource("3_hvj2l")
+
+[node name="Start" type="Button" parent="Menu"]
+offset_left = 169.0
+offset_top = 92.0
+offset_right = 311.0
+offset_bottom = 116.0
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("1_hkbxb")
+text = "Start game"
+script = ExtResource("5_whubj")
+
+[node name="Options" type="Button" parent="Menu"]
+offset_left = 169.00003
+offset_top = 124.000015
+offset_right = 311.0
+offset_bottom = 148.00002
+scale = Vector2(0.7, 0.7)
+theme = SubResource("Theme_hvj2l")
+theme_override_fonts/font = ExtResource("1_hkbxb")
+text = "Options"
+script = ExtResource("6_8cyla")
+
+[node name="Selecionador" type="Node2D" parent="Menu"]
+position = Vector2(169, 92)
+script = ExtResource("7_j2f2k")
+
+[node name="Selecionar" type="TextureRect" parent="Menu/Selecionador"]
+offset_left = -12.0
+offset_top = 3.0
+offset_right = 12.0
+offset_bottom = 25.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_87508")
+
+[node name="Selecionar2" type="TextureRect" parent="Menu/Selecionador"]
+offset_left = 102.0
+offset_top = 3.0
+offset_right = 126.0
+offset_bottom = 25.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_87508")
+flip_h = true
+
+[connection signal="pressed" from="Menu/Start" to="Menu/Start" method="_on_pressed"]

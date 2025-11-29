@@ -21,10 +21,6 @@ var org_color
 func _ready() -> void:
 	player = Messenger.player
 	org_color = anim.modulate
-	Messenger.change_enemy_speed.connect(change_speed)
-
-func change_speed():
-	speed += 20
 
 func _process(delta: float) -> void:
 	if knockback_velocity.length() > 1:
