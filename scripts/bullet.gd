@@ -1,10 +1,14 @@
 extends Area2D
 
 @export var bullet_speed : float = 125
+
 var direction : Vector2 = Vector2.ZERO
+var target_pos
 
 @onready var anim: AnimatedSprite2D = $Anim
 @onready var collision: CollisionShape2D = $CollisionShape
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 
 func _ready() -> void:
 	anim.scale = Vector2(0.6, 0.6)
@@ -17,7 +21,7 @@ func _ready() -> void:
 
 	# 2. Distância fixa de viagem
 	var travel_distance = global_position.distance_to(get_global_mouse_position())
-	var target_pos = global_position + direction * travel_distance
+	target_pos = global_position + direction * travel_distance
 
 	# 3. Duração baseada em VELOCIDADE
 	var duration = travel_distance / bullet_speed
@@ -35,6 +39,7 @@ func bullet_finished() -> void:
 	anim.scale = Vector2(1.5, 1.5)
 	alterar_colisao()
 	anim.play("default_wave")
+	audio.play()
 	self.get_node("PointLight2D").energy = 0
 	var tweenop = get_tree().create_tween()
 	tweenop.tween_property(self, "modulate",
@@ -46,11 +51,20 @@ func wave_delete():
 	self.queue_free()
 
 func alterar_colisao():
-	var tween = get_tree().create_tween()
-	tween.tween_property(collision, "scale",
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(collision, "scale",
 	 Vector2(7, 7),
 	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.take_damage(1, global_position)
+		anim.play("default_wave")
+		audio.play()
+		self.get_node("PointLight2D").energy = 0
+		var tweenop = get_tree().create_tween()
+		tweenop.tween_property(self, "modulate",
+		 Color("#ffffff", 0),
+		 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		target_pos = global_position
+		tweenop.connect("finished", wave_delete)

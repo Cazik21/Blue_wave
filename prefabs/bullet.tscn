@@ -66,4 +66,7 @@ animation = &"default_wave"
 frame = 4
 frame_progress = 1.0
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -18.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
