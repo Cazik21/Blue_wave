@@ -38,5 +38,4 @@ func troca_de_wave():
 		while Messenger.player_lifes < 5 or i == int(Messenger.wave / 10) + 1:
 			Messenger.player_lifes += 1
 			i += 1
-			
 	Messenger.trocando_de_wave.emit()
