@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c48aefisbai4w" path="res://assets/slime 1 (1).png" id="2_c4w8v"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_md484"]
 [ext_resource type="Texture2D" uid="uid://7g5lg3lduuk5" path="res://assets/slime 13 (3) (1).png" id="2_xwavj"]
+[ext_resource type="PackedScene" uid="uid://dqsdfv273i6hc" path="res://prefabs/coraco.tscn" id="3_md484"]
 [ext_resource type="Texture2D" uid="uid://5v8te6nnis5o" path="res://assets/New Piskel.png" id="5_nenq2"]
 [ext_resource type="Texture2D" uid="uid://ohlbd4qksu6b" path="res://assets/New Piskel (1).png" id="6_md484"]
 [ext_resource type="Texture2D" uid="uid://cfcjeug7i83jn" path="res://assets/New Piskel (2).png" id="7_ipns3"]
@@ -164,6 +165,7 @@ animations = [{
 z_index = 2
 script = ExtResource("1_4ra3w")
 waves_scene = ExtResource("2_md484")
+coraco_scene = ExtResource("3_md484")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xwavj")

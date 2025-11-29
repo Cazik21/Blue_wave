@@ -5,6 +5,7 @@ const PARTICLES = preload("uid://vuan0hr8ktyu")
 @export var speed : float = 20
 @export var health : int = 2
 @export var waves_scene : PackedScene
+@export var coraco_scene : PackedScene
 
 @onready var anim: AnimatedSprite2D = $anim
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -17,9 +18,11 @@ var knockback_decay : float = 160
 var animation_playing : bool = false
 var can_instantiate_waves : bool = true
 
+var rng = RandomNumberGenerator.new()
 var org_color
 
 func _ready() -> void:
+	rng.randomize()
 	player = Messenger.player
 	org_color = anim.modulate
 
@@ -63,9 +66,13 @@ func take_damage(amount: int, sourece_position: Vector2):
 		particles.global_position = global_position
 		particles.rotation = direction.angle() + PI
 		Messenger.enemies_f -=1
-		audio.play()
-		self.visible = false
-		collision.queue_free()
-		await get_tree().create_timer(0.18).timeout
+		if randi_range(23, 23) == 23:
+			if randi_range(1, 2) == 2:
+				Messenger.coraco_valor = 2
+			else:
+				Messenger.coraco_valor = 1
+			var coracos = coraco_scene.instantiate()
+			add_sibling(coracos)
+			coracos.global_position = global_position
 		queue_free()
 	
