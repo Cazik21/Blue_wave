@@ -3,7 +3,7 @@ extends CharacterBody2D
 const PARTICLES = preload("uid://vuan0hr8ktyu")
 
 @export var speed : float = 20
-@export var health : int = 2
+@export var health : float = 4
 @export var waves_scene : PackedScene
 @export var coraco_scene : PackedScene
 
@@ -51,10 +51,10 @@ func apply_kockback(force : Vector2):
 
 func hit_flash():
 	anim.modulate = Color.WHITE
-	await get_tree().create_timer(0.1).timeout
+	await Messenger.tree.create_timer(0.1).timeout
 	anim.modulate = org_color
 
-func take_damage(amount: int, sourece_position: Vector2):
+func take_damage(amount: float, sourece_position: Vector2):
 	health -= amount
 	audio.play()
 	var knockback_dir = (position - sourece_position).normalized()
@@ -66,12 +66,9 @@ func take_damage(amount: int, sourece_position: Vector2):
 		particles.global_position = global_position
 		particles.rotation = direction.angle() + PI
 		Messenger.enemies_f -=1
-		if randi_range(23, 23) == 23:
-			if randi_range(1, 2) == 2:
-				Messenger.coraco_valor = 2
-			else:
-				Messenger.coraco_valor = 1
+		if randi_range(1, 23) == 23:
 			var coracos = coraco_scene.instantiate()
+			coracos.global_position = global_position
 			add_sibling(coracos)
 			coracos.global_position = global_position
 		audio.play()

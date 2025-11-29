@@ -7,6 +7,7 @@ var direction : Vector2 = Vector2.ZERO
 @onready var collision: CollisionShape2D = $CollisionShape
 
 var can_dano_player: bool = false
+var tween
 
 func _ready() -> void:
 	can_dano_player = false
@@ -26,7 +27,7 @@ func _ready() -> void:
 	var duration = travel_distance / bullet_speed
 
 	# 4. Tween linear com velocidade constante
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", target_pos, duration)\
 		.set_trans(Tween.TRANS_LINEAR)
 	tween.finished.connect(bullet_finished)
@@ -35,6 +36,7 @@ func set_direction(new_direction):
 	direction = new_direction.normalized()
 
 func bullet_finished() -> void:
+	can_dano_player = true
 	anim.scale = Vector2(1.5, 1.5)
 	alterar_colisao()
 	anim.play("default_wave")
@@ -44,21 +46,23 @@ func bullet_finished() -> void:
 	 Color("#ffffff", 0),
 	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tweenop.connect("finished", wave_delete)
-	can_dano_player = true
 	dar_dano()
 
 func wave_delete():
 	self.queue_free()
 
 func alterar_colisao():
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 	tween.tween_property(collision, "scale",
 	 Vector2(7, 7),
 	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: CharacterBody2D) -> void:
+
 	if body.is_in_group("enemies"):
-		body.take_damage(1, global_position)
+		kill_tween()
+		@warning_ignore("integer_division")
+		body.take_damage(2 - int(collision.scale > Vector2(1, 1)), global_position)
 
 
 func equacao_q_n_lembro(vector1, vector2) -> float:
@@ -68,3 +72,8 @@ func dar_dano():
 	pass
 	if equacao_q_n_lembro(get_parent().get_node("Player").position, self.position) < 17 and can_dano_player:
 		Messenger.dano_player.emit()
+
+
+func kill_tween():
+	tween.kill()
+	bullet_finished()

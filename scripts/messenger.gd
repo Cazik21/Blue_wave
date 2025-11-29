@@ -1,6 +1,6 @@
 extends Node
 
-var coraco_valor = -1
+var tree
 var player
 var enemies_p_wave = 5
 var wave = 1
@@ -18,3 +18,6 @@ signal options_selecionado
 signal diminuir_timer
 @warning_ignore("unused_signal")
 signal trocando_de_wave 
+
+func _ready() -> void:
+	tree = get_tree()

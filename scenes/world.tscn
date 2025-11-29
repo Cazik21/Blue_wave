@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dqo6q3330yn1x" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://by6tii7albfd4" path="res://scenes/enemy.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://dfvu4r5emojw" path="res://prefabs/waves.tscn" id="4_k0juu"]
-[ext_resource type="PackedScene" uid="uid://ylqcdxpl38as" path="res://prefabs/hearts.tscn" id="5_71j4m"]
+[ext_resource type="PackedScene" uid="uid://cecommju7mhn1" path="res://prefabs/hearts.tscn" id="5_71j4m"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_4wyf3")
