@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://r8g54jdsx34l" path="res://assets/player1.png" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="3_qlg0r"]
+<<<<<<< HEAD
+=======
+[ext_resource type="AudioStream" uid="uid://ci53dc2g58kay" path="res://assets/tap.wav" id="6_tuyoq"]
+>>>>>>> sounds
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{

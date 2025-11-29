@@ -20,8 +20,11 @@ func _ready() -> void:
 	Messenger.dano_player.connect(dano_player)
 	if OS.get_name() == "macOS":
 		point_light_2d.energy = 2
+		point_light_2d.texture_scale = 2
 	else:
 		point_light_2d.energy = 1
+		point_light_2d.texture_scale= 1.2
+	
 	Messenger.player = self
 	org_color = Color.WHITE
 
@@ -52,6 +55,7 @@ func move() -> void:
 
 func shoot():
 	can_shoot = false
+	audio.play()
 	var bullet_instance = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = global_position

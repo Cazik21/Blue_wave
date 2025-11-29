@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://by6tii7albfd4"]
+[gd_scene load_steps=27 format=3 uid="uid://by6tii7albfd4"]
 
 [ext_resource type="Script" uid="uid://db4nw25ges0ey" path="res://scripts/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://c48aefisbai4w" path="res://assets/slime 1 (1).png" id="2_c4w8v"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://5v8te6nnis5o" path="res://assets/New Piskel.png" id="5_nenq2"]
 [ext_resource type="Texture2D" uid="uid://ohlbd4qksu6b" path="res://assets/New Piskel (1).png" id="6_md484"]
 [ext_resource type="Texture2D" uid="uid://cfcjeug7i83jn" path="res://assets/New Piskel (2).png" id="7_ipns3"]
+[ext_resource type="AudioStream" uid="uid://bg5laa2cci6f" path="res://assets/hurt.wav" id="8_md484"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
 size = Vector2(16, 14)
@@ -175,3 +176,6 @@ sprite_frames = SubResource("SpriteFrames_md484")
 animation = &"jumping"
 autoplay = "born"
 frame_progress = 0.61562926
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_md484")
