@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cejbxgdvkinlm"]
+[gd_scene load_steps=13 format=3 uid="uid://cejbxgdvkinlm"]
 
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="1_hkbxb"]
+[ext_resource type="Script" uid="uid://w5lkmw4ejef" path="res://scenes/menu.gd" id="1_moypc"]
 [ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="2_xo13d"]
 [ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="3_2o6u0"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_hvj2l"]
-[ext_resource type="Script" path="res://scripts/start.gd" id="5_whubj"]
+[ext_resource type="Script" uid="uid://b013v57xihjio" path="res://scripts/start.gd" id="5_whubj"]
 [ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scripts/options.gd" id="6_8cyla"]
 [ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_87508"]
 [ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scripts/selecionador.gd" id="7_j2f2k"]
@@ -28,6 +29,7 @@ offset_bottom = 285.0
 color = Color(0.06, 0.06, 0.06, 1)
 
 [node name="Menu" type="CanvasLayer" parent="."]
+script = ExtResource("1_moypc")
 
 [node name="black waves" type="Label" parent="Menu"]
 offset_left = 104.0
@@ -66,7 +68,7 @@ texture = ExtResource("3_2o6u0")
 [node name="iluminação" type="PointLight2D" parent="Menu"]
 position = Vector2(215.49998, 31.999985)
 scale = Vector2(2.6874998, 3.3214285)
-energy = 2.0
+energy = 0.6
 texture = ExtResource("3_hvj2l")
 
 [node name="Start" type="Button" parent="Menu"]

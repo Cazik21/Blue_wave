@@ -1,6 +1,5 @@
 extends Area2D
 
-@export var ondas : PackedScene
 @export var bullet_speed : float = 125
 var direction : Vector2 = Vector2.ZERO
 

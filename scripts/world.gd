@@ -32,5 +32,5 @@ func _on_spawn_timer_timeout() -> void:
 
 func troca_de_wave():
 	spawn_timer.wait_time -= 0.1
-	Messenger.player_lifes = 2
+	Messenger.player_lifes = 5
 	Messenger.trocando_de_wave.emit()

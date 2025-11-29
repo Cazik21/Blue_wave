@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvedovtjluph"]
+[gd_scene load_steps=11 format=3 uid="uid://bvedovtjluph"]
 
 [ext_resource type="Script" uid="uid://0askscbgtuuu" path="res://scripts/bullet.gd" id="1_lv25w"]
 [ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="2_7rc6x"]
-[ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_44iiu"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_7rc6x"]
 [ext_resource type="Texture2D" uid="uid://dh6ywqx20pfpa" path="res://assets/Water walking (4).png" id="5_6jtdi"]
 [ext_resource type="Texture2D" uid="uid://bynp320kb4jyr" path="res://assets/Water walking (3).png" id="6_qhkqn"]
@@ -47,7 +46,6 @@ animations = [{
 [node name="bullet" type="Area2D"]
 z_index = 1
 script = ExtResource("1_lv25w")
-ondas = ExtResource("2_44iiu")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 scale = Vector2(7, 7)

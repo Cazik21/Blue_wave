@@ -10,9 +10,9 @@ func _ready() -> void:
 func start_selecionado():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", start.global_position,
-	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 func options_selecionado():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", options.global_position,
-	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
