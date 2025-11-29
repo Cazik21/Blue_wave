@@ -1,12 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvedovtjluph"]
+[gd_scene load_steps=12 format=3 uid="uid://bvedovtjluph"]
 
 [ext_resource type="Script" uid="uid://0askscbgtuuu" path="res://scripts/bullet.gd" id="1_lv25w"]
 [ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="2_7rc6x"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_44iiu"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_7rc6x"]
+[ext_resource type="Texture2D" uid="uid://dh6ywqx20pfpa" path="res://assets/Water walking (4).png" id="5_6jtdi"]
+[ext_resource type="Texture2D" uid="uid://bynp320kb4jyr" path="res://assets/Water walking (3).png" id="6_qhkqn"]
+[ext_resource type="Texture2D" uid="uid://crs7yi8rb0x0r" path="res://assets/Water walking (2).png" id="7_2o2rj"]
+[ext_resource type="Texture2D" uid="uid://j5sjfskig4kr" path="res://assets/Water walking (1).png" id="8_rhf82"]
+[ext_resource type="Texture2D" uid="uid://crekdokahv3sf" path="res://assets/Water walking.png" id="9_fw3qv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_44iiu"]
 radius = 3.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ts6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7rc6x")
+}],
+"loop": false,
+"name": &"bullet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6jtdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qhkqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2o2rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rhf82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fw3qv")
+}],
+"loop": false,
+"name": &"default_wave",
+"speed": 8.0
+}]
 
 [node name="bullet" type="Area2D"]
 z_index = 1
@@ -14,11 +50,8 @@ script = ExtResource("1_lv25w")
 ondas = ExtResource("2_44iiu")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_44iiu")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_7rc6x")
 
 [node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-3, -3, 6, 6)
@@ -27,5 +60,11 @@ rect = Rect2(-3, -3, 6, 6)
 energy = 5.0
 texture = ExtResource("3_7rc6x")
 texture_scale = 0.07
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3ts6m")
+animation = &"default_wave"
+frame = 4
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

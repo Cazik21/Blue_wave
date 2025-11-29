@@ -5,7 +5,6 @@ extends AnimatedSprite2D
 @export var enemy_scene : PackedScene
 
 func _ready() -> void:
-
 	play("1")
 	var tweenop = get_tree().create_tween()
 	tweenop.tween_property(self, "modulate",
