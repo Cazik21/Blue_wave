@@ -16,5 +16,4 @@ func waves():
 	label.text = ("wave " + str(Messenger.wave))
 	Messenger.diminuir_timer.emit()
 	
-	Messenger.change_enemy_speed.emit()
 	

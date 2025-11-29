@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Black waves"
-run/main_scene="uid://dxghx7pn87w4x"
+run/main_scene="uid://cejbxgdvkinlm"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(1, 0.2763351, 0.27401027, 1)
 boot_splash/image="uid://dugfy5yahxp0y"
@@ -36,6 +36,7 @@ window/size/initial_position_type=0
 window/size/window_width_override=1248
 window/size/window_height_override=702
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://wv8jvq7qxybf"
 
 [global_group]
 
