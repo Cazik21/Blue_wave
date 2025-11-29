@@ -52,6 +52,7 @@ func move() -> void:
 
 func shoot():
 	can_shoot = false
+	audio.play()
 	var bullet_instance = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = global_position

@@ -1,5 +1,8 @@
 extends CPUParticles2D
 
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+func  _ready() -> void:
+	audio.play()
 
 func _on_timer_timeout() -> void:
 	set_physics_process(false)

@@ -8,7 +8,8 @@ const PARTICLES = preload("uid://vuan0hr8ktyu")
 @export var coraco_scene : PackedScene
 
 @onready var anim: AnimatedSprite2D = $anim
-@onready var reborn_timer: Timer = $"reborn _timer"
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var collision: CollisionShape2D = $CollisionShape2D
 
 var direction : Vector2 = Vector2.ZERO
 var player = null
@@ -55,6 +56,7 @@ func hit_flash():
 
 func take_damage(amount: int, sourece_position: Vector2):
 	health -= amount
+	audio.play()
 	var knockback_dir = (position - sourece_position).normalized()
 	apply_kockback(knockback_dir * 100)
 	hit_flash()
@@ -72,5 +74,8 @@ func take_damage(amount: int, sourece_position: Vector2):
 			var coracos = coraco_scene.instantiate()
 			add_sibling(coracos)
 			coracos.global_position = global_position
+		audio.play()
+		self.visible = false
+		collision.queue_free()
+		await get_tree().create_timer(0.18).timeout
 		queue_free()
-		
