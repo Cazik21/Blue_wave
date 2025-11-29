@@ -31,6 +31,12 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
 
 func troca_de_wave():
-	spawn_timer.wait_time -= 0.1
-	Messenger.player_lifes = 5
+	spawn_timer.wait_time /= 1.19
+	if Messenger.player_lifes < 5:
+		var i = 1
+		@warning_ignore("integer_division")
+		while Messenger.player_lifes < 5 or i == int(Messenger.wave / 10) + 1:
+			Messenger.player_lifes += 1
+			i += 1
+			
 	Messenger.trocando_de_wave.emit()

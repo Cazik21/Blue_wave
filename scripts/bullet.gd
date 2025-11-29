@@ -6,7 +6,10 @@ var direction : Vector2 = Vector2.ZERO
 @onready var anim: AnimatedSprite2D = $Anim
 @onready var collision: CollisionShape2D = $CollisionShape
 
+var can_dano_player: bool = false
+
 func _ready() -> void:
+	can_dano_player = false
 	anim.scale = Vector2(0.6, 0.6)
 	collision.scale =Vector2(1, 1)
 	self.visible = true
@@ -41,6 +44,8 @@ func bullet_finished() -> void:
 	 Color("#ffffff", 0),
 	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tweenop.connect("finished", wave_delete)
+	can_dano_player = true
+	dar_dano()
 
 func wave_delete():
 	self.queue_free()
@@ -54,3 +59,12 @@ func alterar_colisao():
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.take_damage(1, global_position)
+
+
+func equacao_q_n_lembro(vector1, vector2) -> float:
+	return sqrt(((vector1.x - vector2.x) ** 2) + ((vector1.y - vector2.y) ** 2))
+
+func dar_dano():
+	pass
+	if equacao_q_n_lembro(get_parent().get_node("Player").position, self.position) < 17 and can_dano_player:
+		Messenger.dano_player.emit()

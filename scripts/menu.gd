@@ -4,6 +4,6 @@ extends CanvasLayer
 
 func _ready() -> void:
 	if OS.get_name() == "macOS":
-		iluminação.energy = 2
+		iluminação.energy = 2.2
 	else:
-		iluminação.energy = 0.6
+		iluminação.energy = 0.8
