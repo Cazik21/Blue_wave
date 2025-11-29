@@ -33,7 +33,7 @@ func set_direction(new_direction):
 	direction = new_direction.normalized()
 
 func bullet_finished() -> void:
-	anim.scale = Vector2(1.2, 1.2)
+	anim.scale = Vector2(1.5, 1.5)
 	alterar_colisao()
 	anim.play("default_wave")
 	self.get_node("PointLight2D").energy = 0
@@ -49,7 +49,7 @@ func wave_delete():
 func alterar_colisao():
 	var tween = get_tree().create_tween()
 	tween.tween_property(collision, "scale",
-	 Vector2(5, 5),
+	 Vector2(7, 7),
 	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 func _on_body_entered(body: Node2D) -> void:

@@ -11,3 +11,4 @@ signal ondinhas
 signal start_selecionado
 signal options_selecionado
 signal diminuir_timer
+signal trocando_de_wave 

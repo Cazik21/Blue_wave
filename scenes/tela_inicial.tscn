@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cejbxgdvkinlm"]
+[gd_scene load_steps=12 format=3 uid="uid://cejbxgdvkinlm"]
 
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="1_hkbxb"]
 [ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="2_xo13d"]
 [ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="3_2o6u0"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_hvj2l"]
-[ext_resource type="Script" uid="uid://b013v57xihjio" path="res://scripts/start.gd" id="5_whubj"]
-[ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scenes/options.gd" id="6_8cyla"]
+[ext_resource type="Script" path="res://scripts/start.gd" id="5_whubj"]
+[ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scripts/options.gd" id="6_8cyla"]
 [ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_87508"]
-[ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scenes/selecionador.gd" id="7_j2f2k"]
+[ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scripts/selecionador.gd" id="7_j2f2k"]
+[ext_resource type="Script" uid="uid://cvy22jibernnf" path="res://scripts/wave.gd" id="9_oiiwr"]
+[ext_resource type="Texture2D" uid="uid://utx028gt8v3d" path="res://assets/wave_tela_inicial.png" id="10_moypc"]
 
 [sub_resource type="Theme" id="Theme_hvj2l"]
 
@@ -35,6 +37,17 @@ offset_bottom = 50.0
 scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("1_hkbxb")
 text = "Black Waves"
+metadata/_edit_use_anchors_ = true
+
+[node name="Version" type="Label" parent="Menu"]
+offset_left = 16.0
+offset_top = 207.00002
+offset_right = 190.0
+offset_bottom = 223.00002
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_hkbxb")
+text = "Version : Beta"
+metadata/_edit_use_anchors_ = true
 
 [node name="baixo" type="TextureRect" parent="Menu"]
 offset_left = 98.0
@@ -51,8 +64,8 @@ offset_bottom = 27.0
 texture = ExtResource("3_2o6u0")
 
 [node name="iluminação" type="PointLight2D" parent="Menu"]
-position = Vector2(215.49998, 43)
-scale = Vector2(2.6874998, 0.6071428)
+position = Vector2(215.49998, 31.999985)
+scale = Vector2(2.6874998, 3.3214285)
 energy = 2.0
 texture = ExtResource("3_hvj2l")
 
@@ -97,5 +110,135 @@ offset_bottom = 25.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_87508")
 flip_h = true
+
+[node name="wave1" type="Node2D" parent="."]
+position = Vector2(0, -112)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave1"]
+modulate = Color(1, 1, 1, 0.19607843)
+offset_left = -93.0
+offset_top = 199.0
+offset_right = 577.0
+offset_bottom = 239.0
+texture = ExtResource("10_moypc")
+
+[node name="wave2" type="Node2D" parent="."]
+position = Vector2(0, -96)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave2"]
+modulate = Color(1, 1, 1, 0.3137255)
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("10_moypc")
+flip_h = true
+
+[node name="wave3" type="Node2D" parent="."]
+position = Vector2(0, -80)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave3"]
+modulate = Color(1, 1, 1, 0.43137255)
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("10_moypc")
+
+[node name="wave4" type="Node2D" parent="."]
+position = Vector2(0, -72)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave4"]
+modulate = Color(1, 1, 1, 0.54901963)
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("10_moypc")
+flip_h = true
+
+[node name="wave5" type="Node2D" parent="."]
+position = Vector2(0, -72)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave5"]
+modulate = Color(1, 1, 1, 0.6666667)
+offset_left = -93.0
+offset_top = 213.0
+offset_right = 577.0
+offset_bottom = 253.0
+texture = ExtResource("10_moypc")
+metadata/_edit_use_anchors_ = true
+
+[node name="wave6" type="Node2D" parent="."]
+position = Vector2(0, -41)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave6"]
+modulate = Color(1, 1, 1, 0.78431374)
+offset_left = -93.0
+offset_top = 199.0
+offset_right = 577.0
+offset_bottom = 239.0
+texture = ExtResource("10_moypc")
+metadata/_edit_use_anchors_ = true
+
+[node name="wave7" type="Node2D" parent="."]
+position = Vector2(0, -25)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave7"]
+modulate = Color(1, 1, 1, 0.9019608)
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("10_moypc")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="wave8" type="Node2D" parent="."]
+position = Vector2(0, -9)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave8"]
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("10_moypc")
+metadata/_edit_use_anchors_ = true
+
+[node name="wave9" type="Node2D" parent="."]
+position = Vector2(0, -1)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave9"]
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("10_moypc")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="wave10" type="Node2D" parent="."]
+position = Vector2(0, -1)
+script = ExtResource("9_oiiwr")
+
+[node name="Shake_icon" type="TextureRect" parent="wave10"]
+offset_left = -93.0
+offset_top = 213.0
+offset_right = 577.0
+offset_bottom = 253.0
+texture = ExtResource("10_moypc")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.067437746, 0.06743774, 0.06743772, 1)
 
 [connection signal="pressed" from="Menu/Start" to="Menu/Start" method="_on_pressed"]
