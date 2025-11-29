@@ -17,6 +17,7 @@ var org_color
 var speed : float = 100
 
 func _ready() -> void:
+	Messenger.dano_player.connect(dano_player)
 	if OS.get_name() == "macOS":
 		point_light_2d.energy = 2
 	else:
@@ -69,7 +70,7 @@ func create_miniwaves():
 
 
 func hit_flash():
-	anim.modulate = 262626
+	anim.modulate = 262626 #Chris pq 262626?
 	await get_tree().create_timer(0.1).timeout
 	anim.modulate = org_color
 
@@ -77,6 +78,15 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		hit_flash()
 		Messenger.player_lifes -= 1
+	if Messenger.player_lifes <= 0:
+		Messenger.player_lifes = 5
+		Messenger.wave = 1
+		get_tree().reload_current_scene()
+
+
+func dano_player():
+	hit_flash()
+	Messenger.player_lifes -= 1
 	if Messenger.player_lifes <= 0:
 		Messenger.player_lifes = 5
 		Messenger.wave = 1
