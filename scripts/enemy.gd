@@ -21,7 +21,9 @@ var can_instantiate_waves : bool = true
 var rng = RandomNumberGenerator.new()
 var org_color
 
+
 func _ready() -> void:
+	Messenger.org_color_for_enemy = anim.modulate
 	push_out_in_direction(Vector2.RIGHT) #Tem q fazer sistema de qual direcao
 	rng.randomize()
 	player = Messenger.player

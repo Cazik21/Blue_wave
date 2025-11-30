@@ -5,9 +5,6 @@ extends AnimatedSprite2D
 @export var enemy_scene : PackedScene
 
 func _ready() -> void:
-	@warning_ignore("integer_division")
-	if randi_range(1, 1) == 1:
-		Messenger.spawn_grounded_enemy.emit()
 	play("1")
 	var tweenop = get_tree().create_tween()
 	tweenop.tween_property(self, "modulate",

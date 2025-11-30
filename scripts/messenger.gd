@@ -1,6 +1,5 @@
 extends Node
 
-var master_volume
 var can_spawn_enemy
 var tree
 var player
@@ -9,8 +8,8 @@ var wave = 1
 var enemies_f
 var player_lifes : int = 5
 var point_to_shoot
-var music
-var sounds
+var org_color_for_enemy
+
 
 @warning_ignore("unused_signal")
 signal spawn_grounded_enemy
