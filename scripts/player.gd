@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var audio2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var collision: CollisionShape2D = $CollisionShape2D
 
 @export var bullet_scene : PackedScene
 @export var waves_scene : PackedScene
@@ -33,32 +35,31 @@ func _physics_process(_delta: float) -> void:
 	
 
 func move() -> void:
-	var direction_vector = Vector2(
-		Input.get_action_strength("D") - Input.get_action_strength("A"),
-		Input.get_action_strength("S") - Input.get_action_strength("W")
-	).normalized()
+	if Messenger.player_lifes > 0:
+		var direction_vector = Vector2(
+			Input.get_action_strength("D") - Input.get_action_strength("A"),
+			Input.get_action_strength("S") - Input.get_action_strength("W")
+		).normalized()
 	
-	velocity = direction_vector * speed
-	move_and_slide()
-	if Vector2(Input.get_action_strength("D") - Input.get_action_strength("A"),Input.get_action_strength("S") - Input.get_action_strength("W")) > Vector2.ZERO: 
-		walking = true
-		#audio.play()
-	elif Vector2(Input.get_action_strength("D") - Input.get_action_strength("A"),Input.get_action_strength("S") - Input.get_action_strength("W")) < Vector2.ZERO:
-		walking = true
-		#audio.play()
-	else:
-		walking = false
-		#audio.stop()
+		velocity = direction_vector * speed
+		move_and_slide()
+		if Vector2(Input.get_action_strength("D") - Input.get_action_strength("A"),Input.get_action_strength("S") - Input.get_action_strength("W")) > Vector2.ZERO: 
+			walking = true
+		elif Vector2(Input.get_action_strength("D") - Input.get_action_strength("A"),Input.get_action_strength("S") - Input.get_action_strength("W")) < Vector2.ZERO:
+			walking = true
+		else:
+			walking = false
 
 func shoot():
-	can_shoot = false
-	audio.play()
-	var bullet_instance = bullet_scene.instantiate()
-	get_tree().current_scene.add_child(bullet_instance)
-	bullet_instance.global_position = global_position
+	if Messenger.player_lifes > 0:
+		can_shoot = false
+		audio.play()
+		var bullet_instance = bullet_scene.instantiate()
+		get_tree().current_scene.add_child(bullet_instance)
+		bullet_instance.global_position = global_position
 	
-	await get_tree().create_timer(shoot_colldown).timeout
-	can_shoot = true
+		await get_tree().create_timer(shoot_colldown).timeout
+		can_shoot = true
 	
 func create_miniwaves():
 	if can_instantiate_waves and walking:
@@ -79,6 +80,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		hit_flash()
 		Messenger.player_lifes -= 1
+		audio2.play()
 	if Messenger.player_lifes <= 0:
 		Messenger.player_lifes = 5
 		Messenger.wave = 1
@@ -88,7 +90,12 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 func dano_player():
 	hit_flash()
 	Messenger.player_lifes -= 1
+	audio2.play()
 	if Messenger.player_lifes <= 0:
+		Engine.time_scale = 0.2
+		collision.queue_free()
+		await  get_tree().create_timer(0.6).timeout
+		Engine.time_scale = 1
 		Messenger.player_lifes = 5
 		Messenger.wave = 1
 		get_tree().reload_current_scene()
