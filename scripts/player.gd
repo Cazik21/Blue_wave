@@ -5,10 +5,13 @@ extends CharacterBody2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var audio2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var timer: Timer = $Timer
 
 @export var bullet_scene : PackedScene
 @export var waves_scene : PackedScene
+@export var enemy_scene : PackedScene
 
+var wait_time_for_ground_enemys : float = 3.5
 var can_shoot : bool = true
 var shoot_colldown : float = 0.3
 var can_instantiate_waves : bool = true
@@ -19,6 +22,8 @@ var org_color
 var speed : float = 100
 
 func _ready() -> void:
+	Messenger.spawn_grounded_enemy.connect(spawn_grounded_enemy)
+	reinice_timer()
 	Messenger.dano_player.connect(dano_player)
 	if OS.get_name() == "macOS":
 		point_light_2d.energy = 2
@@ -32,7 +37,6 @@ func _physics_process(_delta: float) -> void:
 		shoot()
 	move()
 	create_miniwaves()
-	
 
 func move() -> void:
 	if Messenger.player_lifes > 0:
@@ -60,7 +64,7 @@ func shoot():
 	
 		await get_tree().create_timer(shoot_colldown).timeout
 		can_shoot = true
-	
+
 func create_miniwaves():
 	if can_instantiate_waves and walking:
 		can_instantiate_waves = false
@@ -69,7 +73,6 @@ func create_miniwaves():
 		wave_instance.global_position = global_position
 		await get_tree().create_timer(0.2).timeout
 		can_instantiate_waves = true
-
 
 func hit_flash():
 	anim.modulate = 262626 #Chris pq 262626?
@@ -86,7 +89,6 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		Messenger.wave = 1
 		get_tree().reload_current_scene()
 
-
 func dano_player():
 	hit_flash()
 	Messenger.player_lifes -= 1
@@ -99,3 +101,16 @@ func dano_player():
 		Messenger.player_lifes = 5
 		Messenger.wave = 1
 		get_tree().reload_current_scene()
+
+func reinice_timer():
+	Messenger.can_spawn_enemy = 0
+	timer.start()
+	timer.timeout.connect(timer_stop)
+
+func timer_stop():
+	Messenger.can_spawn_enemy = 1
+
+func spawn_grounded_enemy():
+	var new_enemy_scene = enemy_scene.instantiate()
+	new_enemy_scene.global_position = global_position
+	add_sibling(new_enemy_scene)

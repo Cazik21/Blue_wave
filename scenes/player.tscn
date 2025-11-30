@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqo6q3330yn1x"]
+[gd_scene load_steps=12 format=3 uid="uid://dqo6q3330yn1x"]
 
 [ext_resource type="Script" uid="uid://dr2ro3ebk62xy" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://bvedovtjluph" path="res://prefabs/bullet.tscn" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://r8g54jdsx34l" path="res://assets/player1.png" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="3_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://by6tii7albfd4" path="res://scenes/enemy.tscn" id="4_smehm"]
 [ext_resource type="AudioStream" uid="uid://bvfugypp5rpwq" path="res://assets/tap.wav" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://dt1g0mp28o2kv" path="res://assets/powerUp.wav" id="7_fjrip"]
 
@@ -30,6 +31,7 @@ z_index = 5
 script = ExtResource("1_qhqgy")
 bullet_scene = ExtResource("2_dqkch")
 waves_scene = ExtResource("3_qlg0r")
+enemy_scene = ExtResource("4_smehm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.450581e-09, 7.450581e-09)
@@ -58,5 +60,7 @@ stream = ExtResource("6_tuyoq")
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_fjrip")
 volume_db = -4.0
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

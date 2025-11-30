@@ -22,6 +22,7 @@ var rng = RandomNumberGenerator.new()
 var org_color
 
 func _ready() -> void:
+	push_out_in_direction(Vector2.RIGHT) #Tem q fazer sistema de qual direcao
 	rng.randomize()
 	player = Messenger.player
 	org_color = anim.modulate
@@ -76,3 +77,14 @@ func take_damage(amount: float, sourece_position: Vector2):
 		collision.queue_free()
 		await Messenger.tree.create_timer(0.18).timeout
 		queue_free()
+
+
+@warning_ignore("shadowed_variable")
+func push_out_in_direction(direction: Vector2, step := 2.0, max_steps := 50):
+	direction = direction.normalized()
+	var steps := 0
+	
+	# Repete enquanto ainda houver colisão naquele movimento
+	while test_move(global_transform, direction * step) and steps < max_steps:
+		global_position += direction * step
+		steps += 1

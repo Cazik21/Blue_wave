@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var shake_icon = $ShakeIcon # Supondo que você tem um nó Sprite2D chamado "ShakeIcon" na sua cena
 
+
 var shake_amount = 5
 var shake_duration = 3
 var tween: Tween
