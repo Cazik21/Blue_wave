@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="2_xo13d"]
 [ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="3_2o6u0"]
 [ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_hvj2l"]
-[ext_resource type="Script" path="res://scripts/start.gd" id="5_whubj"]
+[ext_resource type="Script" uid="uid://b013v57xihjio" path="res://scripts/start.gd" id="5_whubj"]
 [ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scripts/options.gd" id="6_8cyla"]
 [ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_87508"]
 [ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scripts/selecionador.gd" id="7_j2f2k"]
-[ext_resource type="Script" path="res://scripts/wave.gd" id="9_oiiwr"]
+[ext_resource type="Script" uid="uid://cvy22jibernnf" path="res://scripts/wave.gd" id="9_oiiwr"]
 [ext_resource type="Texture2D" uid="uid://utx028gt8v3d" path="res://assets/wave_tela_inicial.png" id="10_moypc"]
 
 [sub_resource type="Theme" id="Theme_hvj2l"]

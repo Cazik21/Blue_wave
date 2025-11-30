@@ -7,6 +7,7 @@ var wave = 1
 var enemies_f
 var player_lifes : int = 5
 var point_to_shoot
+var cena_anterior : String
 
 @warning_ignore("unused_signal")
 signal dano_player

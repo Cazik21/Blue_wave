@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8bkbrr864xd8" path="res://scripts/volume_slider.gd" id="1_c2u1v"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_yjkok"]
-[ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scripts/options.gd" id="3_2iy26"]
+[ext_resource type="Script" uid="uid://bhmo6omsfkcsp" path="res://scenes/back.gd" id="3_2iy26"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -73,8 +73,11 @@ text = "Sounds"
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 64.0
+offset_bottom = 24.0
+scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("2_yjkok")
 text = "Back"
 script = ExtResource("3_2iy26")
+
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
