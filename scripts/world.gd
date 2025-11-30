@@ -32,6 +32,8 @@ func _on_spawn_timer_timeout() -> void:
 
 func troca_de_wave():
 	spawn_timer.wait_time /= 1.19
+	@warning_ignore("integer_division")
+	spawn_timer.wait_time = spawn_timer.wait_time + int(Messenger.wave >= 5)/2
 	if Messenger.player_lifes < 5:
 		var i = 1
 		@warning_ignore("integer_division")
