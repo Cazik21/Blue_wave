@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var audio2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
+@onready var collision_shape_2d: CollisionShape2D = $hurtbox/CollisionShape2D
 
 @export var bullet_scene : PackedScene
 @export var waves_scene : PackedScene
@@ -90,7 +91,7 @@ func _on_hurtbox_body_entered(body : CharacterBody2D) -> void:
 
 
 func dano_player(amont : int):
-	
+	Messenger.player_lifes -= amont
 	if Messenger.player_lifes <= 0:
 		Engine.time_scale = 0.2
 		collision.queue_free()
@@ -101,13 +102,12 @@ func dano_player(amont : int):
 		Messenger.killed_enemies = 0
 		Messenger.tree.reload_current_scene()
 	else:
-		Messenger.player_lifes -= amont
 		audio2.play()
-		self.collision_layer = 5
-		self.collision_mask = 5
+		collision.disabled = true
+		collision_shape_2d.disabled = true
 		await get_tree().create_timer(1).timeout
-		self.collision_layer = 1
-		self.collision_mask = 2
+		collision.disabled = false
+		collision_shape_2d.disabled = false
 
 func reinice_timer():
 	Messenger.can_spawn_enemy = 0
