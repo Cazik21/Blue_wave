@@ -29,7 +29,7 @@ func _ready() -> void:
 	player = Messenger.player
 	org_color = anim.modulate
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if knockback_velocity.length() > 1:
 		velocity = knockback_velocity
 		move_and_slide()

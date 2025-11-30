@@ -23,7 +23,6 @@ var speed : float = 100
 
 func _ready() -> void:
 	timer.wait_time = wait_time_for_ground_enemys
-	Messenger.spawn_grounded_enemy.connect(spawn_grounded_enemy)
 	reinice_timer()
 	Messenger.dano_player.connect(dano_player)
 	if OS.get_name() == "macOS":
@@ -72,7 +71,7 @@ func create_miniwaves():
 		var wave_instance = waves_scene.instantiate()
 		get_tree().current_scene.add_child(wave_instance)
 		wave_instance.global_position = global_position
-		if randi_range(1, 1) == 1 and Messenger.can_spawn_enemy == 1:
+		if randi_range(1, 20) == 1 and Messenger.can_spawn_enemy == 1:
 			spawn_grounded_enemy()
 		await get_tree().create_timer(0.2).timeout
 		can_instantiate_waves = true
@@ -112,15 +111,16 @@ func reinice_timer():
 
 
 func spawn_grounded_enemy():
-	reinice_timer()
-	var globa_position = global_position
-	await get_tree().create_timer(1).timeout
-	var new_enemy_scene = enemy_scene.instantiate()
-	new_enemy_scene.global_position = globa_position
-	add_sibling(new_enemy_scene)
-	new_enemy_scene.get_node("anim").modulate = Color.WHITE
-	await get_tree().create_timer(0.8).timeout
-	new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
+	if Messenger.wave >= 5:
+		reinice_timer()
+		var globa_position = global_position
+		await get_tree().create_timer(1).timeout
+		var new_enemy_scene = enemy_scene.instantiate()
+		new_enemy_scene.global_position = globa_position
+		add_sibling(new_enemy_scene)
+		new_enemy_scene.get_node("anim").modulate = Color.WHITE
+		await get_tree().create_timer(0.8).timeout
+		new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
 
 
 func _on_timer_timeout() -> void:
