@@ -66,7 +66,7 @@ func take_damage(amount: float, sourece_position: Vector2):
 		particles.global_position = global_position
 		particles.rotation = direction.angle() + PI
 		Messenger.enemies_f -=1
-		if randi_range(23, 23) == 23:
+		if randi_range(1, 23) == 23:
 			var coracos = coraco_scene.instantiate()
 			coracos.global_position = global_position
 			add_sibling(coracos)

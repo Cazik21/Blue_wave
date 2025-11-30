@@ -164,8 +164,6 @@ animations = [{
 [node name="enemy" type="CharacterBody2D" groups=["enemies"]]
 z_index = 2
 script = ExtResource("1_4ra3w")
-speed = null
-health = null
 waves_scene = ExtResource("2_md484")
 coraco_scene = ExtResource("3_md484")
 
