@@ -3,6 +3,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var spawn_timer: Timer = $spawn_timer
 
+
 @export var enemy_scene : PackedScene
 @export var pause_menu : PackedScene
 @export var spawn_margin = 40

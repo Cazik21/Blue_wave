@@ -11,6 +11,7 @@ var point_to_shoot
 var killed_enemies = 0
 var org_color_for_enemy
 
+
 var cena_anterior : String
 
 var paused : bool = false

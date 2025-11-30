@@ -16,6 +16,11 @@ var can_shoot : bool = true
 var shoot_colldown : float = 0.3
 var can_instantiate_waves : bool = true
 var walking : bool = false
+var enemy = null
+var direction_vector
+var safe_delta : float
+var knockback_velocity : Vector2 = Vector2.ZERO
+var knockback_decay : float = 160
 
 var org_color
 
@@ -32,21 +37,29 @@ func _ready() -> void:
 	Messenger.player = self
 	org_color = Color.WHITE
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not Messenger.paused:
+		safe_delta = min(delta, 0.05)
+		if knockback_velocity.length() > 1:
+			velocity = knockback_velocity
+			velocity = velocity * safe_delta * 60
+			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * safe_delta)
+		else:
+			move()
 		if Input.is_action_just_pressed("shoot") and can_shoot:
 			shoot()
-		move()
 		create_miniwaves()
+
+
 
 func move() -> void:
 	if Messenger.player_lifes > 0:
-		var direction_vector = Vector2(
+		direction_vector = Vector2(
 			Input.get_action_strength("D") - Input.get_action_strength("A"),
 			Input.get_action_strength("S") - Input.get_action_strength("W")
 		).normalized()
 	
-		velocity = direction_vector * speed
+		velocity = direction_vector * speed * safe_delta * 60
 		move_and_slide()
 		if Vector2(Input.get_action_strength("D") - Input.get_action_strength("A"),Input.get_action_strength("S") - Input.get_action_strength("W")) > Vector2.ZERO: 
 			walking = true
@@ -84,17 +97,14 @@ func hit_flash():
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		hit_flash()
-		Messenger.player_lifes -= 1
-		audio2.play()
-	if Messenger.player_lifes <= 0:
-		Messenger.player_lifes = 5
-		Messenger.wave = 1
-		get_tree().reload_current_scene()
+		dano_player(1, body.global_position)
 
-func dano_player():
+
+func dano_player(amont : int, sourece_position : Vector2):
+	var knockback_dir = (position - sourece_position).normalized()
+	apply_kockback(knockback_dir * 100)
 	hit_flash()
-	Messenger.player_lifes -= 1
+	Messenger.player_lifes -= amont
 	audio2.play()
 	if Messenger.player_lifes <= 0:
 		Engine.time_scale = 0.2
@@ -104,7 +114,10 @@ func dano_player():
 		Messenger.player_lifes = 5
 		Messenger.wave = 1
 		Messenger.killed_enemies = 0
-		get_tree().reload_current_scene()
+		Messenger.tree.reload_current_scene()
+
+func apply_kockback(force : Vector2):
+	knockback_velocity = force
 
 func reinice_timer():
 	Messenger.can_spawn_enemy = 0

@@ -11,6 +11,7 @@ const PARTICLES = preload("uid://vuan0hr8ktyu")
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
+var safe_delta : float
 var direction : Vector2 = Vector2.ZERO
 var player = null
 var knockback_velocity : Vector2 = Vector2.ZERO
@@ -38,16 +39,19 @@ func saiu_pq_meno():
 
 func _physics_process(delta: float) -> void:
 	if not Messenger.paused:
+		safe_delta = min(delta, 0.05)
 		if knockback_velocity.length() > 1:
 			velocity = knockback_velocity
+			velocity = velocity * safe_delta * 60
 			move_and_slide()
-			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
+			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * safe_delta)
 		else:
 			if player:
 				await get_tree().create_timer(0.8).timeout
 				anim.play("jumping")
 				direction = global_position.direction_to(player.global_position)
 				velocity = direction * speed
+				velocity = velocity * safe_delta * 60
 				move_and_slide()
 		if can_instantiate_waves:
 			can_instantiate_waves = false
