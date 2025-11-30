@@ -19,8 +19,6 @@ var walking : bool = false
 var enemy = null
 var direction_vector
 var safe_delta : float
-var knockback_velocity : Vector2 = Vector2.ZERO
-var knockback_decay : float = 160
 
 var org_color
 
@@ -39,25 +37,16 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not Messenger.paused:
-		safe_delta = min(delta, 0.05)
-		if knockback_velocity.length() > 1:
-			velocity = knockback_velocity
-			velocity = velocity * safe_delta * 60
-			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * safe_delta)
-		else:
-			move()
+		safe_delta = min(delta, 0.033)
+		move()
 		if Input.is_action_just_pressed("shoot") and can_shoot:
 			shoot()
 		create_miniwaves()
 
 
-
 func move() -> void:
 	if Messenger.player_lifes > 0:
-		direction_vector = Vector2(
-			Input.get_action_strength("D") - Input.get_action_strength("A"),
-			Input.get_action_strength("S") - Input.get_action_strength("W")
-		).normalized()
+		direction_vector = Input.get_vector("A", "D", "W", "S").normalized()
 	
 		velocity = direction_vector * speed * safe_delta * 60
 		move_and_slide()
@@ -95,17 +84,13 @@ func hit_flash():
 	await get_tree().create_timer(0.1).timeout
 	anim.modulate = org_color
 
-func _on_hurtbox_body_entered(body: Node2D) -> void:
+func _on_hurtbox_body_entered(body : CharacterBody2D) -> void:
 	if body.is_in_group("enemies"):
-		dano_player(1, body.global_position)
+		dano_player(1)
 
 
-func dano_player(amont : int, sourece_position : Vector2):
-	var knockback_dir = (position - sourece_position).normalized()
-	apply_kockback(knockback_dir * 100)
-	hit_flash()
-	Messenger.player_lifes -= amont
-	audio2.play()
+func dano_player(amont : int):
+	
 	if Messenger.player_lifes <= 0:
 		Engine.time_scale = 0.2
 		collision.queue_free()
@@ -115,9 +100,14 @@ func dano_player(amont : int, sourece_position : Vector2):
 		Messenger.wave = 1
 		Messenger.killed_enemies = 0
 		Messenger.tree.reload_current_scene()
-
-func apply_kockback(force : Vector2):
-	knockback_velocity = force
+	else:
+		Messenger.player_lifes -= amont
+		audio2.play()
+		self.collision_layer = 5
+		self.collision_mask = 5
+		await get_tree().create_timer(1).timeout
+		self.collision_layer = 1
+		self.collision_mask = 2
 
 func reinice_timer():
 	Messenger.can_spawn_enemy = 0

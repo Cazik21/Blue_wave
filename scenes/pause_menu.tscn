@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brwackqfmupe6" path="res://scenes/options.tscn" id="5_1s2dm"]
 [ext_resource type="Script" uid="uid://dqr7hpf14vcjm" path="res://scripts/selecionador2.gd" id="5_v4r4p"]
 [ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_1s2dm"]
-[ext_resource type="Script" uid="uid://c45msc4h8we0w" path="res://scenes/exit.gd" id="6_88e76"]
+[ext_resource type="Script" uid="uid://c45msc4h8we0w" path="res://scripts/exit.gd" id="6_88e76"]
 [ext_resource type="PackedScene" uid="uid://cejbxgdvkinlm" path="res://scenes/tela_inicial.tscn" id="7_knqa7"]
 
 [node name="Pause Menu" type="Control"]

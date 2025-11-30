@@ -28,7 +28,6 @@ func _ready() -> void:
 	Messenger.voltou_pro_game_brabo.connect(voltando_pro_game)
 	Messenger.saiu_pq_meno.connect(saiu_pq_meno)
 	
-	push_out_in_direction(Vector2.RIGHT) #Tem q fazer sistema de qual direcao
 	rng.randomize()
 	player = Messenger.player
 	org_color = anim.modulate
@@ -94,16 +93,6 @@ func take_damage(amount: float, sourece_position: Vector2):
 		Messenger.killed_enemies += 1
 		queue_free()
 
-
-@warning_ignore("shadowed_variable")
-func push_out_in_direction(direction: Vector2, step := 2.0, max_steps := 50):
-	direction = direction.normalized()
-	var steps := 0
-	
-	# Repete enquanto ainda houver colisão naquele movimento
-	while test_move(global_transform, direction * step) and steps < max_steps:
-		global_position += direction * step
-		steps += 1
 
 func voltando_pro_game():
 	anim.frame = frame
