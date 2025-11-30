@@ -8,15 +8,13 @@ var wave = 1
 var enemies_f
 var player_lifes : int = 5
 var point_to_shoot
-<<<<<<< HEAD
+var killed_enemies = 0
 var org_color_for_enemy
-=======
+
 var cena_anterior : String
->>>>>>> TELA_INICIAL2
 
+var paused : bool
 
-@warning_ignore("unused_signal")
-signal spawn_grounded_enemy
 @warning_ignore("unused_signal")
 signal spawn_grounded_enemy
 @warning_ignore("unused_signal")
@@ -29,6 +27,12 @@ signal options_selecionado
 signal diminuir_timer
 @warning_ignore("unused_signal")
 signal trocando_de_wave 
+@warning_ignore("unused_signal")
+signal resume
+@warning_ignore("unused_signal")
+signal resume_selecionado
+@warning_ignore("unused_signal")
+signal exit_selecionado
 
 func _ready() -> void:
 	tree = get_tree()

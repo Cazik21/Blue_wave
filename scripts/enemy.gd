@@ -78,6 +78,7 @@ func take_damage(amount: float, sourece_position: Vector2):
 		self.visible = false
 		collision.queue_free()
 		await Messenger.tree.create_timer(0.18).timeout
+		Messenger.killed_enemies += 1
 		queue_free()
 
 

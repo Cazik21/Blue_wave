@@ -4,16 +4,23 @@ extends Node2D
 @onready var spawn_timer: Timer = $spawn_timer
 
 @export var enemy_scene : PackedScene
+@export var pause_menu : PackedScene
 @export var spawn_margin = 40
 
 func _ready() -> void:
 	Messenger.diminuir_timer.connect(troca_de_wave)
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("esc"):
+		Engine.time_scale = 0
+		var pause = pause_menu.instantiate()
+		add_child(pause)
+
 func spawn_enemies():
-	var enemy = enemy_scene.instantiate()
-	add_child(enemy)
-	enemy.global_position = calculate_spawn_pos()
-	enemy.player = player
+		var enemy = enemy_scene.instantiate()
+		add_child(enemy)
+		enemy.global_position = calculate_spawn_pos()
+		enemy.player = player
 	
 func calculate_spawn_pos() -> Vector2:
 	var screen_size = get_viewport_rect().size

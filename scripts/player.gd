@@ -36,8 +36,8 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		shoot()
-	move()
-	create_miniwaves()
+		move()
+		create_miniwaves()
 
 func move() -> void:
 	if Messenger.player_lifes > 0:
@@ -103,6 +103,7 @@ func dano_player():
 		Engine.time_scale = 1
 		Messenger.player_lifes = 5
 		Messenger.wave = 1
+		Messenger.killed_enemies = 0
 		get_tree().reload_current_scene()
 
 func reinice_timer():
