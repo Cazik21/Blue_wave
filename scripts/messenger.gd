@@ -1,5 +1,6 @@
 extends Node
 
+var can_spawn_enemy
 var tree
 var player
 var enemies_p_wave = 5
@@ -9,6 +10,8 @@ var player_lifes : int = 5
 var point_to_shoot
 var cena_anterior : String
 
+@warning_ignore("unused_signal")
+signal spawn_grounded_enemy
 @warning_ignore("unused_signal")
 signal dano_player
 @warning_ignore("unused_signal")
