@@ -41,9 +41,9 @@ func _process(delta: float) -> void:
 	if can_instantiate_waves:
 		can_instantiate_waves = false
 		var wave_instance = waves_scene.instantiate()
-		get_tree().current_scene.add_child(wave_instance)
+		Messenger.tree.current_scene.add_child(wave_instance)
 		wave_instance.global_position = global_position
-		await get_tree().create_timer(0.6).timeout
+		await Messenger.tree.create_timer(0.6).timeout
 		can_instantiate_waves = true
 
 func apply_kockback(force : Vector2):
@@ -74,5 +74,5 @@ func take_damage(amount: float, sourece_position: Vector2):
 		audio.play()
 		self.visible = false
 		collision.queue_free()
-		await get_tree().create_timer(0.18).timeout
+		await Messenger.tree.create_timer(0.18).timeout
 		queue_free()
