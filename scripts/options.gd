@@ -9,4 +9,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if is_hovered():
-		Messenger.options_selecionado.emit()
+		Messenger.back.emit()
+
+func _on_pressed() -> void:
+	Messenger.tree.change_scene_to_file("res://scenes/options.tscn")
