@@ -9,14 +9,20 @@ extends Node2D
 
 func _ready() -> void:
 	Messenger.diminuir_timer.connect(troca_de_wave)
-
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("esc"):
-		Engine.time_scale = 0
+	Messenger.cena_anterior = "res://scenes/world.tscn"
+	if Messenger.paused:
 		var pause = pause_menu.instantiate()
 		add_child(pause)
+		Messenger.paused = true
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("esc") and not Messenger.paused:
+		var pause = pause_menu.instantiate()
+		add_child(pause)
+		Messenger.paused = true
 
 func spawn_enemies():
+	if not Messenger.paused:
 		var enemy = enemy_scene.instantiate()
 		add_child(enemy)
 		enemy.global_position = calculate_spawn_pos()

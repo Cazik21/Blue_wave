@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cejbxgdvkinlm"]
+[gd_scene load_steps=14 format=3 uid="uid://cejbxgdvkinlm"]
 
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="1_hkbxb"]
 [ext_resource type="Script" uid="uid://w5lkmw4ejef" path="res://scripts/menu.gd" id="1_moypc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scripts/options.gd" id="6_8cyla"]
 [ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_87508"]
 [ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scripts/selecionador.gd" id="7_j2f2k"]
+[ext_resource type="PackedScene" uid="uid://brwackqfmupe6" path="res://scenes/options.tscn" id="8_oab43"]
 [ext_resource type="Script" uid="uid://cvy22jibernnf" path="res://scripts/wave.gd" id="9_oiiwr"]
 [ext_resource type="Texture2D" uid="uid://utx028gt8v3d" path="res://assets/wave_tela_inicial.png" id="10_moypc"]
 
@@ -91,6 +92,7 @@ theme = SubResource("Theme_hvj2l")
 theme_override_fonts/font = ExtResource("1_hkbxb")
 text = "Options"
 script = ExtResource("6_8cyla")
+options = ExtResource("8_oab43")
 
 [node name="Selecionador" type="Node2D" parent="Menu"]
 position = Vector2(169, 92)

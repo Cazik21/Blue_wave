@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0rni5k82k5xf"]
+[gd_scene load_steps=10 format=3 uid="uid://c0rni5k82k5xf"]
 
-[ext_resource type="Script" uid="uid://clpc02xo51b0r" path="res://scenes/pause_menu.gd" id="1_kukqi"]
+[ext_resource type="Script" uid="uid://clpc02xo51b0r" path="res://scripts/pause_menu.gd" id="1_kukqi"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="1_n87rw"]
-[ext_resource type="Script" uid="uid://b56l0i0p2gu83" path="res://scenes/resume.gd" id="3_5d2l8"]
+[ext_resource type="Script" uid="uid://b56l0i0p2gu83" path="res://scripts/resume.gd" id="3_5d2l8"]
 [ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scripts/options.gd" id="4_5d2l8"]
-[ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scripts/selecionador.gd" id="5_v4r4p"]
+[ext_resource type="PackedScene" uid="uid://brwackqfmupe6" path="res://scenes/options.tscn" id="5_1s2dm"]
+[ext_resource type="Script" uid="uid://dqr7hpf14vcjm" path="res://scripts/selecionador2.gd" id="5_v4r4p"]
 [ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_1s2dm"]
+[ext_resource type="Script" uid="uid://c45msc4h8we0w" path="res://scenes/exit.gd" id="6_88e76"]
+[ext_resource type="PackedScene" uid="uid://cejbxgdvkinlm" path="res://scenes/tela_inicial.tscn" id="7_knqa7"]
 
 [node name="Pause Menu" type="Control"]
 layout_mode = 3
@@ -15,6 +18,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kukqi")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.10872077, 0.10872077, 0.10872076, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -41,6 +47,7 @@ offset_bottom = 127.0
 theme_override_fonts/font = ExtResource("1_n87rw")
 text = "Options"
 script = ExtResource("4_5d2l8")
+options = ExtResource("5_1s2dm")
 
 [node name="Exit" type="Button" parent="CanvasLayer"]
 offset_left = 160.0
@@ -49,28 +56,31 @@ offset_right = 256.0
 offset_bottom = 167.0
 theme_override_fonts/font = ExtResource("1_n87rw")
 text = "Exit"
+script = ExtResource("6_88e76")
+title = ExtResource("7_knqa7")
 
 [node name="Selecionador" type="Node2D" parent="CanvasLayer"]
-position = Vector2(208, 92)
+position = Vector2(160, 103)
 script = ExtResource("5_v4r4p")
 
 [node name="Selecionar" type="TextureRect" parent="CanvasLayer/Selecionador"]
-offset_left = -58.0
-offset_top = 19.000008
-offset_right = -34.0
-offset_bottom = 41.000008
+offset_left = -10.0
+offset_top = 8.0
+offset_right = 14.0
+offset_bottom = 30.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_1s2dm")
 metadata/_edit_use_anchors_ = true
 
 [node name="Selecionar2" type="TextureRect" parent="CanvasLayer/Selecionador"]
-offset_left = 52.0
-offset_top = 18.000008
-offset_right = 76.0
-offset_bottom = 40.000008
+offset_left = 99.999985
+offset_top = 8.0
+offset_right = 123.999985
+offset_bottom = 30.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_1s2dm")
 flip_h = true
 
 [connection signal="pressed" from="CanvasLayer/Resume" to="CanvasLayer/Resume" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/options" to="CanvasLayer/options" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Exit" to="CanvasLayer/Exit" method="_on_pressed"]

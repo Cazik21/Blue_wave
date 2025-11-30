@@ -34,5 +34,9 @@ autostart = true
 [node name="waves" parent="UI" instance=ExtResource("4_k0juu")]
 
 [node name="hearts" parent="UI" instance=ExtResource("5_71j4m")]
+offset_left = 938.0
+offset_top = 41.0
+offset_right = 938.0
+offset_bottom = 41.0
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

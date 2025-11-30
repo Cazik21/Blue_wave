@@ -20,35 +20,44 @@ var can_instantiate_waves : bool = true
 
 var rng = RandomNumberGenerator.new()
 var org_color
-
+var frame = 0
 
 func _ready() -> void:
 	Messenger.org_color_for_enemy = anim.modulate
+	Messenger.voltou_pro_game_brabo.connect(voltando_pro_game)
+	Messenger.saiu_pq_meno.connect(saiu_pq_meno)
+	
 	push_out_in_direction(Vector2.RIGHT) #Tem q fazer sistema de qual direcao
 	rng.randomize()
 	player = Messenger.player
 	org_color = anim.modulate
+	voltando_pro_game()
+
+func saiu_pq_meno():
+	frame = anim.frame
 
 func _physics_process(delta: float) -> void:
-	if knockback_velocity.length() > 1:
-		velocity = knockback_velocity
-		move_and_slide()
-		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
-	else:
-		if player:
-			await get_tree().create_timer(0.8).timeout
-			anim.play("jumping")
-			direction = global_position.direction_to(player.global_position)
-			velocity = direction * speed
+	if not Messenger.paused:
+		if knockback_velocity.length() > 1:
+			velocity = knockback_velocity
 			move_and_slide()
-	if can_instantiate_waves:
-		can_instantiate_waves = false
-		var wave_instance = waves_scene.instantiate()
-		Messenger.tree.current_scene.add_child(wave_instance)
-		wave_instance.global_position = global_position
-		await Messenger.tree.create_timer(0.6).timeout
-		can_instantiate_waves = true
-
+			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
+		else:
+			if player:
+				await get_tree().create_timer(0.8).timeout
+				anim.play("jumping")
+				direction = global_position.direction_to(player.global_position)
+				velocity = direction * speed
+				move_and_slide()
+		if can_instantiate_waves:
+			can_instantiate_waves = false
+			var wave_instance = waves_scene.instantiate()
+			Messenger.tree.current_scene.add_child(wave_instance)
+			wave_instance.global_position = global_position
+			await Messenger.tree.create_timer(0.6).timeout
+			can_instantiate_waves = true
+	else:
+		anim.stop()
 func apply_kockback(force : Vector2):
 	knockback_velocity = force
 
@@ -91,3 +100,6 @@ func push_out_in_direction(direction: Vector2, step := 2.0, max_steps := 50):
 	while test_move(global_transform, direction * step) and steps < max_steps:
 		global_position += direction * step
 		steps += 1
+
+func voltando_pro_game():
+	anim.frame = frame

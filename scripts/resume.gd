@@ -7,5 +7,11 @@ func _ready() -> void:
 	add_theme_stylebox_override("pressed", empty_style)
 	add_theme_stylebox_override("focus", empty_style)
 
+func _process(_delta: float) -> void:
+	if is_hovered():
+		Messenger.resume_selecionado.emit()
+
 func _on_pressed() -> void:
-	Messenger.tree.change_scene_to_file(Messenger.cena_anterior)
+	Messenger.voltou_pro_game_brabo.emit()
+	Messenger.paused = false
+	Messenger.resume.emit()

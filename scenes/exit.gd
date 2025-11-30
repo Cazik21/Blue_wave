@@ -1,5 +1,7 @@
 extends Button
 
+@export var title : PackedScene
+
 func _ready() -> void:
 	var empty_style = StyleBoxEmpty.new()
 	add_theme_stylebox_override("normal", empty_style)
@@ -9,8 +11,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if is_hovered():
-		Messenger.start_selecionado.emit()
+		Messenger.exit_selecionado.emit()
 
 func _on_pressed() -> void:
-	Engine.time_scale = 1
-	Messenger.resume.emit()
+	Messenger.paused = false
+	get_tree().change_scene_to_file("res://scenes/tela_inicial.tscn")

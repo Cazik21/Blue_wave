@@ -33,8 +33,9 @@ func _ready() -> void:
 	org_color = Color.WHITE
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("shoot") and can_shoot:
-		shoot()
+	if not Messenger.paused:
+		if Input.is_action_just_pressed("shoot") and can_shoot:
+			shoot()
 		move()
 		create_miniwaves()
 

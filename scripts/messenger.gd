@@ -13,7 +13,7 @@ var org_color_for_enemy
 
 var cena_anterior : String
 
-var paused : bool
+var paused : bool = false
 
 @warning_ignore("unused_signal")
 signal spawn_grounded_enemy
@@ -33,6 +33,10 @@ signal resume
 signal resume_selecionado
 @warning_ignore("unused_signal")
 signal exit_selecionado
+@warning_ignore("unused_signal")
+signal voltou_pro_game_brabo
+@warning_ignore("unused_signal")
+signal saiu_pq_meno
 
 func _ready() -> void:
 	tree = get_tree()
