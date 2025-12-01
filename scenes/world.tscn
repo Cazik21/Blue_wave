@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cq5nii0on47gt" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dqo6q3330yn1x" path="res://scenes/player.tscn" id="1_nnsk1"]
-[ext_resource type="PackedScene" uid="uid://by6tii7albfd4" path="res://scenes/enemy.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://2b50787utp6" path="res://prefabs/enemy_atira.tscn" id="2_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://dfvu4r5emojw" path="res://prefabs/waves.tscn" id="4_k0juu"]
-[ext_resource type="PackedScene" path="res://prefabs/hearts.tscn" id="5_71j4m"]
+[ext_resource type="PackedScene" uid="uid://cecommju7mhn1" path="res://prefabs/hearts.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" uid="uid://c0rni5k82k5xf" path="res://scenes/pause_menu.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" uid="uid://bwdrwol32sd17" path="res://scenes/bullet_ui.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://difwfmtnliqrt" path="res://prefabs/bullet_collect.tscn" id="7_i7141"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_4wyf3")
-enemy_scene = ExtResource("2_rwgxs")
+enemy_scene = ExtResource("2_4mrxx")
 pause_menu = ExtResource("6_qfnet")
 
 [node name="ColorRect" type="ColorRect" parent="."]
