@@ -69,10 +69,10 @@ offset_bottom = 68.0
 
 [node name="tipe_bullet" type="AnimatedSprite2D" parent="CanvasLayer"]
 modulate = Color(0.05882353, 0.05882353, 0.05882353, 0.9019608)
-position = Vector2(13, 55.000004)
+position = Vector2(11, 60)
 scale = Vector2(1.3750001, 1.3750001)
 sprite_frames = SubResource("SpriteFrames_62nl5")
-animation = &"small"
+animation = &"normal"
 script = ExtResource("6_h16ij")
 
 [node name="count" type="Label" parent="CanvasLayer"]

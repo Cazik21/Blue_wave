@@ -61,7 +61,7 @@ func move() -> void:
 			walking = false
 
 func shoot():
-	if Messenger.player_lifes > 0:
+	if Messenger.player_lifes > 0 and Messenger.balas_q_tenho[Messenger.scroll_pos] > 0:
 		can_shoot = false
 		audio.play()
 		var bullet_instance = bullet_scene.instantiate()
