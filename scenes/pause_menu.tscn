@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0rni5k82k5xf"]
+[gd_scene load_steps=12 format=3 uid="uid://c0rni5k82k5xf"]
 
 [ext_resource type="Script" uid="uid://clpc02xo51b0r" path="res://scripts/pause_menu.gd" id="1_kukqi"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="1_n87rw"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_1s2dm"]
 [ext_resource type="Script" uid="uid://c45msc4h8we0w" path="res://scripts/exit.gd" id="6_88e76"]
 [ext_resource type="PackedScene" uid="uid://cejbxgdvkinlm" path="res://scenes/tela_inicial.tscn" id="7_knqa7"]
+[ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="10_cmnsq"]
+[ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="11_ofnjo"]
 
 [node name="Pause Menu" type="Control"]
 layout_mode = 3
@@ -80,6 +82,36 @@ offset_bottom = 30.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_1s2dm")
 flip_h = true
+
+[node name="nengócio" type="TextureRect" parent="CanvasLayer"]
+offset_left = 135.0
+offset_top = 28.0
+offset_right = 284.0
+offset_bottom = 46.0
+texture = ExtResource("10_cmnsq")
+
+[node name="nengócio2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 135.0
+offset_top = 188.0
+offset_right = 284.0
+offset_bottom = 206.0
+texture = ExtResource("11_ofnjo")
+
+[node name="nengócio3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 149.0
+offset_top = 46.0
+offset_right = 298.0
+offset_bottom = 64.0
+rotation = 1.5707964
+texture = ExtResource("11_ofnjo")
+
+[node name="nengócio4" type="TextureRect" parent="CanvasLayer"]
+offset_left = 270.0
+offset_top = 195.0
+offset_right = 419.0
+offset_bottom = 213.0
+rotation = -1.5707964
+texture = ExtResource("11_ofnjo")
 
 [connection signal="pressed" from="CanvasLayer/Resume" to="CanvasLayer/Resume" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/options" to="CanvasLayer/options" method="_on_pressed"]
