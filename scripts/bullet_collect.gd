@@ -51,5 +51,7 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		elif anim.animation == "shock":
 			if body.is_in_group("Player"):
 				Messenger.balas_q_tenho[4] = Messenger.balas_q_tenho[4] + 1
+		queue_free()
 	else:
 		Messenger.max_bulletas.emit()
+	

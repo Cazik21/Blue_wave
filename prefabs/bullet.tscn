@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvedovtjluph"]
+[gd_scene load_steps=30 format=3 uid="uid://bvedovtjluph"]
 
 [ext_resource type="Script" uid="uid://0askscbgtuuu" path="res://scripts/bullet.gd" id="1_lv25w"]
 [ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="2_7rc6x"]
@@ -15,11 +15,16 @@
 [ext_resource type="Texture2D" uid="uid://j5sjfskig4kr" path="res://assets/Water walking (1).png" id="8_rhf82"]
 [ext_resource type="Texture2D" uid="uid://crekdokahv3sf" path="res://assets/Water walking.png" id="9_fw3qv"]
 [ext_resource type="Texture2D" uid="uid://bg3iwgc5anw0b" path="res://assets/bullet_bomb.png" id="9_wyuyu"]
+[ext_resource type="Texture2D" uid="uid://dg5tayaek15j0" path="res://assets/Wave_bomb(4).png" id="10_0yfth"]
 [ext_resource type="Texture2D" uid="uid://dus00ougehrii" path="res://assets/Wave_small(4).png" id="10_ekudm"]
+[ext_resource type="Texture2D" uid="uid://bea5exjfa8boo" path="res://assets/Wave_bomb(3).png" id="11_h70i4"]
 [ext_resource type="Texture2D" uid="uid://lydq074esph6" path="res://assets/Wave_small(3).png" id="11_wyuyu"]
 [ext_resource type="Texture2D" uid="uid://dpck2nlcqb3c" path="res://assets/Wave_small(2).png" id="12_00wfo"]
+[ext_resource type="Texture2D" uid="uid://cit5o2xhpq7bv" path="res://assets/Wave_bomb(2).png" id="12_73svd"]
 [ext_resource type="Texture2D" uid="uid://dlo2cdm4i7ury" path="res://assets/Wave_small(1).png" id="13_2ojm4"]
+[ext_resource type="Texture2D" uid="uid://beb4qv7sqykvj" path="res://assets/Wave_bomb(1).png" id="13_q6fc6"]
 [ext_resource type="Texture2D" uid="uid://bnbev5stbsxxe" path="res://assets/Wave_small.png" id="14_a8o1n"]
+[ext_resource type="Texture2D" uid="uid://d3xl4lbydgg7r" path="res://assets/Wavw_bomb.png" id="14_drdir"]
 [ext_resource type="Texture2D" uid="uid://deia86u44o5vl" path="res://assets/bullet_shock.png" id="16_2ojm4"]
 [ext_resource type="Texture2D" uid="uid://bffthf0xe57ca" path="res://assets/bullet_small.png" id="17_a8o1n"]
 
@@ -64,10 +69,25 @@ animations = [{
 "name": &"bomb",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0yfth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_h70i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_73svd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_q6fc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_drdir")
+}],
+"loop": false,
 "name": &"bomb_onda",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -146,7 +166,7 @@ collision_mask = 2
 script = ExtResource("1_lv25w")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-scale = Vector2(7, 7)
+scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_44iiu")
 
 [node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
@@ -158,7 +178,10 @@ texture = ExtResource("3_7rc6x")
 texture_scale = 0.07
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_3ts6m")
-animation = &"normal_onda"
+animation = &"bomb_onda"
+frame = 4
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
