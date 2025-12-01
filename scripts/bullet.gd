@@ -6,12 +6,17 @@ var direction : Vector2 = Vector2.ZERO
 @onready var anim: AnimatedSprite2D = $Anim
 @onready var collision: CollisionShape2D = $CollisionShape
 
+var dano_das_balas : Array = [2, 1, 4, 3, 3]
+var array1 : Array = ["normal", "big", "small", "bomb", "shock"]
+var scale_of_bullet : Array = [7, 15, 5, 15, 25]
 var can_dano_player: bool = false
 var tween
 var type_da_bala
+var index_of_type
 
 func _ready() -> void:
 	type_da_bala = Messenger.type_of_the_bullet
+	index_of_type = array1.find(type_da_bala)
 	Messenger.balas_q_tenho[Messenger.scroll_pos] -= 1
 	anim.play(type_da_bala)
 	can_dano_player = false
@@ -39,8 +44,12 @@ func set_direction(new_direction):
 	direction = new_direction.normalized()
 
 func bullet_finished() -> void:
+	if type_da_bala == "bomb":
+		anim.scale = Vector2(1.5, 1.5)
+	else:
+		anim.scale = Vector2(1, 1)
 	anim.scale = Vector2(0.8, 0.8)
-	alterar_colisao()
+	alterar_colisao(scale_of_bullet[index_of_type])
 	anim.play(type_da_bala + "_onda")
 	self.get_node("PointLight2D").energy = 0
 	var tweenop = get_tree().create_tween()
@@ -53,16 +62,18 @@ func bullet_finished() -> void:
 func wave_delete():
 	self.queue_free()
 
-func alterar_colisao():
+func alterar_colisao(_scale):
 	tween = get_tree().create_tween()
 	tween.tween_property(collision, "scale",
-	 Vector2(7, 7),
+	 Vector2(_scale, _scale),
 	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("enemies"):
 		kill_tween()
 		@warning_ignore("integer_division")
+		if can_dano_player:
+			body.take_damage(2)
 		body.take_damage(2 - int(collision.scale > Vector2(1, 1)), global_position)
 
 

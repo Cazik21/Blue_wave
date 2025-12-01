@@ -1,10 +1,10 @@
 [gd_scene load_steps=28 format=3 uid="uid://by6tii7albfd4"]
 
 [ext_resource type="Script" uid="uid://db4nw25ges0ey" path="res://scripts/enemy.gd" id="1_4ra3w"]
-[ext_resource type="Texture2D" uid="uid://c48aefisbai4w" path="res://assets/slime 1 (1).png" id="2_c4w8v"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_md484"]
 [ext_resource type="Texture2D" uid="uid://7g5lg3lduuk5" path="res://assets/slime 13 (3) (1).png" id="2_xwavj"]
 [ext_resource type="PackedScene" uid="uid://dqsdfv273i6hc" path="res://prefabs/coraco.tscn" id="3_md484"]
+[ext_resource type="PackedScene" uid="uid://difwfmtnliqrt" path="res://prefabs/bullet_collect.tscn" id="4_ipns3"]
 [ext_resource type="Texture2D" uid="uid://5v8te6nnis5o" path="res://assets/New Piskel.png" id="5_nenq2"]
 [ext_resource type="Texture2D" uid="uid://ohlbd4qksu6b" path="res://assets/New Piskel (1).png" id="6_md484"]
 [ext_resource type="Texture2D" uid="uid://cfcjeug7i83jn" path="res://assets/New Piskel (2).png" id="7_ipns3"]
@@ -13,29 +13,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
 size = Vector2(16, 14)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
 atlas = ExtResource("2_xwavj")
 region = Rect2(0, 0, 33, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
 atlas = ExtResource("2_xwavj")
 region = Rect2(33, 0, 33, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
 atlas = ExtResource("2_xwavj")
 region = Rect2(66, 0, 33, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
 atlas = ExtResource("2_xwavj")
 region = Rect2(99, 0, 33, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
-atlas = ExtResource("2_xwavj")
-region = Rect2(99, 33, 33, 33)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(66, 33, 33, 33)
+region = Rect2(0, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
 atlas = ExtResource("2_xwavj")
@@ -43,46 +39,47 @@ region = Rect2(33, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(0, 33, 33, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
-atlas = ExtResource("2_xwavj")
-region = Rect2(0, 33, 33, 33)
+region = Rect2(66, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(33, 33, 33, 33)
+region = Rect2(99, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1ycm"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(66, 33, 33, 33)
+region = Rect2(0, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shcg2"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(99, 33, 33, 33)
+region = Rect2(33, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ile5s"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(99, 0, 33, 33)
+region = Rect2(66, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1x4g4"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(66, 0, 33, 33)
+region = Rect2(99, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2pwtc"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(33, 0, 33, 33)
+region = Rect2(99, 0, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rogs8"]
 atlas = ExtResource("2_xwavj")
+region = Rect2(66, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrm80"]
+atlas = ExtResource("2_xwavj")
+region = Rect2(33, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6awcb"]
+atlas = ExtResource("2_xwavj")
 region = Rect2(0, 0, 33, 33)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_md484"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wjec0"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nenq2")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_md484")
 }, {
@@ -105,19 +102,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_j0cyh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_c4w8v")
+"texture": SubResource("AtlasTexture_g0wcc")
 }],
-"loop": false,
+"loop": true,
 "name": &"born",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwavj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g0wcc")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s1ycm")
 }, {
@@ -135,26 +126,26 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rogs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrm80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6awcb")
 }],
-"loop": false,
+"loop": true,
 "name": &"desborn",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
-"duration": 3.0,
+"duration": 1.0,
 "texture": ExtResource("5_nenq2")
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_md484")
 }, {
-"duration": 1.8,
+"duration": 1.0,
 "texture": ExtResource("7_ipns3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_md484")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_nenq2")
 }],
 "loop": true,
 "name": &"jumping",
@@ -168,20 +159,18 @@ collision_mask = 7
 script = ExtResource("1_4ra3w")
 waves_scene = ExtResource("2_md484")
 coraco_scene = ExtResource("3_md484")
+anjf = ExtResource("4_ipns3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xwavj")
-
-[node name="anim" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.14901961, 0.14901961, 0.14901961, 1)
-position = Vector2(0, -1)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_md484")
-animation = &"jumping"
-autoplay = "born"
-frame_progress = 0.8454595
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_md484")
 volume_db = -80.0
 bus = &"Sfx"
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.15, 0.15, 0.15, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wjec0")
+animation = &"jumping"

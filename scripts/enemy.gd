@@ -6,6 +6,7 @@ const PARTICLES = preload("uid://vuan0hr8ktyu")
 @export var health : float = 4
 @export var waves_scene : PackedScene
 @export var coraco_scene : PackedScene
+@export var anjf : PackedScene
 
 @onready var anim: AnimatedSprite2D = $anim
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -91,6 +92,10 @@ func take_damage(amount: float, sourece_position: Vector2):
 			coracos.global_position = global_position
 			add_sibling(coracos)
 			coracos.global_position = global_position
+		if randi_range(1, 5) == 5:
+			var newa = anjf.instantiate()
+			add_child(newa)
+			newa.global_position = global_position
 		audio.play()
 		self.visible = false
 		collision.queue_free()
