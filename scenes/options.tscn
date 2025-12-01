@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://brwackqfmupe6"]
 
 [ext_resource type="Script" uid="uid://b8bkbrr864xd8" path="res://scripts/volume_slider.gd" id="1_c2u1v"]
-[ext_resource type="Shader" path="res://scenes/options.gdshader" id="1_e6vpq"]
+[ext_resource type="Shader" uid="uid://cyiojbyh0f6ds" path="res://scenes/options.gdshader" id="1_e6vpq"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_yjkok"]
 [ext_resource type="Script" uid="uid://bhmo6omsfkcsp" path="res://scripts/back.gd" id="3_2iy26"]
 [ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="4_kv8mn"]
@@ -110,9 +110,7 @@ offset_left = 53.0
 offset_top = 150.0
 offset_right = 199.0
 offset_bottom = 166.0
-max_value = 1.0
-step = 0.01
-value = 1.0
+value = 100.0
 script = ExtResource("1_c2u1v")
 bus_name = "Music"
 
@@ -188,9 +186,7 @@ offset_left = 213.0
 offset_top = 150.0
 offset_right = 362.0
 offset_bottom = 166.0
-max_value = 1.0
-step = 0.01
-value = 1.0
+value = 100.0
 script = ExtResource("1_c2u1v")
 bus_name = "Sfx"
 

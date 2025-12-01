@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ktk0gktr5tap"]
 
-[ext_resource type="Script" uid="uid://cwhx1ys3ub7jh" path="res://prefabs/max_bullets.gd" id="1_g4vtc"]
+[ext_resource type="Script" uid="uid://cwhx1ys3ub7jh" path="res://scripts/max_bullets.gd" id="1_g4vtc"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_dym7t"]
 
 [node name="max_bullets" type="Control"]

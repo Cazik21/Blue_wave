@@ -5,6 +5,7 @@ extends Node2D
 
 
 @export var enemy_scene : PackedScene
+@export var enemyqatira_scene : PackedScene
 @export var pause_menu : PackedScene
 @export var spawn_margin = 40
 
@@ -24,10 +25,18 @@ func _process(_delta: float) -> void:
 
 func spawn_enemies():
 	if not Messenger.paused:
-		var enemy = enemy_scene.instantiate()
-		add_child(enemy)
-		enemy.global_position = calculate_spawn_pos()
-		enemy.player = player
+		if randi_range(1, 20) == 20 and Messenger.wave > 4:
+			var enemyqatira = enemyqatira_scene.instantiate()
+			add_child(enemyqatira)
+			enemyqatira.global_position = calculate_spawn_pos()
+			enemyqatira.player = player
+			enemyqatira.name = "inimigo_atira"
+			
+		else:
+			var enemy = enemy_scene.instantiate()
+			add_child(enemy)
+			enemy.global_position = calculate_spawn_pos()
+			enemy.player = player
 	
 func calculate_spawn_pos() -> Vector2:
 	var screen_size = get_viewport_rect().size
