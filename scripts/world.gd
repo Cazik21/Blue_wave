@@ -54,7 +54,7 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
 
 func troca_de_wave():
-	Messenger.balas_q_tenho[1] += 32
+		Messenger.balas_q_tenho[1] += 32
 	Messenger.balas_q_tenho[2] += 10
 	Messenger.balas_q_tenho[3] += 10
 	Messenger.balas_q_tenho[4] += 10
