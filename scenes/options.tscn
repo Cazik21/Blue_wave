@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://brwackqfmupe6"]
+[gd_scene load_steps=8 format=3 uid="uid://brwackqfmupe6"]
 
 [ext_resource type="Script" uid="uid://b8bkbrr864xd8" path="res://scripts/volume_slider.gd" id="1_c2u1v"]
-[ext_resource type="Shader" uid="uid://cyiojbyh0f6ds" path="res://scenes/options.gdshader" id="1_e6vpq"]
+[ext_resource type="Shader" path="res://scenes/options.gdshader" id="1_e6vpq"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_yjkok"]
 [ext_resource type="Script" uid="uid://bhmo6omsfkcsp" path="res://scripts/back.gd" id="3_2iy26"]
 [ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="4_kv8mn"]
-[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="5_1sggn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7i7e"]
 shader = ExtResource("1_e6vpq")
@@ -310,13 +309,5 @@ offset_bottom = 11.249998
 rotation = 3.1415927
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_kv8mn")
-
-[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer"]
-position = Vector2(142, 88)
-texture = ExtResource("5_1sggn")
-texture_scale = 1.7
-
-[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
-color = Color(0.16685283, 0.16685283, 0.16685283, 1)
 
 [connection signal="pressed" from="CanvasLayer/Node2D/Back" to="CanvasLayer/Node2D/Back" method="_on_pressed"]
