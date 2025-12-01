@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var audio2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
-@onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var collision_p: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
 @onready var hurtbox: Area2D = $hurtbox
 @onready var collision_hurt: CollisionShape2D = $hurtbox/CollisionShape2D
@@ -36,10 +36,6 @@ func _ready() -> void:
 	else:
 		point_light_2d.energy = 1
 	Messenger.player = self
-	self.collision_mask = 2
-	self.collision_layer = 1
-	hurtbox.collision_mask = 2
-	hurtbox.collision_layer = 1
 	org_color = Color.WHITE
 
 func _physics_process(delta: float) -> void:
@@ -101,7 +97,7 @@ func dano_player(amont : int):
 		Messenger.player_lifes -= amont
 		if Messenger.player_lifes <= 0:
 			Engine.time_scale = 0.2
-			collision.queue_free()
+			collision_hurt.queue_free()
 			await  get_tree().create_timer(0.6).timeout
 			Engine.time_scale = 1
 			Messenger.player_lifes = 5

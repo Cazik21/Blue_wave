@@ -11,7 +11,7 @@ func _on_timer_timeout() -> void:
 	set_process_input(false)
 	set_process_unhandled_input(false)
 	set_process_unhandled_key_input(false)
-	await get_tree().create_timer(20).timeout
+	await get_tree().create_timer(10).timeout
 	var tweenop = get_tree().create_tween()
 	tweenop.tween_property(self, "modulate",
 	 Color("#ffffff", 0),

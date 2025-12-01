@@ -3,16 +3,10 @@ extends Area2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
-var normal = 0
-var big = 0
-var small = 0
-var bomb = 0
-var shock = 0
 var pipocu : int
 
 func _ready() -> void:
-	print(Messenger.balas_q_tenho)
-	pipocu = randi_range(1, 1000)
+	pipocu = randi_range(1, 10000)
 	if pipocu%30 <= 10:
 		collision.scale = Vector2(0.45, 0.45)
 		anim.play("normal")
@@ -35,32 +29,27 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: CharacterBody2D) -> void:
-	if pipocu%30 <= 10:
+	if anim.animation == "normal":
 		if body.is_in_group("Player"):
-				normal += 1
-				Messenger.balas_q_tenho.insert(1, normal)
+				Messenger.balas_q_tenho[0] = Messenger.balas_q_tenho[0] + 1
 				print(Messenger.balas_q_tenho)
 
-	elif pipocu%30 > 10 and pipocu%30 <= 16:
+	elif anim.animation == "big":
 		if body.is_in_group("Player"):
-			big += 1
-			Messenger.balas_q_tenho.insert(2, normal)
+			Messenger.balas_q_tenho[1] = Messenger.balas_q_tenho[1] + 1
 			print(Messenger.balas_q_tenho)
 
-	elif pipocu%30 > 16 and pipocu%30 <= 22:
+	elif anim.animation == "small":
 		if body.is_in_group("Player"):
-			small += 1
-			Messenger.balas_q_tenho.insert(3, small)
+			Messenger.balas_q_tenho[2] = Messenger.balas_q_tenho[2] + 1
 			print(Messenger.balas_q_tenho)
 	
-	elif pipocu%30 > 22 and pipocu%30 <= 27:
+	elif anim.animation == "bomb":
 		if body.is_in_group("Player"):
-			bomb += 1
-			Messenger.balas_q_tenho.insert(4, bomb)
+			Messenger.balas_q_tenho[3] = Messenger.balas_q_tenho[3] + 1
 			print(Messenger.balas_q_tenho)
 
-	else:
+	elif anim.animation == "shock":
 		if body.is_in_group("Player"):
-			shock += 1
-			Messenger.balas_q_tenho.insert(5, shock)
+			Messenger.balas_q_tenho[4] = Messenger.balas_q_tenho[4] + 1
 			print(Messenger.balas_q_tenho)

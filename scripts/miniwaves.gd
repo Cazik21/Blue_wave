@@ -1,6 +1,5 @@
 extends AnimatedSprite2D
 
-@onready var spawn_timer: Timer = $spawn_floor_enemy
 
 @export var enemy_scene : PackedScene
 

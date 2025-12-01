@@ -77,10 +77,10 @@ script = ExtResource("6_h16ij")
 
 [node name="count" type="Label" parent="CanvasLayer"]
 modulate = Color(0.06, 0.06, 0.06, 0.9019608)
-offset_left = 19.0
-offset_top = 41.000004
-offset_right = 59.0
+offset_left = 6.0
+offset_top = 41.0
+offset_right = 46.0
 offset_bottom = 64.0
 scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("6_thr0b")
-text = "1"
+text = " 19"

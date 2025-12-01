@@ -24,6 +24,9 @@ var org_color
 var frame = 0
 
 func _ready() -> void:
+	anim.play("born")
+	anim.animation_finished.connect(anim.play.bind("jumping"))
+	anim.animation_finished.connect(desconect)
 	Messenger.org_color_for_enemy = anim.modulate
 	Messenger.voltou_pro_game_brabo.connect(voltando_pro_game)
 	Messenger.saiu_pq_meno.connect(saiu_pq_meno)
@@ -38,7 +41,7 @@ func saiu_pq_meno():
 
 func _physics_process(delta: float) -> void:
 	if not Messenger.paused:
-		safe_delta = min(delta, 0.05)
+		safe_delta = min(delta, 0.03)
 		if knockback_velocity.length() > 1:
 			velocity = knockback_velocity
 			velocity = velocity * safe_delta * 60
@@ -46,8 +49,6 @@ func _physics_process(delta: float) -> void:
 			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * safe_delta)
 		else:
 			if player:
-				await get_tree().create_timer(0.8).timeout
-				anim.play("jumping")
 				direction = global_position.direction_to(player.global_position)
 				velocity = direction * speed
 				velocity = velocity * safe_delta * 60
@@ -63,6 +64,10 @@ func _physics_process(delta: float) -> void:
 		anim.stop()
 func apply_kockback(force : Vector2):
 	knockback_velocity = force
+
+
+func desconect():
+	anim.animation_finished.disconnect(anim.play)
 
 func hit_flash():
 	anim.modulate = Color.WHITE

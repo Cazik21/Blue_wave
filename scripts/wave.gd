@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var shake_icon = $ShakeIcon # Supondo que você tem um nó Sprite2D chamado "ShakeIcon" na sua cena
+@onready var shake_icon: TextureRect = $Shake_icon
 
 
 var shake_amount = 5

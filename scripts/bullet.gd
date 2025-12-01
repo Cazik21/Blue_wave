@@ -10,11 +10,12 @@ var can_dano_player: bool = false
 var tween
 
 func _ready() -> void:
+	name = Messenger.type_of_the_bullet
+	anim.play(name)
 	can_dano_player = false
 	anim.scale = Vector2(0.6, 0.6)
 	collision.scale =Vector2(1, 1)
 	self.visible = true
-	anim.play("bullet")
 	global_position = self.get_parent().get_node("Player").global_position
 	# 1. Direção da bala
 	direction = (get_global_mouse_position() - global_position).normalized()
@@ -36,17 +37,16 @@ func set_direction(new_direction):
 	direction = new_direction.normalized()
 
 func bullet_finished() -> void:
-	can_dano_player = true
-	anim.scale = Vector2(1.5, 1.5)
+	anim.scale = Vector2(0.8, 0.8)
 	alterar_colisao()
-	anim.play("normal")
+	anim.play(name + "_onda")
 	self.get_node("PointLight2D").energy = 0
 	var tweenop = get_tree().create_tween()
 	tweenop.tween_property(self, "modulate",
 	 Color("#ffffff", 0),
 	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tweenop.connect("finished", wave_delete)
-	dar_dano()
+	tweenop.connect("finished", queue_free)
+
 
 func wave_delete():
 	self.queue_free()
@@ -68,10 +68,6 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 func equacao_q_n_lembro(vector1, vector2) -> float:
 	return sqrt(((vector1.x - vector2.x) ** 2) + ((vector1.y - vector2.y) ** 2))
 
-func dar_dano():
-	pass
-	if equacao_q_n_lembro(get_parent().get_node("Player").position, self.position) < 17 and can_dano_player:
-		Messenger.dano_player.emit()
 
 
 func kill_tween():

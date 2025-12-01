@@ -1,16 +1,18 @@
 extends AnimatedSprite2D
 
+@onready var count: Label = $"../count"
 var scroll_pos = 0
 
-func _process(delta: float) -> void:
+
+func _ready() -> void:
+	scroll_pos = 1
+
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("scoll_up"):
-		if not scroll_pos > 5:
-			scroll_pos += 1
-		else:
-			scroll_pos = 1
+		scroll_pos = scroll_pos%5 + 1
 	
 	if Input.is_action_just_pressed("scroll_down"):
-		if not scroll_pos < 1:
+		if scroll_pos > 1:
 			scroll_pos -= 1
 		else:
 			scroll_pos = 5
@@ -30,22 +32,10 @@ func _process(delta: float) -> void:
 	if scroll_pos == 5:
 		Messenger.type_of_the_bullet =  "shock"
 	
-	if Messenger.type_of_the_bullet == "normal":
-		if Messenger.balas_q_tenho[0] > 0:
-			play("normal")
-
-	if Messenger.type_of_the_bullet == "big":
-		if Messenger.balas_q_tenho[1] > 0:
-			play("big")
-
-	if Messenger.type_of_the_bullet == "small":
-		if Messenger.balas_q_tenho[2] > 0:
-			play("small")
-
-	if Messenger.type_of_the_bullet == "bomb":
-		if Messenger.balas_q_tenho[3] > 0:
-			play("bomb")
-
-	if Messenger.type_of_the_bullet == "shock":
-		if Messenger.balas_q_tenho[4] > 0:
-			play("shock")
+	play(Messenger.type_of_the_bullet)
+	count.global_position.y = 41
+	if Messenger.balas_q_tenho[scroll_pos - 1] < 10:
+		count.position.x = 15
+	else:
+		count.position.x = 6
+	count.text = str(Messenger.balas_q_tenho[scroll_pos - 1])
