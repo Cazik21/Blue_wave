@@ -2,7 +2,9 @@ extends Area2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@export var max_bullets : PackedScene
 
+var array1 : Array = ["normal", "big", "small", "bomb", "shock"]
 var pipocu : int
 
 func _ready() -> void:
@@ -29,27 +31,27 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: CharacterBody2D) -> void:
-	if anim.animation == "normal":
-		if body.is_in_group("Player"):
-				Messenger.balas_q_tenho[0] = Messenger.balas_q_tenho[0] + 1
-				print(Messenger.balas_q_tenho)
+	if Messenger.balas_q_tenho[array1.find(anim.animation)] < 32:
+		if anim.animation == "normal":
+			if body.is_in_group("Player"):
+					Messenger.balas_q_tenho[0] = Messenger.balas_q_tenho[0] + 1
 
-	elif anim.animation == "big":
-		if body.is_in_group("Player"):
-			Messenger.balas_q_tenho[1] = Messenger.balas_q_tenho[1] + 1
-			print(Messenger.balas_q_tenho)
+		elif anim.animation == "big":
+			if body.is_in_group("Player"):
+				Messenger.balas_q_tenho[1] = Messenger.balas_q_tenho[1] + 1
 
-	elif anim.animation == "small":
-		if body.is_in_group("Player"):
-			Messenger.balas_q_tenho[2] = Messenger.balas_q_tenho[2] + 1
-			print(Messenger.balas_q_tenho)
-	
-	elif anim.animation == "bomb":
-		if body.is_in_group("Player"):
-			Messenger.balas_q_tenho[3] = Messenger.balas_q_tenho[3] + 1
-			print(Messenger.balas_q_tenho)
+		elif anim.animation == "small":
+			if body.is_in_group("Player"):
+				Messenger.balas_q_tenho[2] = Messenger.balas_q_tenho[2] + 1
+		
+		elif anim.animation == "bomb":
+			if body.is_in_group("Player"):
+				Messenger.balas_q_tenho[3] = Messenger.balas_q_tenho[3] + 1
 
-	elif anim.animation == "shock":
-		if body.is_in_group("Player"):
-			Messenger.balas_q_tenho[4] = Messenger.balas_q_tenho[4] + 1
-			print(Messenger.balas_q_tenho)
+		elif anim.animation == "shock":
+			if body.is_in_group("Player"):
+				Messenger.balas_q_tenho[4] = Messenger.balas_q_tenho[4] + 1
+	else:
+		var new_max_bullets = max_bullets.instantiate()
+		new_max_bullets.global_position = Vector2i(0, 0)
+		get_tree().current_scene.add_child(new_max_bullets)

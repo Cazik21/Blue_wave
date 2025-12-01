@@ -8,10 +8,12 @@ var direction : Vector2 = Vector2.ZERO
 
 var can_dano_player: bool = false
 var tween
+var type_da_bala
 
 func _ready() -> void:
-	name = Messenger.type_of_the_bullet
-	anim.play(name)
+	type_da_bala = Messenger.type_of_the_bullet
+	Messenger.balas_q_tenho[Messenger.scroll_pos] -= 1
+	anim.play(type_da_bala)
 	can_dano_player = false
 	anim.scale = Vector2(0.6, 0.6)
 	collision.scale =Vector2(1, 1)
@@ -39,7 +41,7 @@ func set_direction(new_direction):
 func bullet_finished() -> void:
 	anim.scale = Vector2(0.8, 0.8)
 	alterar_colisao()
-	anim.play(name + "_onda")
+	anim.play(type_da_bala + "_onda")
 	self.get_node("PointLight2D").energy = 0
 	var tweenop = get_tree().create_tween()
 	tweenop.tween_property(self, "modulate",
@@ -58,15 +60,10 @@ func alterar_colisao():
 	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 func _on_body_entered(body: CharacterBody2D) -> void:
-
 	if body.is_in_group("enemies"):
 		kill_tween()
 		@warning_ignore("integer_division")
 		body.take_damage(2 - int(collision.scale > Vector2(1, 1)), global_position)
-
-
-func equacao_q_n_lembro(vector1, vector2) -> float:
-	return sqrt(((vector1.x - vector2.x) ** 2) + ((vector1.y - vector2.y) ** 2))
 
 
 

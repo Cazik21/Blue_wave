@@ -62,11 +62,12 @@ func move() -> void:
 
 func shoot():
 	if Messenger.player_lifes > 0:
-		can_shoot = false
-		audio.play()
-		var bullet_instance = bullet_scene.instantiate()
-		get_tree().current_scene.add_child(bullet_instance)
-		bullet_instance.global_position = global_position
+		if Messenger.balas_q_tenho[Messenger.scroll_pos] > 0:
+			can_shoot = false
+			audio.play()
+			var bullet_instance = bullet_scene.instantiate()
+			get_tree().current_scene.add_child(bullet_instance)
+			bullet_instance.global_position = global_position
 	
 		await get_tree().create_timer(shoot_colldown).timeout
 		can_shoot = true

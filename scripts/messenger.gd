@@ -13,7 +13,8 @@ var org_color_for_enemy
 var type_of_the_bullet : String
 var cena_anterior : String
 var paused : bool = false
-var balas_q_tenho : Array = [30, 0, 0, 0, 0]
+var balas_q_tenho : Array = [32, 0, 0, 0, 0]
+var scroll_pos = 0
 
 @warning_ignore("unused_signal")
 signal spawn_grounded_enemy
