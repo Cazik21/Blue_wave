@@ -53,34 +53,42 @@ animations = [{
 
 [node name="BulletUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
-modulate = Color(18.892157, 18.892157, 18.892157, 1)
-offset_top = 40.0
-offset_right = 28.0
-offset_bottom = 68.0
+modulate = Color(6.14099, 6.14099, 6.14099, 1)
+offset_left = -2.0
+offset_top = 32.0
+offset_right = 38.0
+offset_bottom = 69.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+offset_left = -2.0
+offset_top = 33.0
+offset_right = 36.0
+offset_bottom = 67.28571
+scale = Vector2(0.7, 0.7)
 
 [node name="tipe_bullet" type="AnimatedSprite2D" parent="CanvasLayer"]
-modulate = Color(0.05882353, 0.05882353, 0.05882353, 0.9019608)
-position = Vector2(13, 55.000004)
-scale = Vector2(1.3750001, 1.3750001)
+modulate = Color(1, 1, 1, 0.9019608)
+position = Vector2(6.0000005, 50.000004)
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_62nl5")
-animation = &"normal"
+animation = &"big"
 script = ExtResource("6_h16ij")
 
 [node name="count" type="Label" parent="CanvasLayer"]
-modulate = Color(0.06, 0.06, 0.06, 0.9019608)
-offset_left = 6.0
-offset_top = 41.0
-offset_right = 46.0
-offset_bottom = 64.0
+modulate = Color(1, 1, 1, 0.9019608)
+offset_left = 12.0
+offset_top = 34.000004
+offset_right = 52.0
+offset_bottom = 57.000004
 scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("6_thr0b")
-text = " 19"
+text = " 0"
