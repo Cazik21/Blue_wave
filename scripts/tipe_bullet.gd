@@ -30,9 +30,9 @@ func _process(_delta: float) -> void:
 		Messenger.type_of_the_bullet =  "shock"
 	
 	play(Messenger.type_of_the_bullet)
-	count.global_position.y = 41
+	count.global_position.y = 34
 	if Messenger.balas_q_tenho[Messenger.scroll_pos] < 10:
-		count.position.x = 15
+		count.position.x = 12
 	else:
-		count.position.x = 6
+		count.position.x = 4
 	count.text = str(" ", Messenger.balas_q_tenho[Messenger.scroll_pos])
