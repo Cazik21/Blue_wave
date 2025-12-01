@@ -10,7 +10,6 @@ var can_dano_player: bool = false
 var tween
 
 func _ready() -> void:
-	Messenger.balas_q_tenho[Messenger.scroll_pos] -= 1 
 	name = Messenger.type_of_the_bullet
 	anim.play(name)
 	can_dano_player = false
