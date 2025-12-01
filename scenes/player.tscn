@@ -67,5 +67,9 @@ bus = &"Sfx"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="TimerDano" type="Timer" parent="."]
+
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="hurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerDano" to="." method="_on_timer_dano_timeout"]

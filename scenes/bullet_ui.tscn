@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwdrwol32sd17"]
+
+[ext_resource type="Texture2D" uid="uid://ov0mg1pb7mn2" path="res://assets/bullet_big.png" id="1_lf5kw"]
+[ext_resource type="Texture2D" uid="uid://bg3iwgc5anw0b" path="res://assets/bullet_bomb.png" id="2_h16ij"]
+[ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="3_dqt6o"]
+[ext_resource type="Texture2D" uid="uid://deia86u44o5vl" path="res://assets/bullet_shock.png" id="4_lane4"]
+[ext_resource type="Texture2D" uid="uid://bffthf0xe57ca" path="res://assets/bullet_small.png" id="5_7n0dn"]
+[ext_resource type="Script" uid="uid://dfipj6t1xqacn" path="res://scripts/tipe_bullet.gd" id="6_h16ij"]
+[ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="6_thr0b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62nl5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lf5kw")
+}],
+"loop": false,
+"name": &"big",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h16ij")
+}],
+"loop": false,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dqt6o")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lane4")
+}],
+"loop": false,
+"name": &"shock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7n0dn")
+}],
+"loop": false,
+"name": &"small",
+"speed": 5.0
+}]
+
+[node name="BulletUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+offset_top = 40.0
+offset_right = 28.0
+offset_bottom = 68.0
+
+[node name="tipe_bullet" type="AnimatedSprite2D" parent="CanvasLayer"]
+modulate = Color(0.05882353, 0.05882353, 0.05882353, 0.9019608)
+position = Vector2(13, 55.000004)
+scale = Vector2(1.3750001, 1.3750001)
+sprite_frames = SubResource("SpriteFrames_62nl5")
+animation = &"small"
+script = ExtResource("6_h16ij")
+
+[node name="count" type="Label" parent="CanvasLayer"]
+modulate = Color(0.06, 0.06, 0.06, 0.9019608)
+offset_left = 19.0
+offset_top = 41.000004
+offset_right = 59.0
+offset_bottom = 64.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("6_thr0b")
+text = "1"

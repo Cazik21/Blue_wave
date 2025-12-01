@@ -6,7 +6,10 @@ extends CharacterBody2D
 @onready var audio2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
-@onready var collision_shape_2d: CollisionShape2D = $hurtbox/CollisionShape2D
+@onready var hurtbox: Area2D = $hurtbox
+@onready var collision_hurt: CollisionShape2D = $hurtbox/CollisionShape2D
+@onready var timer_dano: Timer = $TimerDano
+
 
 @export var bullet_scene : PackedScene
 @export var waves_scene : PackedScene
@@ -20,10 +23,9 @@ var walking : bool = false
 var enemy = null
 var direction_vector
 var safe_delta : float
-
 var org_color
-
 var speed : float = 100
+var can_dano : bool = true
 
 func _ready() -> void:
 	timer.wait_time = wait_time_for_ground_enemys
@@ -34,6 +36,10 @@ func _ready() -> void:
 	else:
 		point_light_2d.energy = 1
 	Messenger.player = self
+	self.collision_mask = 2
+	self.collision_layer = 1
+	hurtbox.collision_mask = 2
+	hurtbox.collision_layer = 1
 	org_color = Color.WHITE
 
 func _physics_process(delta: float) -> void:
@@ -91,23 +97,18 @@ func _on_hurtbox_body_entered(body : CharacterBody2D) -> void:
 
 
 func dano_player(amont : int):
-	Messenger.player_lifes -= amont
-	if Messenger.player_lifes <= 0:
-		Engine.time_scale = 0.2
-		collision.queue_free()
-		await  get_tree().create_timer(0.6).timeout
-		Engine.time_scale = 1
-		Messenger.player_lifes = 5
-		Messenger.wave = 1
-		Messenger.killed_enemies = 0
-		Messenger.tree.reload_current_scene()
-	else:
-		audio2.play()
-		collision.disabled = true
-		collision_shape_2d.disabled = true
-		await get_tree().create_timer(1).timeout
-		collision.disabled = false
-		collision_shape_2d.disabled = false
+	if can_dano:
+		Messenger.player_lifes -= amont
+		if Messenger.player_lifes <= 0:
+			Engine.time_scale = 0.2
+			collision.queue_free()
+			await  get_tree().create_timer(0.6).timeout
+			Engine.time_scale = 1
+			Messenger.player_lifes = 5
+			Messenger.wave = 1
+			Messenger.killed_enemies = 0
+			Messenger.tree.reload_current_scene()
+			timer_dano.start()
 
 func reinice_timer():
 	Messenger.can_spawn_enemy = 0
@@ -129,3 +130,11 @@ func spawn_grounded_enemy():
 
 func _on_timer_timeout() -> void:
 	Messenger.can_spawn_enemy = 1
+
+
+func _on_hurtbox_body_exited(_body: CharacterBody2D) -> void:
+	can_dano = true
+
+
+func _on_timer_dano_timeout() -> void:
+	can_dano = true

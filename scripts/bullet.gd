@@ -39,7 +39,7 @@ func bullet_finished() -> void:
 	can_dano_player = true
 	anim.scale = Vector2(1.5, 1.5)
 	alterar_colisao()
-	anim.play("default_wave")
+	anim.play("normal")
 	self.get_node("PointLight2D").energy = 0
 	var tweenop = get_tree().create_tween()
 	tweenop.tween_property(self, "modulate",
