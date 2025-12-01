@@ -38,6 +38,8 @@ signal exit_selecionado
 signal voltou_pro_game_brabo
 @warning_ignore("unused_signal")
 signal saiu_pq_meno
+@warning_ignore("unused_signal")
+signal max_bulletas
 
 func _ready() -> void:
 	tree = get_tree()

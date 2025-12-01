@@ -52,6 +52,4 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 			if body.is_in_group("Player"):
 				Messenger.balas_q_tenho[4] = Messenger.balas_q_tenho[4] + 1
 	else:
-		var new_max_bullets = max_bullets.instantiate()
-		new_max_bullets.global_position = Vector2i(0, 0)
-		get_tree().current_scene.add_child(new_max_bullets)
+		Messenger.max_bulletas.emit()
