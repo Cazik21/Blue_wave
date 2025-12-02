@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxghx7pn87w4x"]
+[gd_scene load_steps=9 format=3 uid="uid://dxghx7pn87w4x"]
 
 [ext_resource type="Script" uid="uid://cq5nii0on47gt" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dqo6q3330yn1x" path="res://scenes/player.tscn" id="1_nnsk1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cecommju7mhn1" path="res://prefabs/hearts.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" uid="uid://c0rni5k82k5xf" path="res://scenes/pause_menu.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" uid="uid://bwdrwol32sd17" path="res://scenes/bullet_ui.tscn" id="7_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://ktk0gktr5tap" path="res://prefabs/max_bullets.tscn" id="8_4mrxx"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_4wyf3")
@@ -41,5 +42,7 @@ offset_right = 938.0
 offset_bottom = 41.0
 
 [node name="BulletUI" parent="UI" instance=ExtResource("7_4mrxx")]
+
+[node name="max_bullets" parent="UI" instance=ExtResource("8_4mrxx")]
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

@@ -1,17 +1,22 @@
 extends CharacterBody2D
 
-const PARTICLES = preload("uid://vuan0hr8ktyu")
+
+const PARTICLES = preload("res://prefabs/particles.tscn")
+
 
 @export var speed : float = 20
 @export var health : float = 4
 @export var waves_scene : PackedScene
 @export var coraco_scene : PackedScene
-@export var bullet_scene : PackedScene
+
 
 @onready var anim: AnimatedSprite2D = $anim
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
+
+var bullet_scene = preload("res://prefabs/bullet_collect.tscn")
+var esta_atirando : bool = false
 var safe_delta : float
 var direction : Vector2 = Vector2.ZERO
 var player = null
@@ -20,9 +25,11 @@ var knockback_decay : float = 160
 var animation_playing : bool = false
 var can_instantiate_waves : bool = true
 
+
 var rng = RandomNumberGenerator.new()
 var org_color
 var frame = 0
+
 
 func _ready() -> void:
 	anim.play("born")
@@ -39,11 +46,26 @@ func _ready() -> void:
 
 func saiu_pq_meno():
 	frame = anim.frame
-	anim.stop()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not Messenger.paused:
-		safe_delta = min(delta, 0.03)
+		if global_position.distance_to(Messenger.tree.current_scene.get_node("Player").global_position) < 100 and name.contains("inimigo_atira"):
+			esta_atirando = true
+		if esta_atirando == false:
+			nao_atirar()
+		else:
+			atirar()
+
+func atirar():
+	if player:
+		direction = global_position.direction_to(player.global_position)
+	else:
+		anim.stop()
+
+
+func nao_atirar():
+	if not Messenger.paused:
+		safe_delta = min(get_process_delta_time(), 0.03)
 		if knockback_velocity.length() > 1:
 			velocity = knockback_velocity
 			velocity = velocity * safe_delta * 60
@@ -62,7 +84,6 @@ func _physics_process(delta: float) -> void:
 			wave_instance.global_position = global_position
 			await Messenger.tree.create_timer(0.6).timeout
 			can_instantiate_waves = true
-
 
 func apply_kockback(force : Vector2):
 	knockback_velocity = force
@@ -87,16 +108,17 @@ func take_damage(amount: float, sourece_position: Vector2):
 		add_sibling(particles)
 		particles.global_position = global_position
 		particles.rotation = direction.angle() + PI
-		Messenger.enemies_f -=1
+		Messenger.enemies_f -= 1
 		if randi_range(1, 23) == 23:
 			var coracos = coraco_scene.instantiate()
 			coracos.global_position = global_position
 			add_sibling(coracos)
 			coracos.global_position = global_position
-		elif randi_range(1, 5) == 5:
-			var new_bullet = bullet_scene.instantiate()
-			add_child(new_bullet)
-			new_bullet.global_position = global_position
+		if randi_range(1, 3) == 1:
+			var bullet = bullet_scene.instantiate()
+			bullet.global_position = global_position
+			add_sibling(bullet)
+			bullet.global_position = global_position
 		audio.play()
 		self.visible = false
 		collision.queue_free()
@@ -106,5 +128,4 @@ func take_damage(amount: float, sourece_position: Vector2):
 
 
 func voltando_pro_game():
-	anim.play("jumping")
 	anim.frame = frame

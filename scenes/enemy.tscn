@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_md484"]
 [ext_resource type="Texture2D" uid="uid://7g5lg3lduuk5" path="res://assets/slime 13 (3) (1).png" id="2_xwavj"]
 [ext_resource type="PackedScene" uid="uid://dqsdfv273i6hc" path="res://prefabs/coraco.tscn" id="3_md484"]
-[ext_resource type="PackedScene" uid="uid://bvedovtjluph" path="res://prefabs/bullet.tscn" id="4_ipns3"]
+[ext_resource type="PackedScene" uid="uid://difwfmtnliqrt" path="res://prefabs/bullet_collect.tscn" id="4_ipns3"]
 [ext_resource type="Texture2D" uid="uid://5v8te6nnis5o" path="res://assets/New Piskel.png" id="5_nenq2"]
 [ext_resource type="Texture2D" uid="uid://ohlbd4qksu6b" path="res://assets/New Piskel (1).png" id="6_md484"]
 [ext_resource type="Texture2D" uid="uid://cfcjeug7i83jn" path="res://assets/New Piskel (2).png" id="7_ipns3"]
@@ -104,7 +104,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g0wcc")
 }],
-"loop": true,
+"loop": false,
 "name": &"born",
 "speed": 5.0
 }, {
@@ -173,4 +173,4 @@ bus = &"Sfx"
 modulate = Color(0.15, 0.15, 0.15, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wjec0")
-animation = &"jumping"
+animation = &"born"

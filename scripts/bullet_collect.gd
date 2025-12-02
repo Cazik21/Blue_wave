@@ -31,27 +31,9 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: CharacterBody2D) -> void:
-	if Messenger.balas_q_tenho[array1.find(anim.animation)] < 32:
-		if anim.animation == "normal":
-			if body.is_in_group("Player"):
-					Messenger.balas_q_tenho[0] = Messenger.balas_q_tenho[0] + 1
-
-		elif anim.animation == "big":
-			if body.is_in_group("Player"):
-				Messenger.balas_q_tenho[1] = Messenger.balas_q_tenho[1] + 1
-
-		elif anim.animation == "small":
-			if body.is_in_group("Player"):
-				Messenger.balas_q_tenho[2] = Messenger.balas_q_tenho[2] + 1
-		
-		elif anim.animation == "bomb":
-			if body.is_in_group("Player"):
-				Messenger.balas_q_tenho[3] = Messenger.balas_q_tenho[3] + 1
-
-		elif anim.animation == "shock":
-			if body.is_in_group("Player"):
-				Messenger.balas_q_tenho[4] = Messenger.balas_q_tenho[4] + 1
-		queue_free()
-	else:
-		Messenger.max_bulletas.emit()
-	
+	if body.is_in_group("Player"):
+		if Messenger.balas_q_tenho[array1.find(anim.animation)] < 48:
+			Messenger.balas_q_tenho[array1.find(anim.animation)] += 1
+			queue_free()
+		else:
+			Messenger.max_bulletas.emit()

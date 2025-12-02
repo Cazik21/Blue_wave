@@ -10,6 +10,7 @@ extends Node2D
 @export var spawn_margin = 40
 
 func _ready() -> void:
+	Messenger.balas_q_tenho = [32, 0, 0, 0, 0]
 	Messenger.diminuir_timer.connect(troca_de_wave)
 	Messenger.cena_anterior = "res://scenes/world.tscn"
 	if Messenger.paused:
@@ -58,11 +59,11 @@ func troca_de_wave():
 	Messenger.balas_q_tenho[4] += 5
 	spawn_timer.wait_time /= 1.19
 	@warning_ignore("integer_division")
-	spawn_timer.wait_time = spawn_timer.wait_time + int(Messenger.wave >= 5)/2
+	spawn_timer.wait_time = spawn_timer.wait_time + int(Messenger.wave >= 4) / 2
 	if Messenger.player_lifes < 5:
 		var i = 1
 		@warning_ignore("integer_division")
-		while Messenger.player_lifes < 5 or i == int(Messenger.wave / 10) + 1:
+		while Messenger.player_lifes < 5 or i == floor(Messenger.wave / 10) + 1:
 			Messenger.player_lifes += 1
 			i += 1
 	Messenger.trocando_de_wave.emit()
