@@ -1,0 +1,247 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvcenpbsjgehb"]
+
+[ext_resource type="Script" uid="uid://w5lkmw4ejef" path="res://scripts/menu.gd" id="1_mwc5e"]
+[ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_oseql"]
+[ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="3_igp2j"]
+[ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="4_vqtwd"]
+[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="5_icgjh"]
+[ext_resource type="Script" uid="uid://b013v57xihjio" path="res://scripts/start.gd" id="6_bg1p3"]
+[ext_resource type="Script" uid="uid://dj78a75firwok" path="res://scripts/options.gd" id="7_mwulq"]
+[ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scripts/selecionador.gd" id="8_4dawr"]
+[ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="9_3ihch"]
+[ext_resource type="Script" uid="uid://cvy22jibernnf" path="res://scripts/wave.gd" id="10_7gi8v"]
+[ext_resource type="Texture2D" uid="uid://utx028gt8v3d" path="res://assets/wave_tela_inicial.png" id="11_hv6ri"]
+
+[sub_resource type="Theme" id="Theme_hvj2l"]
+
+[node name="Tela_inicialistaciazions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fundo" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 436.0
+offset_bottom = 285.0
+color = Color(0.06, 0.06, 0.06, 1)
+
+[node name="Menu" type="CanvasLayer" parent="."]
+script = ExtResource("1_mwc5e")
+
+[node name="black waves" type="Label" parent="Menu"]
+offset_left = 104.0
+offset_top = 34.0
+offset_right = 252.0
+offset_bottom = 50.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("2_oseql")
+text = "Black Waves"
+metadata/_edit_use_anchors_ = true
+
+[node name="Version" type="Label" parent="Menu"]
+offset_left = 16.0
+offset_top = 207.00002
+offset_right = 190.0
+offset_bottom = 223.00002
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("2_oseql")
+text = "Version : Beta"
+metadata/_edit_use_anchors_ = true
+
+[node name="baixo" type="TextureRect" parent="Menu"]
+offset_left = 98.0
+offset_top = 59.999996
+offset_right = 329.65002
+offset_bottom = 76.0
+texture = ExtResource("3_igp2j")
+
+[node name="cima" type="TextureRect" parent="Menu"]
+offset_left = 98.0
+offset_top = 11.0
+offset_right = 329.65002
+offset_bottom = 27.0
+texture = ExtResource("4_vqtwd")
+
+[node name="iluminação" type="PointLight2D" parent="Menu"]
+position = Vector2(215.49998, 31.999985)
+scale = Vector2(2.6874998, 3.3214285)
+energy = 0.6
+texture = ExtResource("5_icgjh")
+
+[node name="Start" type="Button" parent="Menu"]
+offset_left = 169.0
+offset_top = 92.0
+offset_right = 311.0
+offset_bottom = 116.0
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("2_oseql")
+text = "Start game"
+script = ExtResource("6_bg1p3")
+
+[node name="Options" type="Button" parent="Menu"]
+offset_left = 169.00003
+offset_top = 124.000015
+offset_right = 311.0
+offset_bottom = 148.00002
+scale = Vector2(0.7, 0.7)
+theme = SubResource("Theme_hvj2l")
+theme_override_fonts/font = ExtResource("2_oseql")
+text = "Options"
+script = ExtResource("7_mwulq")
+
+[node name="Selecionador" type="Node2D" parent="Menu"]
+position = Vector2(169, 92)
+script = ExtResource("8_4dawr")
+
+[node name="Selecionar" type="TextureRect" parent="Menu/Selecionador"]
+offset_left = -12.0
+offset_top = 3.0
+offset_right = 12.0
+offset_bottom = 25.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_3ihch")
+
+[node name="Selecionar2" type="TextureRect" parent="Menu/Selecionador"]
+offset_left = 102.0
+offset_top = 3.0
+offset_right = 126.0
+offset_bottom = 25.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_3ihch")
+flip_h = true
+
+[node name="wave1" type="Node2D" parent="."]
+position = Vector2(0, -112)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave1"]
+modulate = Color(1, 1, 1, 0.19607843)
+offset_left = -93.0
+offset_top = 199.0
+offset_right = 577.0
+offset_bottom = 239.0
+texture = ExtResource("11_hv6ri")
+
+[node name="wave2" type="Node2D" parent="."]
+position = Vector2(0, -96)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave2"]
+modulate = Color(1, 1, 1, 0.3137255)
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("11_hv6ri")
+flip_h = true
+
+[node name="wave3" type="Node2D" parent="."]
+position = Vector2(0, -80)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave3"]
+modulate = Color(1, 1, 1, 0.43137255)
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("11_hv6ri")
+
+[node name="wave4" type="Node2D" parent="."]
+position = Vector2(0, -72)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave4"]
+modulate = Color(1, 1, 1, 0.54901963)
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("11_hv6ri")
+flip_h = true
+
+[node name="wave5" type="Node2D" parent="."]
+position = Vector2(0, -72)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave5"]
+modulate = Color(1, 1, 1, 0.6666667)
+offset_left = -93.0
+offset_top = 213.0
+offset_right = 577.0
+offset_bottom = 253.0
+texture = ExtResource("11_hv6ri")
+metadata/_edit_use_anchors_ = true
+
+[node name="wave6" type="Node2D" parent="."]
+position = Vector2(0, -41)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave6"]
+modulate = Color(1, 1, 1, 0.78431374)
+offset_left = -93.0
+offset_top = 199.0
+offset_right = 577.0
+offset_bottom = 239.0
+texture = ExtResource("11_hv6ri")
+metadata/_edit_use_anchors_ = true
+
+[node name="wave7" type="Node2D" parent="."]
+position = Vector2(0, -25)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave7"]
+modulate = Color(1, 1, 1, 0.9019608)
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("11_hv6ri")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="wave8" type="Node2D" parent="."]
+position = Vector2(0, -9)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave8"]
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("11_hv6ri")
+metadata/_edit_use_anchors_ = true
+
+[node name="wave9" type="Node2D" parent="."]
+position = Vector2(0, -1)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave9"]
+offset_left = -93.0
+offset_top = 197.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture = ExtResource("11_hv6ri")
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="wave10" type="Node2D" parent="."]
+position = Vector2(0, -1)
+script = ExtResource("10_7gi8v")
+
+[node name="Shake_icon" type="TextureRect" parent="wave10"]
+offset_left = -93.0
+offset_top = 213.0
+offset_right = 577.0
+offset_bottom = 253.0
+texture = ExtResource("11_hv6ri")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.067437746, 0.06743774, 0.06743772, 1)
+
+[connection signal="pressed" from="Menu/Start" to="Menu/Start" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Options" to="Menu/Options" method="_on_pressed"]
