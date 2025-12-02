@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://brwackqfmupe6"]
+[gd_scene load_steps=6 format=3 uid="uid://brwackqfmupe6"]
 
 [ext_resource type="Script" uid="uid://b8bkbrr864xd8" path="res://scripts/volume_slider.gd" id="1_c2u1v"]
-[ext_resource type="Shader" uid="uid://cyiojbyh0f6ds" path="res://scenes/options.gdshader" id="1_e6vpq"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_yjkok"]
 [ext_resource type="Script" uid="uid://bhmo6omsfkcsp" path="res://scripts/back.gd" id="3_2iy26"]
 [ext_resource type="Texture2D" uid="uid://dmbxif23f25tr" path="res://assets/neg[ocio da tela inicial baixo.png" id="4_kv8mn"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7i7e"]
-shader = ExtResource("1_e6vpq")
-shader_parameter/glow_strength = 1.5
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kv8mn"]
 blend_mode = 1
@@ -24,241 +19,230 @@ grow_vertical = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2147483647
 
-[node name="Node2D" type="Node2D" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_o7i7e")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Node2D"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = -37.0
 offset_top = -66.0
 offset_right = 470.0
 offset_bottom = 279.0
 color = Color(0.06, 0.06, 0.06, 1)
 
-[node name="Master" type="HSlider" parent="CanvasLayer/Node2D"]
+[node name="Master" type="Node" parent="CanvasLayer"]
+
+[node name="Master_slider" type="HSlider" parent="CanvasLayer/Master"]
 offset_left = 53.0
 offset_top = 71.0
 offset_right = 361.0
 offset_bottom = 87.0
+focus_mode = 0
 value = 100.0
 script = ExtResource("1_c2u1v")
 bus_name = "Master"
 
-[node name="Label" type="Label" parent="CanvasLayer/Node2D/Master"]
+[node name="Label" type="Label" parent="CanvasLayer/Master"]
 z_index = 1
-layout_mode = 0
-offset_left = 80.0
-offset_top = -15.0
-offset_right = 266.0
-offset_bottom = 8.0
+offset_left = 133.0
+offset_top = 56.0
+offset_right = 319.0
+offset_bottom = 79.0
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("2_yjkok")
 text = "Master Volume "
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Node2D/Master"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Master"]
 light_mask = 1023
-layout_mode = 0
-offset_left = 2.0
-offset_top = 19.0
-offset_right = 154.0
-offset_bottom = 33.0
+offset_left = 55.0
+offset_top = 90.0
+offset_right = 207.0
+offset_bottom = 104.0
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Node2D/Master"]
-layout_mode = 0
-offset_left = 154.0
-offset_top = 19.0
-offset_right = 306.0
-offset_bottom = 33.0
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Master"]
+offset_left = 207.0
+offset_top = 90.0
+offset_right = 359.0
+offset_bottom = 104.0
 texture = ExtResource("4_kv8mn")
 
-[node name="a_porcent" type="Label" parent="CanvasLayer/Node2D/Master"]
-layout_mode = 0
-offset_left = 128.0
-offset_top = 39.0
-offset_right = 184.0
-offset_bottom = 62.0
+[node name="a_porcent" type="Label" parent="CanvasLayer/Master"]
+offset_left = 181.0
+offset_top = 110.0
+offset_right = 237.0
+offset_bottom = 133.0
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("2_yjkok")
 text = "1111"
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Node2D/Master"]
-layout_mode = 0
-offset_left = 153.0
-offset_right = 305.0
-offset_bottom = 14.0
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Master"]
+offset_left = 206.0
+offset_top = 71.0
+offset_right = 358.0
+offset_bottom = 85.0
 rotation = 3.1415927
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Node2D/Master"]
-layout_mode = 0
-offset_left = 305.0
-offset_right = 457.0
-offset_bottom = 14.0
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Master"]
+offset_left = 358.0
+offset_top = 71.0
+offset_right = 510.0
+offset_bottom = 85.0
 rotation = 3.1415927
 texture = ExtResource("4_kv8mn")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Node2D/Master"]
-layout_mode = 0
-offset_left = 73.0
-offset_top = -20.0
-offset_right = 229.0
-offset_bottom = 3.0
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Master"]
+offset_left = 126.0
+offset_top = 51.0
+offset_right = 282.0
+offset_bottom = 74.0
 color = Color(0.06, 0.06, 0.06, 1)
 
-[node name="Music" type="HSlider" parent="CanvasLayer/Node2D"]
+[node name="Music" type="Node" parent="CanvasLayer"]
+
+[node name="Music_slider" type="HSlider" parent="CanvasLayer/Music"]
 offset_left = 53.0
 offset_top = 150.0
 offset_right = 199.0
 offset_bottom = 166.0
+focus_mode = 0
 value = 100.0
 script = ExtResource("1_c2u1v")
 bus_name = "Music"
 
-[node name="Label" type="Label" parent="CanvasLayer/Node2D/Music"]
+[node name="Label" type="Label" parent="CanvasLayer/Music"]
 z_index = 1
-layout_mode = 0
-offset_left = 44.600006
-offset_top = -14.800003
-offset_right = 230.6
-offset_bottom = 8.199997
+offset_left = 97.600006
+offset_top = 135.2
+offset_right = 283.6
+offset_bottom = 158.2
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("2_yjkok")
 text = "Music"
 
-[node name="a_porcent" type="Label" parent="CanvasLayer/Node2D/Music"]
-layout_mode = 0
-offset_left = 55.0
-offset_top = 29.0
-offset_right = 111.0
-offset_bottom = 52.0
+[node name="a_porcent" type="Label" parent="CanvasLayer/Music"]
+offset_left = 108.0
+offset_top = 179.0
+offset_right = 164.0
+offset_bottom = 202.0
 scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("2_yjkok")
 text = "1111"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Node2D/Music"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 19.0
-offset_right = 148.0
-offset_bottom = 33.0
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Music"]
+offset_left = 49.0
+offset_top = 169.0
+offset_right = 201.0
+offset_bottom = 183.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Node2D/Music"]
-layout_mode = 0
-offset_left = 72.0
-offset_top = 19.0
-offset_right = 224.0
-offset_bottom = 33.0
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Music"]
+offset_left = 125.0
+offset_top = 169.0
+offset_right = 277.0
+offset_bottom = 183.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Node2D/Music"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 1.0
-offset_right = 223.0
-offset_bottom = 15.0
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Music"]
+offset_left = 124.0
+offset_top = 151.0
+offset_right = 276.0
+offset_bottom = 165.0
 rotation = 3.1415927
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Node2D/Music"]
-layout_mode = 0
-offset_left = 147.0
-offset_top = 1.0
-offset_right = 299.0
-offset_bottom = 15.0
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Music"]
+offset_left = 200.0
+offset_top = 151.0
+offset_right = 352.0
+offset_bottom = 165.0
 rotation = 3.1415927
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_kv8mn")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Node2D/Music"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = -40.0
-offset_right = 101.0
-offset_bottom = 2.0
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Music"]
+offset_left = 96.0
+offset_top = 110.0
+offset_right = 154.0
+offset_bottom = 152.0
 color = Color(0.06, 0.06, 0.06, 1)
 
-[node name="Sfx" type="HSlider" parent="CanvasLayer/Node2D"]
+[node name="Sfx" type="Node" parent="CanvasLayer"]
+
+[node name="Sfx_slider" type="HSlider" parent="CanvasLayer/Sfx"]
 offset_left = 213.0
 offset_top = 150.0
 offset_right = 362.0
 offset_bottom = 166.0
+focus_mode = 0
 value = 100.0
 script = ExtResource("1_c2u1v")
 bus_name = "Sfx"
 
-[node name="Label" type="Label" parent="CanvasLayer/Node2D/Sfx"]
+[node name="Label" type="Label" parent="CanvasLayer/Sfx"]
 z_index = 1
-layout_mode = 0
-offset_left = 38.600006
-offset_top = -14.800003
-offset_right = 224.6
-offset_bottom = 8.199997
+offset_left = 251.6
+offset_top = 135.2
+offset_right = 437.6
+offset_bottom = 158.2
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/font = ExtResource("2_yjkok")
 text = "Sounds"
 
-[node name="a_porcent" type="Label" parent="CanvasLayer/Node2D/Sfx"]
-layout_mode = 0
-offset_left = 56.999996
-offset_top = 29.0
-offset_right = 113.0
-offset_bottom = 52.0
+[node name="a_porcent" type="Label" parent="CanvasLayer/Sfx"]
+offset_left = 270.0
+offset_top = 179.0
+offset_right = 326.0
+offset_bottom = 202.0
 scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("2_yjkok")
 text = "1111"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Node2D/Sfx"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Sfx"]
 material = SubResource("CanvasItemMaterial_kv8mn")
-layout_mode = 0
-offset_left = -3.0
-offset_top = 18.5
-offset_right = 149.0
-offset_bottom = 32.5
+offset_left = 210.0
+offset_top = 168.5
+offset_right = 362.0
+offset_bottom = 182.5
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Node2D/Sfx"]
-layout_mode = 0
-offset_left = 73.0
-offset_top = 18.5
-offset_right = 225.0
-offset_bottom = 32.5
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Sfx"]
+offset_left = 286.0
+offset_top = 168.5
+offset_right = 438.0
+offset_bottom = 182.5
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Node2D/Sfx"]
-layout_mode = 0
-offset_left = 73.0
-offset_top = 1.0
-offset_right = 225.0
-offset_bottom = 15.0
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Sfx"]
+offset_left = 286.0
+offset_top = 151.0
+offset_right = 438.0
+offset_bottom = 165.0
 rotation = 3.1415927
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Node2D/Sfx"]
-layout_mode = 0
-offset_left = 149.0
-offset_top = 1.0
-offset_right = 301.0
-offset_bottom = 15.0
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Sfx"]
+offset_left = 362.0
+offset_top = 151.0
+offset_right = 514.0
+offset_bottom = 165.0
 rotation = 3.1415927
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_kv8mn")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Node2D/Sfx"]
-layout_mode = 0
-offset_left = 37.0
-offset_top = -40.0
-offset_right = 107.0
-offset_bottom = 2.0
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Sfx"]
+offset_left = 250.0
+offset_top = 110.0
+offset_right = 320.0
+offset_bottom = 152.0
 color = Color(0.06, 0.06, 0.06, 1)
 
-[node name="Back" type="Button" parent="CanvasLayer/Node2D"]
+[node name="Back" type="Node" parent="CanvasLayer"]
+
+[node name="Back" type="Button" parent="CanvasLayer/Back"]
 offset_left = 1.9999998
 offset_top = 3.9999998
 offset_right = 66.0
@@ -268,7 +252,7 @@ theme_override_fonts/font = ExtResource("2_yjkok")
 text = "Back"
 script = ExtResource("3_2iy26")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Node2D/Back"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Back/Back"]
 layout_mode = 0
 offset_top = 21.250002
 offset_right = 82.6875
@@ -276,7 +260,7 @@ offset_bottom = 29.999998
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Node2D/Back"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Back/Back"]
 layout_mode = 0
 offset_left = 61.25
 offset_top = 28.75
@@ -286,7 +270,7 @@ rotation = -1.5707964
 scale = Vector2(0.4, 0.8)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Node2D/Back"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Back/Back"]
 layout_mode = 0
 offset_left = 4.999998
 offset_top = -2.5000002
@@ -296,7 +280,7 @@ rotation = 1.5707964
 scale = Vector2(0.4, 0.8)
 texture = ExtResource("4_kv8mn")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Node2D/Back"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Back/Back"]
 layout_mode = 0
 offset_left = 66.25
 offset_top = 2.5000017
@@ -306,4 +290,4 @@ rotation = 3.1415927
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_kv8mn")
 
-[connection signal="pressed" from="CanvasLayer/Node2D/Back" to="CanvasLayer/Node2D/Back" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Back/Back" to="CanvasLayer/Back/Back" method="_on_pressed"]

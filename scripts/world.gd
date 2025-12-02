@@ -5,7 +5,7 @@ extends Node2D
 
 
 @export var enemy_scene : PackedScene
-@export var enemyqatira_scene : PackedScene
+
 @export var pause_menu : PackedScene
 @export var spawn_margin = 40
 
@@ -25,18 +25,15 @@ func _process(_delta: float) -> void:
 
 func spawn_enemies():
 	if not Messenger.paused:
-		if randi_range(1, 20) == 20 and Messenger.wave > 4:
-			var enemyqatira = enemyqatira_scene.instantiate()
-			add_child(enemyqatira)
-			enemyqatira.global_position = calculate_spawn_pos()
-			enemyqatira.player = player
-			enemyqatira.name = "inimigo_atira"
-			
+		var enemy = enemy_scene.instantiate()
+		add_child(enemy)
+		enemy.global_position = calculate_spawn_pos()
+		enemy.player = player
+		if randi_range(0, ceil( (Messenger.wave - 3) / 1.06)) == 0 and Messenger.wave > 4:
+			enemy.name = "inimigo_atira"
 		else:
-			var enemy = enemy_scene.instantiate()
-			add_child(enemy)
-			enemy.global_position = calculate_spawn_pos()
-			enemy.player = player
+			enemy.name = "inimigo_normal"
+
 	
 func calculate_spawn_pos() -> Vector2:
 	var screen_size = get_viewport_rect().size
@@ -54,11 +51,11 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
 
 func troca_de_wave():
-	Messenger.balas_q_tenho[1] += 32
+	Messenger.balas_q_tenho[0] += 32
+	Messenger.balas_q_tenho[1] += 10
 	Messenger.balas_q_tenho[2] += 10
 	Messenger.balas_q_tenho[3] += 10
-	Messenger.balas_q_tenho[4] += 10
-	Messenger.balas_q_tenho[5] += 5
+	Messenger.balas_q_tenho[4] += 5
 	spawn_timer.wait_time /= 1.19
 	@warning_ignore("integer_division")
 	spawn_timer.wait_time = spawn_timer.wait_time + int(Messenger.wave >= 5)/2

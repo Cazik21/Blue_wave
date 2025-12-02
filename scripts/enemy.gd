@@ -6,7 +6,7 @@ const PARTICLES = preload("uid://vuan0hr8ktyu")
 @export var health : float = 4
 @export var waves_scene : PackedScene
 @export var coraco_scene : PackedScene
-@export var anjf : PackedScene
+@export var bullet_scene : PackedScene
 
 @onready var anim: AnimatedSprite2D = $anim
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -39,6 +39,7 @@ func _ready() -> void:
 
 func saiu_pq_meno():
 	frame = anim.frame
+	anim.stop()
 
 func _physics_process(delta: float) -> void:
 	if not Messenger.paused:
@@ -61,8 +62,8 @@ func _physics_process(delta: float) -> void:
 			wave_instance.global_position = global_position
 			await Messenger.tree.create_timer(0.6).timeout
 			can_instantiate_waves = true
-	else:
-		anim.stop()
+
+
 func apply_kockback(force : Vector2):
 	knockback_velocity = force
 
@@ -92,10 +93,10 @@ func take_damage(amount: float, sourece_position: Vector2):
 			coracos.global_position = global_position
 			add_sibling(coracos)
 			coracos.global_position = global_position
-		if randi_range(1, 5) == 5:
-			var newa = anjf.instantiate()
-			add_child(newa)
-			newa.global_position = global_position
+		elif randi_range(1, 5) == 5:
+			var new_bullet = bullet_scene.instantiate()
+			add_child(new_bullet)
+			new_bullet.global_position = global_position
 		audio.play()
 		self.visible = false
 		collision.queue_free()
@@ -105,4 +106,5 @@ func take_damage(amount: float, sourece_position: Vector2):
 
 
 func voltando_pro_game():
+	anim.play("jumping")
 	anim.frame = frame

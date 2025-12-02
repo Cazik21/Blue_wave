@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxghx7pn87w4x"]
+[gd_scene load_steps=8 format=3 uid="uid://dxghx7pn87w4x"]
 
 [ext_resource type="Script" uid="uid://cq5nii0on47gt" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dqo6q3330yn1x" path="res://scenes/player.tscn" id="1_nnsk1"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cecommju7mhn1" path="res://prefabs/hearts.tscn" id="5_71j4m"]
 [ext_resource type="PackedScene" uid="uid://c0rni5k82k5xf" path="res://scenes/pause_menu.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" uid="uid://bwdrwol32sd17" path="res://scenes/bullet_ui.tscn" id="7_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://difwfmtnliqrt" path="res://prefabs/bullet_collect.tscn" id="7_i7141"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_4wyf3")
@@ -42,9 +41,5 @@ offset_right = 938.0
 offset_bottom = 41.0
 
 [node name="BulletUI" parent="UI" instance=ExtResource("7_4mrxx")]
-
-[node name="bullet_collect" parent="." instance=ExtResource("7_i7141")]
-position = Vector2(176, 72)
-max_bullets = null
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

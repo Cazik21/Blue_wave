@@ -8,4 +8,4 @@ func _ready() -> void:
 	add_theme_stylebox_override("focus", empty_style)
 
 func _on_pressed() -> void:
-	get_parent().queue_free()
+	get_parent().get_parent().queue_free()
