@@ -3,7 +3,7 @@ extends Node
 var can_spawn_enemy
 var tree
 var player
-var enemies_p_wave = 5
+var enemies_p_wave = 4
 var wave = 1
 var enemies_f
 var player_lifes : int = 5
@@ -15,6 +15,7 @@ var cena_anterior : String
 var paused : bool = false
 var balas_q_tenho : Array = [32, 0, 0, 0, 0]
 var scroll_pos = 0
+var enemys_no_comeco_da_wave
 
 @warning_ignore("unused_signal")
 signal spawn_grounded_enemy

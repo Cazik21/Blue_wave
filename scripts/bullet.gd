@@ -9,30 +9,41 @@ var direction : Vector2 = Vector2.ZERO
 var dano_das_balas : Array = [2, 1, 4, 3, 3]
 var array1 : Array = ["normal", "big", "small", "bomb", "shock"]
 var scale_of_bullet : Array = [7, 15, 5, 15, 25]
-var can_dano_player: bool = false
 var tween
 var type_da_bala
 var index_of_type
+var target_pos
+var duration
 
 func _ready() -> void:
-	type_da_bala = Messenger.type_of_the_bullet
-	index_of_type = array1.find(type_da_bala)
-	Messenger.balas_q_tenho[Messenger.scroll_pos] -= 1
+	if name.contains("bullet"):
+		type_da_bala = Messenger.type_of_the_bullet
+		index_of_type = array1.find(type_da_bala)
+		Messenger.balas_q_tenho[Messenger.scroll_pos] -= 1
+	else:
+		type_da_bala = "normal"
+		index_of_type = 1
 	anim.play(type_da_bala)
-	can_dano_player = false
 	anim.scale = Vector2(0.6, 0.6)
 	collision.scale =Vector2(1, 1)
 	self.visible = true
-	global_position = self.get_parent().get_node("Player").global_position
-	# 1. Direção da bala
-	direction = (get_global_mouse_position() - global_position).normalized()
+	if name.contains("bullet"):
+		global_position = self.get_parent().get_node("Player").global_position
+		# 1. Direção da bala
+		direction = (get_global_mouse_position() - global_position).normalized()
 
-	# 2. Distância fixa de viagem
-	var travel_distance = global_position.distance_to(get_global_mouse_position())
-	var target_pos = global_position + direction * travel_distance
-
-	# 3. Duração baseada em VELOCIDADE
-	var duration = travel_distance / bullet_speed
+		# 2. Distância fixa de viagem
+		var travel_distance = global_position.distance_to(get_global_mouse_position())
+		target_pos = global_position + direction * travel_distance
+		# 3. Duração baseada em VELOCIDADE
+		duration = travel_distance / bullet_speed
+	else:
+		direction = (Messenger.player.global_position - global_position).normalized()
+		# 2. Distância fixa de viagem
+		var travel_distance = global_position.distance_to(Messenger.player.global_position)
+		target_pos = global_position + direction * travel_distance
+		# 3. Duração baseada em VELOCIDADE
+		duration = travel_distance / bullet_speed
 
 	# 4. Tween linear com velocidade constante
 	tween = get_tree().create_tween()
@@ -72,9 +83,9 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("enemies"):
 		kill_tween()
 		@warning_ignore("integer_division")
-		if can_dano_player:
-			body.take_damage(2)
 		body.take_damage(2 - int(collision.scale > Vector2(1, 1)), global_position)
+	if body.is_in_group("Player") and not name.contains("bullet"):
+		body.dano_player(1)
 
 
 

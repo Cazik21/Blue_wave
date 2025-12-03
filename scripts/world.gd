@@ -30,7 +30,7 @@ func spawn_enemies():
 		add_child(enemy)
 		enemy.global_position = calculate_spawn_pos()
 		enemy.player = player
-		if randi_range(0, ceil( (Messenger.wave - 3) / 1.06)) == 0 and Messenger.wave > 4:
+		if randi_range(0, ceil( (Messenger.wave - 7) / 1.06)) == 0 and Messenger.wave > 8:
 			enemy.name = "inimigo_atira"
 		else:
 			enemy.name = "inimigo_normal"
@@ -52,14 +52,9 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
 
 func troca_de_wave():
-	Messenger.balas_q_tenho[0] += 32
-	Messenger.balas_q_tenho[1] += 10
-	Messenger.balas_q_tenho[2] += 10
-	Messenger.balas_q_tenho[3] += 10
-	Messenger.balas_q_tenho[4] += 5
-	spawn_timer.wait_time /= 1.19
+	spawn_timer.wait_time /= 1.08
 	@warning_ignore("integer_division")
-	spawn_timer.wait_time = spawn_timer.wait_time + int(Messenger.wave >= 4) / 2
+	spawn_timer.wait_time = spawn_timer.wait_time + int(Messenger.wave >= 8) / 2
 	if Messenger.player_lifes < 5:
 		var i = 1
 		@warning_ignore("integer_division")

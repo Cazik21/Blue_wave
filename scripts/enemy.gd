@@ -86,7 +86,8 @@ func nao_atirar():
 			can_instantiate_waves = true
 
 func apply_kockback(force : Vector2):
-	knockback_velocity = force
+	if esta_atirando == false:
+		knockback_velocity = force
 
 
 func desconect():
