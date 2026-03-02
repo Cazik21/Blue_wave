@@ -47,7 +47,6 @@ func calculate_spawn_pos() -> Vector2:
 	
 	return spawn_pos
 
-
 func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
 

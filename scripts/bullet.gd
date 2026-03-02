@@ -86,9 +86,21 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		body.take_damage(2 - int(collision.scale > Vector2(1, 1)), global_position)
 	if body.is_in_group("Player") and not name.contains("bullet"):
 		body.dano_player(1)
-
-
+		body.take_damage(1, global_position)
 
 func kill_tween():
 	tween.kill()
 	bullet_finished()
+func dar_dano():
+	pass
+	if equacao_q_n_lembro(get_parent().get_node("Player").position, self.position) < 17 and can_dano_player:
+		Messenger.dano_player.emit()
+		anim.play("default_wave")
+		audio.play()
+		self.get_node("PointLight2D").energy = 0
+		var tweenop = get_tree().create_tween()
+		tweenop.tween_property(self, "modulate",
+		 Color("#ffffff", 0),
+		 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		target_pos = global_position
+		tweenop.connect("finished", wave_delete)
