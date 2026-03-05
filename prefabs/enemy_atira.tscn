@@ -190,7 +190,7 @@ autoplay = "born"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_72pe0")
-volume_db = -80.0
+volume_db = -20.0
 
 [node name="Timer_shoot" type="Timer" parent="."]
 wait_time = 3.0

@@ -20,10 +20,10 @@ texture = ExtResource("1_yx032")
 
 [node name="Audio1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_nhfbc")
-volume_db = -80.0
+volume_db = -10.0
 
 [node name="Audio2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_7cuib")
-volume_db = -80.0
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
