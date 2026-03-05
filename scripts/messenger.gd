@@ -40,6 +40,8 @@ signal voltou_pro_game_brabo
 signal saiu_pq_meno
 @warning_ignore("unused_signal")
 signal max_bulletas
+@warning_ignore("unused_signal")
+signal powerasso
 
 func _ready() -> void:
 	tree = get_tree()

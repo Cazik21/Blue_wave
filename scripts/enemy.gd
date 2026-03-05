@@ -8,11 +8,13 @@ const PARTICLES = preload("res://prefabs/particles.tscn")
 @export var health : float = 4
 @export var waves_scene : PackedScene
 @export var coraco_scene : PackedScene
+const BULLET_ENEMY = preload("res://scenes/bullet_enemy.tscn")
 
 
 @onready var anim: AnimatedSprite2D = $anim
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var timer_shoot: Timer = $Timer_shoot
 
 
 var bullet_scene = preload("res://prefabs/bullet_collect.tscn")
@@ -24,7 +26,7 @@ var knockback_velocity : Vector2 = Vector2.ZERO
 var knockback_decay : float = 160
 var animation_playing : bool = false
 var can_instantiate_waves : bool = true
-
+var can_shoot : bool = true
 
 var rng = RandomNumberGenerator.new()
 var org_color
@@ -58,7 +60,13 @@ func _physics_process(_delta: float) -> void:
 
 func atirar():
 	if player:
-		direction = global_position.direction_to(player.global_position)
+		if can_shoot:
+			can_shoot = false
+			timer_shoot.start()
+			direction = global_position.direction_to(player.global_position)
+			var bullet_enemy = BULLET_ENEMY.instantiate()
+			get_tree().current_scene.add_child(bullet_enemy)
+			bullet_enemy.global_position = global_position
 	else:
 		anim.stop()
 
@@ -129,3 +137,7 @@ func take_damage(amount: float, sourece_position: Vector2):
 
 func voltando_pro_game():
 	anim.frame = frame
+
+
+func _on_timer_shoot_timeout() -> void:
+	can_shoot = true

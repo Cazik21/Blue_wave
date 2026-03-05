@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://b28y56cgvl0up"]
+
+[ext_resource type="Script" uid="uid://gbnvf6mgedjs" path="res://bullet_enemy.gd" id="1_hmyi3"]
+[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="2_a0ysx"]
+[ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="3_spdxa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7y3u0"]
+radius = 0.2403701
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cuyeo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_spdxa")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[node name="bullet_enemy" type="Area2D" groups=["enemies"]]
+z_index = 1
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_hmyi3")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." groups=["enemies"]]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_7y3u0")
+
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-3, -3, 6, 6)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.03999996, 0.04000008)
+scale = Vector2(1.5204082, 1.5204082)
+color = Color(0.38170326, 0.38170323, 0.38170323, 1)
+texture = ExtResource("2_a0ysx")
+texture_scale = 0.1
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.18120003, 0.18120006, 0.18120003, 1)
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(0.84999985, 0.84999985)
+sprite_frames = SubResource("SpriteFrames_cuyeo")
+animation = &"normal"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -14,6 +14,7 @@ extends CharacterBody2D
 @export var bullet_scene : PackedScene
 @export var waves_scene : PackedScene
 @export var enemy_scene : PackedScene
+@export var powerasso : PackedScene
 
 var wait_time_for_ground_enemys : float = 3
 var can_shoot : bool = true
@@ -28,6 +29,7 @@ var speed : float = 100
 var can_dano : bool = true
 
 func _ready() -> void:
+	Messenger.powerasso.connect(powerzasso)
 	timer.wait_time = wait_time_for_ground_enemys
 	reinice_timer()
 	Messenger.dano_player.connect(dano_player)
@@ -48,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 
 func move() -> void:
-	if Messenger.player_lifes > 0:
+	if Messenger.player_lifes > 0 and not Input.is_action_pressed("charge"):
 		direction_vector = Input.get_vector("A", "D", "W", "S").normalized()
 	
 		velocity = direction_vector * speed * safe_delta * 60
@@ -135,3 +137,13 @@ func _on_hurtbox_body_exited(_body: CharacterBody2D) -> void:
 
 func _on_timer_dano_timeout() -> void:
 	can_dano = true
+
+func powerzasso():
+	var power_wave = powerasso.instantiate()
+	get_tree().current_scene.add_child(power_wave)
+	power_wave.global_position = global_position
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemies"):
+		dano_player(1)

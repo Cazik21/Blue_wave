@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwdrwol32sd17"]
+[gd_scene load_steps=9 format=3 uid="uid://cx1lnp1fcg0mt"]
 
 [ext_resource type="Texture2D" uid="uid://ov0mg1pb7mn2" path="res://assets/bullet_big.png" id="1_lf5kw"]
 [ext_resource type="Texture2D" uid="uid://bg3iwgc5anw0b" path="res://assets/bullet_bomb.png" id="2_h16ij"]
 [ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="3_dqt6o"]
 [ext_resource type="Texture2D" uid="uid://deia86u44o5vl" path="res://assets/bullet_shock.png" id="4_lane4"]
 [ext_resource type="Texture2D" uid="uid://bffthf0xe57ca" path="res://assets/bullet_small.png" id="5_7n0dn"]
-[ext_resource type="Script" uid="uid://dfipj6t1xqacn" path="res://scripts/tipe_bullet.gd" id="6_h16ij"]
+[ext_resource type="Script" path="res://scripts/tipe_bullet.gd" id="6_h16ij"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="6_thr0b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_62nl5"]

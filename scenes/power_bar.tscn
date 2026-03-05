@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhcql0foh0b1u"]
+
+[ext_resource type="Script" uid="uid://i3dbboqoxb1v" path="res://scripts/power_bar.gd" id="1_cvup1"]
+[ext_resource type="Texture2D" uid="uid://ovtpd73klh0i" path="res://assets/progressu melhor (1).png" id="1_eb355"]
+[ext_resource type="Texture2D" uid="uid://cu7kt34lix2k" path="res://assets/barr_trazz_malhorususususu.png" id="2_cvup1"]
+[ext_resource type="Texture2D" uid="uid://mh057xlfpbga" path="res://assets/progressu.png" id="3_b585k"]
+[ext_resource type="Texture2D" uid="uid://beityinp6wl1u" path="res://assets/Raio_katchauu.png" id="4_k7sx1"]
+[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="6_b585k"]
+
+[node name="Power_bar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cvup1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = -4.999998
+offset_top = 79.0
+offset_right = 27.000002
+offset_bottom = 111.0
+min_value = 9.0
+max_value = 92.0
+step = 0.2
+value = 25.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("1_eb355")
+texture_over = ExtResource("2_cvup1")
+texture_progress = ExtResource("3_b585k")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 64.0
+offset_right = 41.0
+offset_bottom = 104.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_k7sx1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(12, 90.00001)
+scale = Vector2(0.24107143, 0.4642857)
+energy = 6.05
+texture = ExtResource("6_b585k")
