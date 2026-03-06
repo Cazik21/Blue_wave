@@ -1,11 +1,63 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhcql0foh0b1u"]
+[gd_scene load_steps=10 format=3 uid="uid://bhcql0foh0b1u"]
 
 [ext_resource type="Script" uid="uid://i3dbboqoxb1v" path="res://scripts/power_bar.gd" id="1_cvup1"]
-[ext_resource type="Texture2D" uid="uid://ovtpd73klh0i" path="res://assets/progressu melhor (1).png" id="1_eb355"]
-[ext_resource type="Texture2D" uid="uid://cu7kt34lix2k" path="res://assets/barr_trazz_malhorususususu.png" id="2_cvup1"]
+[ext_resource type="Texture2D" uid="uid://dcpitbqgwbywp" path="res://assets/Under_melhor.png" id="2_b585k"]
 [ext_resource type="Texture2D" uid="uid://mh057xlfpbga" path="res://assets/progressu.png" id="3_b585k"]
+[ext_resource type="Texture2D" uid="uid://bgc8gfe2he7u3" path="res://assets/over_melhor.png" id="3_k7sx1"]
 [ext_resource type="Texture2D" uid="uid://beityinp6wl1u" path="res://assets/Raio_katchauu.png" id="4_k7sx1"]
-[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="6_b585k"]
+
+[sub_resource type="Animation" id="Animation_cvup1"]
+resource_name = "bar_cheia"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 64), Vector2(1, 60), Vector2(1, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_b585k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_k7sx1"]
+resource_name = "parado"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7sx1"]
+_data = {
+&"RESET": SubResource("Animation_b585k"),
+&"bar_cheia": SubResource("Animation_cvup1"),
+&"parado": SubResource("Animation_k7sx1")
+}
 
 [node name="Power_bar" type="Control"]
 layout_mode = 3
@@ -22,23 +74,23 @@ offset_bottom = 111.0
 min_value = 9.0
 max_value = 92.0
 step = 0.2
-value = 25.0
+value = 9.0
 fill_mode = 3
 nine_patch_stretch = true
-texture_under = ExtResource("1_eb355")
-texture_over = ExtResource("2_cvup1")
+texture_under = ExtResource("2_b585k")
+texture_over = ExtResource("3_k7sx1")
 texture_progress = ExtResource("3_b585k")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("TextureRect")
+libraries = {
+&"": SubResource("AnimationLibrary_k7sx1")
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AnimationPlayer"]
 offset_left = 1.0
 offset_top = 64.0
 offset_right = 41.0
-offset_bottom = 104.0
+offset_bottom = 104.000824
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_k7sx1")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(12, 90.00001)
-scale = Vector2(0.24107143, 0.4642857)
-energy = 6.05
-texture = ExtResource("6_b585k")
