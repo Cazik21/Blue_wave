@@ -1,25 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhcql0foh0b1u"]
+[gd_scene load_steps=11 format=3 uid="uid://bhcql0foh0b1u"]
 
 [ext_resource type="Script" uid="uid://i3dbboqoxb1v" path="res://scripts/power_bar.gd" id="1_cvup1"]
 [ext_resource type="Texture2D" uid="uid://dcpitbqgwbywp" path="res://assets/Under_melhor.png" id="2_b585k"]
 [ext_resource type="Texture2D" uid="uid://mh057xlfpbga" path="res://assets/progressu.png" id="3_b585k"]
 [ext_resource type="Texture2D" uid="uid://bgc8gfe2he7u3" path="res://assets/over_melhor.png" id="3_k7sx1"]
 [ext_resource type="Texture2D" uid="uid://beityinp6wl1u" path="res://assets/Raio_katchauu.png" id="4_k7sx1"]
-
-[sub_resource type="Animation" id="Animation_cvup1"]
-resource_name = "bar_cheia"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 64), Vector2(1, 60), Vector2(1, 64)]
-}
+[ext_resource type="PackedScene" uid="uid://bjusk7ppsguf8" path="res://energy_particles.tscn" id="6_b585k"]
 
 [sub_resource type="Animation" id="Animation_b585k"]
 length = 0.001
@@ -34,6 +20,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_cvup1"]
+resource_name = "bar_cheia"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 64), Vector2(1, 60), Vector2(1, 64)]
 }
 
 [sub_resource type="Animation" id="Animation_k7sx1"]
@@ -94,3 +95,10 @@ offset_right = 41.0
 offset_bottom = 104.000824
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_k7sx1")
+
+[node name="CPUParticles2D" parent="CanvasLayer" instance=ExtResource("6_b585k")]
+position = Vector2(11, 82)
+rotation = -3.1415925
+
+[node name="CPUParticles2D2" parent="CanvasLayer" instance=ExtResource("6_b585k")]
+position = Vector2(11, 82)

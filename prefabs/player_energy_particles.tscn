@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://5th6mihuaoge"]
+
+[node name="player_energy particles" type="CPUParticles2D"]
+rotation = -1.5707964
+amount = 25
+lifetime = 0.5
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 100.0
+orbit_velocity_min = -5.0
+orbit_velocity_max = 5.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_max = 5.0

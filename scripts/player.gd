@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var hurtbox: Area2D = $hurtbox
 @onready var collision_hurt: CollisionShape2D = $hurtbox/CollisionShape2D
 @onready var timer_dano: Timer = $TimerDano
+@onready var energy_particles: CPUParticles2D = $"player_energy particles"
 
 
 @export var bullet_scene : PackedScene
@@ -47,6 +48,11 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("shoot") and can_shoot:
 			shoot()
 		create_miniwaves()
+		if Input.is_action_pressed("charge"):
+			energy_particles.emitting = true
+		
+		else:
+			energy_particles.emitting = false
 
 
 func move() -> void:
