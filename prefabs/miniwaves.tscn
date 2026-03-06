@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://crs7yi8rb0x0r" path="res://assets/Water walking (2).png" id="3_ppvmk"]
 [ext_resource type="Texture2D" uid="uid://j5sjfskig4kr" path="res://assets/Water walking (1).png" id="4_jfqxb"]
 [ext_resource type="Texture2D" uid="uid://crekdokahv3sf" path="res://assets/Water walking.png" id="5_nteer"]
-[ext_resource type="Script" uid="uid://hkaxncxlleye" path="res://scripts/miniwaves.gd" id="6_yrerp"]
+[ext_resource type="Script" uid="uid://cojh7ssmtks35" path="res://scripts/miniwaves.gd" id="6_yrerp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_taymj"]
 animations = [{
