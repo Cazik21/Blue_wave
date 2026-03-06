@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 func move() -> void:
 	if Messenger.player_lifes > 0 and not Input.is_action_pressed("charge"):
 		direction_vector = Input.get_vector("A", "D", "W", "S").normalized()
-	
+		
 		velocity = direction_vector * speed * safe_delta * 60
 		move_and_slide()
 		if Vector2(Input.get_action_strength("D") - Input.get_action_strength("A"),Input.get_action_strength("S") - Input.get_action_strength("W")) > Vector2.ZERO: 
@@ -61,6 +61,8 @@ func move() -> void:
 			walking = true
 		else:
 			walking = false
+	else:
+		create_miniwaves()
 
 func shoot():
 	if Messenger.player_lifes > 0:

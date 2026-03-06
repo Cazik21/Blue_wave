@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ktk0gktr5tap"]
+[gd_scene load_steps=4 format=3 uid="uid://cwwdknfywepyg"]
 
 [ext_resource type="Script" uid="uid://cwhx1ys3ub7jh" path="res://scripts/max_bullets.gd" id="1_g4vtc"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_dym7t"]
+[ext_resource type="AudioStream" uid="uid://c4sy3a2vuqd8b" path="res://assets/hurt.wav" id="3_dym7t"]
 
 [node name="max_bullets" type="Control"]
 layout_mode = 3
@@ -25,5 +26,8 @@ text = "maximum bullets reached"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.5
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dym7t")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,6 +2,7 @@ extends Control
 
 @onready var label: Label = $CanvasLayer/Label
 @onready var timer: Timer = $Timer
+@onready var audio: AudioStreamPlayer2D = $Audio
 
 var tweenop
 
@@ -18,5 +19,6 @@ func _on_timer_timeout() -> void:
 func _max():
 	label.modulate = Color("ffffff", 100)
 	label.visible = true
+	audio.play()
 	timer.start()
 	

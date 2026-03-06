@@ -98,7 +98,7 @@ power1={
 
 [physics]
 
-2d/default_gravity=0.0
+2d/default_gravity=9.800000000000182
 
 [rendering]
 
