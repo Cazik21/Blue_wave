@@ -1,15 +1,11 @@
 extends AnimatedSprite2D
 
 
-@export var enemy_scene : PackedScene
-
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	play("1")
-	var tweenop = get_tree().create_tween()
-	tweenop.tween_property(self, "modulate",
-	 Color("#ffffff", 0),
-	 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tweenop.connect("finished", delete)
+	pass # Replace with function body.
 
-func delete():
-	queue_free()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
