@@ -49,7 +49,7 @@ offset_bottom = 41.0
 
 [node name="max_bullets" parent="UI" instance=ExtResource("8_4mrxx")]
 
-[node name="Power_bar" parent="." instance=ExtResource("9_7r4gi")]
+[node name="Power_bar" parent="UI" instance=ExtResource("9_7r4gi")]
 
 [node name="walls" type="StaticBody2D" parent="."]
 collision_layer = 8
