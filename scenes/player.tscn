@@ -45,7 +45,7 @@ animation = &"idle"
 frame_progress = 0.2977439
 
 [node name="hurtbox" type="Area2D" parent="." groups=["Player"]]
-collision_mask = 7
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 shape = SubResource("RectangleShape2D_tuyoq")

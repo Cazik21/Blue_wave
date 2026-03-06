@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx1lnp1fcg0mt"]
+[gd_scene load_steps=10 format=3 uid="uid://cx1lnp1fcg0mt"]
 
 [ext_resource type="Texture2D" uid="uid://ov0mg1pb7mn2" path="res://assets/bullet_big.png" id="1_lf5kw"]
 [ext_resource type="Texture2D" uid="uid://bg3iwgc5anw0b" path="res://assets/bullet_bomb.png" id="2_h16ij"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bffthf0xe57ca" path="res://assets/bullet_small.png" id="5_7n0dn"]
 [ext_resource type="Script" path="res://scripts/tipe_bullet.gd" id="6_h16ij"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="6_thr0b"]
+[ext_resource type="Texture2D" uid="uid://dhc0dt0vu4k2n" path="res://assets/bullet_ui (1).png" id="8_dqt6o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_62nl5"]
 animations = [{
@@ -59,29 +60,14 @@ grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-modulate = Color(6.14099, 6.14099, 6.14099, 1)
-offset_left = -2.0
-offset_top = 32.0
-offset_right = 38.0
-offset_bottom = 69.0
-scale = Vector2(0.7, 0.7)
-
-[node name="Panel2" type="Panel" parent="CanvasLayer"]
-modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
-offset_left = -2.0
-offset_top = 33.0
-offset_right = 36.0
-offset_bottom = 67.28571
-scale = Vector2(0.7, 0.7)
-
-[node name="tipe_bullet" type="AnimatedSprite2D" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.9019608)
-position = Vector2(6.0000005, 50.000004)
-scale = Vector2(0.7, 0.7)
-sprite_frames = SubResource("SpriteFrames_62nl5")
-animation = &"big"
-script = ExtResource("6_h16ij")
+[node name="BulletUi" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.2824075, 0.28240746, 0.28240746, 1)
+offset_left = -12.0
+offset_top = 21.999996
+offset_right = 20.0
+offset_bottom = 53.999996
+scale = Vector2(1.53125, 1.53125)
+texture = ExtResource("8_dqt6o")
 
 [node name="count" type="Label" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.9019608)
@@ -92,3 +78,11 @@ offset_bottom = 57.000004
 scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("6_thr0b")
 text = " 0"
+
+[node name="tipe_bullet" type="AnimatedSprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.9019608)
+position = Vector2(6.0000005, 50.000004)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_62nl5")
+animation = &"big"
+script = ExtResource("6_h16ij")
