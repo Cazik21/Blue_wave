@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cecommju7mhn1"]
 
 [ext_resource type="Texture2D" uid="uid://co075ruoy5u7r" path="res://assets/heart (2).png" id="1_fvwvb"]
-[ext_resource type="Script" path="res://scripts/label.gd" id="2_fmu8j"]
+[ext_resource type="Script" uid="uid://d2abrac7ptsxq" path="res://scripts/label.gd" id="2_fmu8j"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_fvwvb"]
 
 [node name="hearts" type="Control"]
