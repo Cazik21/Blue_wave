@@ -52,7 +52,7 @@ offset_bottom = 41.0
 [node name="Power_bar" parent="." instance=ExtResource("9_7r4gi")]
 
 [node name="walls" type="StaticBody2D" parent="."]
-collision_layer = 4
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
 position = Vector2(208, -10)

@@ -1,5 +1,6 @@
 extends Area2D
 
+@onready var collision: CollisionShape2D = $CollisionShape
 
 var direction : Vector2 = Vector2.ZERO
 var bullet_speed = 50
@@ -38,4 +39,9 @@ func bullet_finished() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
+		self.queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemies"):
+		body.take_damage(2 - int(collision.scale > Vector2(1, 1)), global_position)
 		self.queue_free()
