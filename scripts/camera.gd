@@ -14,10 +14,10 @@ func _process(_delta: float) -> void:
 		tween_in = get_tree().create_tween()
 		tween_in.tween_property(self, "zoom",
 		 Vector2(1.2, 1.2),
-		 0.8)
+		 1.5)
 	else:
 		tween_out = get_tree().create_tween()
 		tween_out.tween_property(self, "zoom",
 		 Vector2(1.0, 1.0),
-		 0.4)
+		 0.7)
 	

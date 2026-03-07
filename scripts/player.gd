@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var collision_hurt: CollisionShape2D = $hurtbox/CollisionShape2D
 @onready var timer_dano: Timer = $TimerDano
 @onready var energy_particles: CPUParticles2D = $"player_energy particles"
+@onready var timer_dash: Timer = $Timer_dash
+@onready var dash_audio: AudioStreamPlayer2D = $dash
 
 
 @export var bullet_scene : PackedScene
@@ -28,6 +30,7 @@ var safe_delta : float
 var org_color
 var speed : float = 100
 var can_dano : bool = true
+var can_dash : bool = true
 
 func _ready() -> void:
 	Messenger.powerasso.connect(powerzasso)
@@ -47,13 +50,15 @@ func _physics_process(delta: float) -> void:
 		move()
 		if Input.is_action_just_pressed("shoot") and can_shoot:
 			shoot()
+		
+		if Input.is_action_just_pressed("dash") and not Input.is_action_pressed("charge"):
+			dash()
 		create_miniwaves()
 		if Input.is_action_pressed("charge"):
 			energy_particles.emitting = true
 		
 		else:
 			energy_particles.emitting = false
-
 
 func move() -> void:
 	if Messenger.player_lifes > 0 and not Input.is_action_pressed("charge"):
@@ -102,7 +107,6 @@ func _on_hurtbox_body_entered(body : CharacterBody2D) -> void:
 	if body.is_in_group("enemies"):
 		dano_player(1)
 
-
 func dano_player(amont : int):
 	if can_dano:
 		Messenger.player_lifes -= amont
@@ -121,7 +125,6 @@ func reinice_timer():
 	Messenger.can_spawn_enemy = 0
 	timer.start()
 
-
 func spawn_grounded_enemy():
 	if Messenger.wave >= 5:
 		reinice_timer()
@@ -134,14 +137,11 @@ func spawn_grounded_enemy():
 		await get_tree().create_timer(0.8).timeout
 		new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
 
-
 func _on_timer_timeout() -> void:
 	Messenger.can_spawn_enemy = 1
 
-
 func _on_hurtbox_body_exited(_body: CharacterBody2D) -> void:
 	can_dano = true
-
 
 func _on_timer_dano_timeout() -> void:
 	can_dano = true
@@ -152,7 +152,18 @@ func powerzasso():
 		get_tree().current_scene.add_child(power_wave)
 		power_wave.global_position = global_position
 
-
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
 		dano_player(1)
+
+func dash():
+	if can_dash:
+		dash_audio.play()
+		can_dash = false
+		speed = 300
+		await get_tree().create_timer(0.1).timeout
+		speed = 100
+		timer_dash.start()
+
+func _on_timer_dash_timeout() -> void:
+	can_dash = true

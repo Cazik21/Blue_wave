@@ -5,6 +5,7 @@ extends Control
 @onready var animation: AnimationPlayer = $CanvasLayer/AnimationPlayer
 @onready var particles: CPUParticles2D = $CanvasLayer/CPUParticles2D
 @onready var particles2: CPUParticles2D = $CanvasLayer/CPUParticles2D2
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	particles.emitting = false
@@ -46,3 +47,6 @@ func map_value(value):
 	var max2 = 82.0
 	
 	return min2 + (value - min1) * (max2 - min2) / (max1 - min1)
+
+func _on_timer_timeout() -> void:
+	pass

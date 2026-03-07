@@ -102,3 +102,8 @@ rotation = -3.1415925
 
 [node name="CPUParticles2D2" parent="CanvasLayer" instance=ExtResource("6_b585k")]
 position = Vector2(11, 82)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
