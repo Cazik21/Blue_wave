@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://r8g54jdsx34l" path="res://assets/player1.png" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://by6tii7albfd4" path="res://scenes/enemy.tscn" id="4_smehm"]
-[ext_resource type="PackedScene" uid="uid://c1y3hfcjmcrp7" path="res://scenes/power_wave.tscn" id="5_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://c1y3hfcjmcrp7" path="res://prefabs/power_wave.tscn" id="5_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://bvfugypp5rpwq" path="res://assets/tap.wav" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://5th6mihuaoge" path="res://prefabs/player_energy_particles.tscn" id="6_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://dt1g0mp28o2kv" path="res://assets/powerUp.wav" id="7_fjrip"]
-[ext_resource type="Script" uid="uid://c8mvb52lxiggc" path="res://scenes/camera.gd" id="11_d2wvv"]
+[ext_resource type="Script" uid="uid://c8mvb52lxiggc" path="res://scripts/camera.gd" id="11_d2wvv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{

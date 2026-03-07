@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" uid="uid://cx1lnp1fcg0mt" path="res://scenes/bullet_ui.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cwwdknfywepyg" path="res://prefabs/max_bullets.tscn" id="8_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://bhcql0foh0b1u" path="res://scenes/power_bar.tscn" id="9_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://bhcql0foh0b1u" path="res://prefabs/power_bar.tscn" id="9_7r4gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4gi"]
 size = Vector2(452, 20)
