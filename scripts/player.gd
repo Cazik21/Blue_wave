@@ -147,9 +147,10 @@ func _on_timer_dano_timeout() -> void:
 	can_dano = true
 
 func powerzasso():
-	var power_wave = powerasso.instantiate()
-	get_tree().current_scene.add_child(power_wave)
-	power_wave.global_position = global_position
+	if not Messenger.paused:
+		var power_wave = powerasso.instantiate()
+		get_tree().current_scene.add_child(power_wave)
+		power_wave.global_position = global_position
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:

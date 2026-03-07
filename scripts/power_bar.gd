@@ -6,9 +6,6 @@ extends Control
 @onready var particles: CPUParticles2D = $CanvasLayer/CPUParticles2D
 @onready var particles2: CPUParticles2D = $CanvasLayer/CPUParticles2D2
 
-
-var tween2_fin : bool = true
-
 func _ready() -> void:
 	particles.emitting = false
 	particles2.emitting = false
@@ -38,8 +35,9 @@ func _process(_delta: float) -> void:
 		animation.animation_finished.connect(_process)
 	
 	if progress_bar.value >= 92 and Input.is_action_just_pressed("power1"):
-		progress_bar.value = 0
-		Messenger.powerasso.emit()
+		if not Messenger.paused:
+			progress_bar.value = 0
+			Messenger.powerasso.emit()
 
 func map_value(value):
 	var min1 = 14.0

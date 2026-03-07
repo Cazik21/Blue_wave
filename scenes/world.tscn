@@ -14,7 +14,6 @@
 size = Vector2(452, 20)
 
 [node name="world" type="Node2D"]
-position = Vector2(-208, -116)
 script = ExtResource("1_4wyf3")
 enemy_scene = ExtResource("2_4mrxx")
 pause_menu = ExtResource("6_qfnet")
