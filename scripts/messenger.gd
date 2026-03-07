@@ -3,7 +3,7 @@ extends Node
 var can_spawn_enemy
 var tree
 var player
-var enemies_p_wave = 5
+var enemies_p_wave = 3
 var wave = 1
 var enemies_f
 var player_lifes : int = 5

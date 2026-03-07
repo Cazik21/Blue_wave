@@ -34,8 +34,10 @@ var frame = 0
 
 
 func _ready() -> void:
+	org_color = anim.modulate
+	anim.modulate = Color("ffffff")
 	anim.play("born")
-	anim.animation_finished.connect(anim.play.bind("jumping"))
+	anim.animation_finished.connect(restablecendo_animations)
 	anim.animation_finished.connect(desconect)
 	Messenger.org_color_for_enemy = anim.modulate
 	Messenger.voltou_pro_game_brabo.connect(voltando_pro_game)
@@ -43,7 +45,6 @@ func _ready() -> void:
 	
 	rng.randomize()
 	player = Messenger.player
-	org_color = anim.modulate
 	voltando_pro_game()
 
 func saiu_pq_meno():
@@ -141,3 +142,7 @@ func voltando_pro_game():
 
 func _on_timer_shoot_timeout() -> void:
 	can_shoot = true
+
+func restablecendo_animations():
+	anim.modulate = org_color
+	anim.play("jumping")

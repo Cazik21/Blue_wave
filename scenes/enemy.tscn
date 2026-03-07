@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://by6tii7albfd4"]
+[gd_scene load_steps=26 format=3 uid="uid://by6tii7albfd4"]
 
 [ext_resource type="Script" uid="uid://db4nw25ges0ey" path="res://scripts/enemy.gd" id="1_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_md484"]
@@ -28,21 +28,17 @@ region = Rect2(66, 0, 33, 33)
 atlas = ExtResource("2_xwavj")
 region = Rect2(99, 0, 33, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(0, 33, 33, 33)
+region = Rect2(66, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
 atlas = ExtResource("2_xwavj")
 region = Rect2(33, 33, 33, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
 atlas = ExtResource("2_xwavj")
-region = Rect2(66, 33, 33, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
-atlas = ExtResource("2_xwavj")
-region = Rect2(99, 33, 33, 33)
+region = Rect2(0, 33, 33, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1ycm"]
 atlas = ExtResource("2_xwavj")
@@ -92,16 +88,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_w8i8w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_otmr2")
+"texture": SubResource("AtlasTexture_j0cyh")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wtq4b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j0cyh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g0wcc")
+"texture": SubResource("AtlasTexture_otmr2")
 }],
 "loop": false,
 "name": &"born",
@@ -167,7 +160,7 @@ stream = ExtResource("8_md484")
 volume_db = -20.0
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.15, 0.15, 0.15, 1)
+modulate = Color(0.14901961, 0.14901961, 0.14901961, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wjec0")
-animation = &"born"
+animation = &"jumping"
