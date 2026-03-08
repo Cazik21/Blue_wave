@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("charge") and not Messenger.paused :
 		particles.emitting = true
 		particles2.emitting = true
-		progress_bar.value = progress_bar.value + progress_bar.step
+		progress_bar.value = progress_bar.value + (progress_bar.step)
 	
 	else:
 		particles.emitting = false

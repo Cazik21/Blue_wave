@@ -53,11 +53,32 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
 
 func troca_de_wave():
-	Messenger.balas_q_tenho[0] += 32
-	Messenger.balas_q_tenho[1] += 10
-	Messenger.balas_q_tenho[2] += 10
-	Messenger.balas_q_tenho[3] += 10
-	Messenger.balas_q_tenho[4] += 5
+	
+	if Messenger.balas_q_tenho[0] + 32 > 48:
+		Messenger.balas_q_tenho[0] = 48
+	else:
+		Messenger.balas_q_tenho[0] += 32
+	
+	if Messenger.balas_q_tenho[1] + 10 > 48:
+		Messenger.balas_q_tenho[1] = 48
+	else:
+		Messenger.balas_q_tenho[1] += 10
+	
+	if Messenger.balas_q_tenho[2] + 10 > 48:
+		Messenger.balas_q_tenho[2] = 48
+	else:
+		Messenger.balas_q_tenho[2] += 10
+	
+	if Messenger.balas_q_tenho[3] + 10 > 48:
+		Messenger.balas_q_tenho[3] = 48
+	else:
+		Messenger.balas_q_tenho[3] += 10
+	
+	if Messenger.balas_q_tenho[4] + 5 > 48:
+		Messenger.balas_q_tenho[4] = 48
+	else:
+		Messenger.balas_q_tenho[4] += 5
+	
 	spawn_timer.wait_time /= 1.19
 	@warning_ignore("integer_division")
 	spawn_timer.wait_time = spawn_timer.wait_time + int(Messenger.wave >= 4) / 2

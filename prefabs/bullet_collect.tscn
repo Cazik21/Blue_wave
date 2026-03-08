@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpymgwq6q8o3w"]
+[gd_scene format=3 uid="uid://bpymgwq6q8o3w"]
 
 [ext_resource type="Texture2D" uid="uid://ov0mg1pb7mn2" path="res://assets/bullet_big.png" id="1_0xh1i"]
 [ext_resource type="Script" uid="uid://brtl0lw8pxnmp" path="res://scripts/bullet_collect.gd" id="1_imqku"]
 [ext_resource type="Texture2D" uid="uid://bg3iwgc5anw0b" path="res://assets/bullet_bomb.png" id="2_imqku"]
-[ext_resource type="PackedScene" path="res://prefabs/max_bullets.tscn" id="2_s3r5i"]
+[ext_resource type="PackedScene" uid="uid://cwwdknfywepyg" path="res://prefabs/max_bullets.tscn" id="2_s3r5i"]
 [ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="3_s3r5i"]
 [ext_resource type="Texture2D" uid="uid://deia86u44o5vl" path="res://assets/bullet_shock.png" id="4_pelga"]
 [ext_resource type="Texture2D" uid="uid://bffthf0xe57ca" path="res://assets/bullet_small.png" id="5_fs2fi"]
@@ -54,21 +54,21 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdc6w"]
 
-[node name="bullet_collect" type="Area2D"]
+[node name="bullet_collect" type="Area2D" unique_id=2039321245]
 scale = Vector2(0.5, 0.5)
 collision_layer = 3
 script = ExtResource("1_imqku")
 max_bullets = ExtResource("2_s3r5i")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2017617664]
 sprite_frames = SubResource("SpriteFrames_i4cmt")
 animation = &"big"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=923506010]
 scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_hdc6w")
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=864757884]
 stream = ExtResource("8_pelga")
 volume_db = -18.0
 
