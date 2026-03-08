@@ -98,7 +98,7 @@ wait_time = 0.55
 
 [node name="dash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_3v2ag")
-volume_db = -15.0
+volume_db = -45.0
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
