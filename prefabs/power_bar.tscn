@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bhcql0foh0b1u"]
+[gd_scene load_steps=12 format=3 uid="uid://bhcql0foh0b1u"]
 
 [ext_resource type="Script" uid="uid://i3dbboqoxb1v" path="res://scripts/power_bar.gd" id="1_cvup1"]
 [ext_resource type="Texture2D" uid="uid://dcpitbqgwbywp" path="res://assets/Under_melhor.png" id="2_b585k"]
@@ -8,7 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://bjusk7ppsguf8" path="res://energy_particles.tscn" id="6_b585k"]
 [ext_resource type="PackedScene" uid="uid://7hejusphvoua" path="res://prefabs/decresing_particles.tscn" id="7_skek0"]
 
-[sub_resource type="Animation" id="Animation_b585k"]
+[sub_resource type="Animation" id="Animation_skek0"]
+resource_name = "bar_cheia"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 64), Vector2(1, 62), Vector2(1, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_wf8qr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -23,22 +38,7 @@ tracks/0/keys = {
 "values": [Vector2(1, 64)]
 }
 
-[sub_resource type="Animation" id="Animation_cvup1"]
-resource_name = "bar_cheia"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 64), Vector2(1, 60), Vector2(1, 64)]
-}
-
-[sub_resource type="Animation" id="Animation_k7sx1"]
+[sub_resource type="Animation" id="Animation_cc23d"]
 resource_name = "parado"
 length = 0.001
 tracks/0/type = "value"
@@ -54,21 +54,21 @@ tracks/0/keys = {
 "values": [Vector2(1, 64)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7sx1"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cc23d"]
 _data = {
-&"RESET": SubResource("Animation_b585k"),
-&"bar_cheia": SubResource("Animation_cvup1"),
-&"parado": SubResource("Animation_k7sx1")
+&"RESET": SubResource("Animation_wf8qr"),
+&"bar_cheia": SubResource("Animation_skek0"),
+&"parado": SubResource("Animation_cc23d")
 }
 
-[node name="Power_bar" type="Control" unique_id=1810363391]
+[node name="Power_bar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cvup1")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=316305741]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1562763851]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
 offset_left = -4.999998
 offset_top = 79.0
 offset_right = 27.000002
@@ -83,30 +83,32 @@ texture_under = ExtResource("2_b585k")
 texture_over = ExtResource("3_k7sx1")
 texture_progress = ExtResource("3_b585k")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1519101415]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 root_node = NodePath("TextureRect")
-libraries/ = SubResource("AnimationLibrary_k7sx1")
+libraries = {
+&"": SubResource("AnimationLibrary_cc23d")
+}
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AnimationPlayer" unique_id=1433748026]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AnimationPlayer"]
 offset_left = 1.0
 offset_top = 64.0
 offset_right = 41.0
-offset_bottom = 104.000824
+offset_bottom = 104.00087
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_k7sx1")
 
-[node name="ChargeParticles" parent="CanvasLayer" unique_id=1545507257 instance=ExtResource("6_b585k")]
+[node name="ChargeParticles" parent="CanvasLayer" instance=ExtResource("6_b585k")]
 position = Vector2(11, 82)
 rotation = -3.1415925
 
-[node name="ChargeParticles2" parent="CanvasLayer" unique_id=1296981872 instance=ExtResource("6_b585k")]
+[node name="ChargeParticles2" parent="CanvasLayer" instance=ExtResource("6_b585k")]
 position = Vector2(11, 82)
 
-[node name="DecresingParticles" parent="CanvasLayer" unique_id=78955961 instance=ExtResource("7_skek0")]
+[node name="DecresingParticles" parent="CanvasLayer" instance=ExtResource("7_skek0")]
 position = Vector2(11, 82)
 amount = 35
 
-[node name="Timer" type="Timer" parent="." unique_id=994632527]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

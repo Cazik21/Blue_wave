@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://7hejusphvoua"]
+[gd_scene load_steps=2 format=3 uid="uid://7hejusphvoua"]
 
-[node name="DecresingParticles" type="CPUParticles2D" unique_id=78955961]
+[sub_resource type="Gradient" id="Gradient_01l10"]
+offsets = PackedFloat32Array(0.5185185, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="DecresingParticles" type="CPUParticles2D"]
 amount = 40
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -10,3 +14,4 @@ angle_min = -180.0
 angle_max = 180.0
 scale_amount_min = 0.8
 scale_amount_max = 1.4
+color_ramp = SubResource("Gradient_01l10")

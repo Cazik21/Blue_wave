@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://5th6mihuaoge"]
+[gd_scene load_steps=2 format=3 uid="uid://5th6mihuaoge"]
+
+[sub_resource type="Gradient" id="Gradient_7s340"]
+offsets = PackedFloat32Array(0.8148148, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="player_energy particles" type="CPUParticles2D"]
 rotation = -1.5707964
@@ -12,3 +16,4 @@ orbit_velocity_max = 5.0
 angle_min = -180.0
 angle_max = 180.0
 scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_7s340")
