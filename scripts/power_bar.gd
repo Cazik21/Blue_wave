@@ -8,6 +8,7 @@ extends Control
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
+	Messenger.powerasso.connect(animationzinha_descendo_a_barra.bind(9.0))
 	particles.emitting = false
 	particles2.emitting = false
 
@@ -37,7 +38,6 @@ func _process(_delta: float) -> void:
 	
 	if progress_bar.value >= 92 and Input.is_action_just_pressed("power1"):
 		if not Messenger.paused:
-			progress_bar.value = 0
 			Messenger.powerasso.emit()
 
 
@@ -57,3 +57,9 @@ func _on_timer_timeout() -> void:
 		particles.emitting = true
 		particles2.emitting = true
 		progress_bar.value += progress_bar.step
+
+
+func animationzinha_descendo_a_barra(balor):
+	while progress_bar.value > balor:
+		await get_tree().create_timer(get_process_delta_time()).timeout
+		progress_bar.value -= 4
