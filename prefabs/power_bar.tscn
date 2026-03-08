@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bgc8gfe2he7u3" path="res://assets/over_melhor.png" id="3_k7sx1"]
 [ext_resource type="Texture2D" uid="uid://beityinp6wl1u" path="res://assets/Raio_katchauu.png" id="4_k7sx1"]
 [ext_resource type="PackedScene" uid="uid://bjusk7ppsguf8" path="res://energy_particles.tscn" id="6_b585k"]
+[ext_resource type="PackedScene" uid="uid://7hejusphvoua" path="res://prefabs/decresing_particles.tscn" id="7_skek0"]
 
 [sub_resource type="Animation" id="Animation_b585k"]
 length = 0.001
@@ -94,12 +95,16 @@ offset_bottom = 104.000824
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_k7sx1")
 
-[node name="CPUParticles2D" parent="CanvasLayer" unique_id=1545507257 instance=ExtResource("6_b585k")]
+[node name="ChargeParticles" parent="CanvasLayer" unique_id=1545507257 instance=ExtResource("6_b585k")]
 position = Vector2(11, 82)
 rotation = -3.1415925
 
-[node name="CPUParticles2D2" parent="CanvasLayer" unique_id=1296981872 instance=ExtResource("6_b585k")]
+[node name="ChargeParticles2" parent="CanvasLayer" unique_id=1296981872 instance=ExtResource("6_b585k")]
 position = Vector2(11, 82)
+
+[node name="DecresingParticles" parent="CanvasLayer" unique_id=78955961 instance=ExtResource("7_skek0")]
+position = Vector2(11, 82)
+amount = 35
 
 [node name="Timer" type="Timer" parent="." unique_id=994632527]
 wait_time = 3.0

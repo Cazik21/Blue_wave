@@ -1,21 +1,26 @@
 extends Control
 
+#region @onready's
 @onready var progress_bar: TextureProgressBar = $CanvasLayer/TextureProgressBar
 @onready var light: PointLight2D = $PointLight2D
 @onready var animation: AnimationPlayer = $CanvasLayer/AnimationPlayer
-@onready var particles: CPUParticles2D = $CanvasLayer/CPUParticles2D
-@onready var particles2: CPUParticles2D = $CanvasLayer/CPUParticles2D2
+@onready var particles: CPUParticles2D = $CanvasLayer/ChargeParticles
+@onready var particles2: CPUParticles2D = $CanvasLayer/ChargeParticles2
 @onready var timer: Timer = $Timer
+@onready var decresing_particles: CPUParticles2D = $CanvasLayer/DecresingParticles
+#endregion
 
 func _ready() -> void:
 	Messenger.powerasso.connect(animationzinha_descendo_a_barra.bind(9.0))
+	decresing_particles.emitting = false
 	particles.emitting = false
 	particles2.emitting = false
 
 func _process(_delta: float) -> void:
 	var pos_y = map_value(progress_bar.value)
-	particles.position = Vector2(11.0, pos_y)
-	particles2.position = Vector2(11.0, pos_y)
+	decresing_particles.position.y = pos_y
+	particles.position.y = pos_y
+	particles2.position.y = pos_y
 	
 	if Input.is_action_just_pressed("charge") and not Messenger.paused:
 		timer.start()
@@ -60,6 +65,8 @@ func _on_timer_timeout() -> void:
 
 
 func animationzinha_descendo_a_barra(balor):
+	decresing_particles.emitting = true
 	while progress_bar.value > balor:
 		await get_tree().create_timer(get_process_delta_time()).timeout
-		progress_bar.value -= 4
+		progress_bar.value -= 5
+	decresing_particles.emitting = false
