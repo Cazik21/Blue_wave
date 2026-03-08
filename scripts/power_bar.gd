@@ -16,14 +16,14 @@ func _process(_delta: float) -> void:
 	particles.position = Vector2(11.0, pos_y)
 	particles2.position = Vector2(11.0, pos_y)
 	
-	if Input.is_action_pressed("charge") and not Messenger.paused :
-		particles.emitting = true
-		particles2.emitting = true
-		progress_bar.value = progress_bar.value + (progress_bar.step)
-	
-	else:
+	if Input.is_action_just_pressed("charge") and not Messenger.paused:
+		timer.start()
+
+	if not (Input.is_action_pressed("charge") and not Messenger.paused):
+		timer.stop()
 		particles.emitting = false
 		particles2.emitting = false
+	
 	
 	if progress_bar.value >= 92:
 		particles.emitting = false
@@ -40,6 +40,8 @@ func _process(_delta: float) -> void:
 			progress_bar.value = 0
 			Messenger.powerasso.emit()
 
+
+
 func map_value(value):
 	var min1 = 14.0
 	var max1 = 92.0
@@ -49,4 +51,9 @@ func map_value(value):
 	return min2 + (value - min1) * (max2 - min2) / (max1 - min1)
 
 func _on_timer_timeout() -> void:
-	pass
+	
+	while Input.is_action_pressed("charge"):
+		await get_tree().create_timer(get_process_delta_time()).timeout
+		particles.emitting = true
+		particles2.emitting = true
+		progress_bar.value += progress_bar.step
