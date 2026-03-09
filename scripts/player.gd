@@ -35,8 +35,6 @@ var org_color
 var speed : float = 100
 var can_dano : bool = true
 var can_dash : bool = true
-var mouse_speed = 120
-var dir_of_the_mouse_vector
 #endregion
 
 func _ready() -> void:
@@ -55,7 +53,6 @@ func _physics_process(delta: float) -> void:
 	if not Messenger.paused:
 		safe_delta = min(delta, 0.033)
 		move()
-		move_mouse()
 		if Input.is_action_just_pressed("shoot") and can_shoot:
 			shoot()
 		
@@ -67,13 +64,6 @@ func _physics_process(delta: float) -> void:
 		
 		elif can_dash:
 			energy_particles.emitting = false
-
-func move_mouse():
-	if not Input.get_vector("Mouse esq", "Mouse dir", "Mouse cima", "Mouse baixo").normalized() == Vector2.ZERO:
-		dir_of_the_mouse_vector = Input.get_vector("Mouse esq", "Mouse dir", "Mouse cima", "Mouse baixo").normalized()
-		var mouse_pos = get_viewport().get_mouse_position()
-		mouse_pos += dir_of_the_mouse_vector * mouse_speed * safe_delta
-		get_viewport().warp_mouse(mouse_pos)
 
 func move() -> void:
 	if Messenger.player_lifes > 0 and not Input.is_action_pressed("charge"):

@@ -12,6 +12,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_hovered():
 		Messenger.exit_selecionado.emit()
+		if Input.is_action_just_pressed("select"):
+			Messenger.paused = false
+			get_tree().change_scene_to_file("res://scenes/tela_inicial.tscn")
+
 
 func _on_pressed() -> void:
 	Messenger.paused = false

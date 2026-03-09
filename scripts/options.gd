@@ -12,6 +12,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_hovered():
 		Messenger.options_selecionado.emit()
+		if Input.is_action_just_pressed("select"):
+			var options_scene = options.instantiate()
+			get_parent().get_parent().get_parent().add_child(options_scene)
 
 func _on_pressed() -> void:
 	var options_scene = options.instantiate()
