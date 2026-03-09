@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+#region @onready's
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
@@ -12,13 +13,16 @@ extends CharacterBody2D
 @onready var energy_particles: CPUParticles2D = $"player_energy particles"
 @onready var timer_dash: Timer = $Timer_dash
 @onready var dash_audio: AudioStreamPlayer2D = $dash
+#endregion
 
-
+#region @export's
 @export var bullet_scene : PackedScene
 @export var waves_scene : PackedScene
 @export var enemy_scene : PackedScene
 @export var powerasso : PackedScene
+#endregion
 
+#region var's
 var wait_time_for_ground_enemys : float = 3
 var can_shoot : bool = true
 var shoot_colldown : float = 0.3
@@ -31,6 +35,9 @@ var org_color
 var speed : float = 100
 var can_dano : bool = true
 var can_dash : bool = true
+var mouse_speed = 120
+var dir_of_the_mouse_vector
+#endregion
 
 func _ready() -> void:
 	Messenger.powerasso.connect(powerzasso)
@@ -48,6 +55,7 @@ func _physics_process(delta: float) -> void:
 	if not Messenger.paused:
 		safe_delta = min(delta, 0.033)
 		move()
+		move_mouse()
 		if Input.is_action_just_pressed("shoot") and can_shoot:
 			shoot()
 		
@@ -59,6 +67,13 @@ func _physics_process(delta: float) -> void:
 		
 		elif can_dash:
 			energy_particles.emitting = false
+
+func move_mouse():
+	if not Input.get_vector("Mouse esq", "Mouse dir", "Mouse cima", "Mouse baixo").normalized() == Vector2.ZERO:
+		dir_of_the_mouse_vector = Input.get_vector("Mouse esq", "Mouse dir", "Mouse cima", "Mouse baixo").normalized()
+		var mouse_pos = get_viewport().get_mouse_position()
+		mouse_pos += dir_of_the_mouse_vector * mouse_speed * safe_delta
+		get_viewport().warp_mouse(mouse_pos)
 
 func move() -> void:
 	if Messenger.player_lifes > 0 and not Input.is_action_pressed("charge"):
