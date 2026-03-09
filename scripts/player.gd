@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("charge"):
 			energy_particles.emitting = true
 		
-		else:
+		elif can_dash:
 			energy_particles.emitting = false
 
 func move() -> void:
@@ -158,11 +158,13 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func dash():
 	if can_dash:
+		energy_particles.emitting = true
 		dash_audio.play()
 		can_dash = false
 		speed = 300
 		await get_tree().create_timer(0.1).timeout
 		speed = 100
+		energy_particles.emitting = false
 		timer_dash.start()
 
 func _on_timer_dash_timeout() -> void:

@@ -10,7 +10,8 @@ extends Node2D
 @export var spawn_margin = 40
 
 func _ready() -> void:
-	Messenger.enemies_p_wave = 5
+	Messenger.enemies_f = 3
+	Messenger.enemies_p_wave = 3
 	Messenger.balas_q_tenho = [32, 0, 0, 0, 0]
 	Messenger.diminuir_timer.connect(troca_de_wave)
 	Messenger.cena_anterior = "res://scenes/world.tscn"

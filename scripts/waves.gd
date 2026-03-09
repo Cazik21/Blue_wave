@@ -8,7 +8,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Messenger.enemies_f <= 0:
 		Messenger.wave += 1
-		Messenger.enemies_p_wave += 5
+		Messenger.enemies_p_wave += 3
 		waves()
 
 func waves():

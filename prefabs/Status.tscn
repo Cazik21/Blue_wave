@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ai1mdhm2qmw"]
+
+[ext_resource type="Script" uid="uid://bqxvfsm6gbyg5" path="res://scripts/status.gd" id="1_6gqh0"]
+[ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_82xpr"]
+
+[node name="Status" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6gqh0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="killed" type="Label" parent="CanvasLayer"]
+offset_left = 297.0
+offset_top = 5.0
+offset_right = 535.0
+offset_bottom = 28.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_82xpr")
+text = "Killed Enemies: 100"
+
+[node name="faltantes" type="Label" parent="CanvasLayer"]
+offset_left = 272.0
+offset_top = 18.0
+offset_right = 560.0
+offset_bottom = 41.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_82xpr")
+text = "Remaining enemies: 100"
