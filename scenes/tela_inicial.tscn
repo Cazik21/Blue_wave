@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cldisauoavkfd" path="res://assets/selecionar.png" id="6_87508"]
 [ext_resource type="Script" uid="uid://dqrnvmedpbt7h" path="res://scripts/selecionador.gd" id="7_j2f2k"]
 [ext_resource type="PackedScene" uid="uid://brwackqfmupe6" path="res://scenes/options.tscn" id="8_oab43"]
+[ext_resource type="Script" uid="uid://dsqh14gt1ku0t" path="res://scenes/quit.gd" id="9_gtx6n"]
 [ext_resource type="Script" uid="uid://cvy22jibernnf" path="res://scripts/wave.gd" id="9_oiiwr"]
 [ext_resource type="Texture2D" uid="uid://utx028gt8v3d" path="res://assets/wave_tela_inicial.png" id="10_moypc"]
 
@@ -93,6 +94,17 @@ theme_override_fonts/font = ExtResource("1_hkbxb")
 text = "Options"
 script = ExtResource("6_8cyla")
 options = ExtResource("8_oab43")
+
+[node name="Quit" type="Button" parent="Menu" unique_id=771796472]
+offset_left = 169.00005
+offset_top = 157.00002
+offset_right = 311.0
+offset_bottom = 181.00002
+scale = Vector2(0.7, 0.7)
+theme = SubResource("Theme_hvj2l")
+theme_override_fonts/font = ExtResource("1_hkbxb")
+text = "Quit"
+script = ExtResource("9_gtx6n")
 
 [node name="Selecionador" type="Node2D" parent="Menu" unique_id=1383855344]
 position = Vector2(169, 92)
@@ -247,3 +259,4 @@ color = Color(0.067437746, 0.06743774, 0.06743772, 1)
 
 [connection signal="pressed" from="Menu/Start" to="Menu/Start" method="_on_pressed"]
 [connection signal="pressed" from="Menu/Options" to="Menu/Options" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Quit" to="Menu/Quit" method="_on_pressed"]

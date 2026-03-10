@@ -28,6 +28,8 @@ signal start_selecionado
 @warning_ignore("unused_signal")
 signal options_selecionado
 @warning_ignore("unused_signal")
+signal quit_selecionado
+@warning_ignore("unused_signal")
 signal diminuir_timer
 @warning_ignore("unused_signal")
 signal trocando_de_wave 
