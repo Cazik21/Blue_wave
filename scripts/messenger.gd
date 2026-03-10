@@ -15,6 +15,9 @@ var cena_anterior : String
 var paused : bool = false
 var balas_q_tenho : Array = [32, 0, 0, 0, 0]
 var scroll_pos = 0
+var master_volume = 100.0
+var sounds_volume = 100.0
+var music_volume = 100.0
 
 @warning_ignore("unused_signal")
 signal spawn_grounded_enemy

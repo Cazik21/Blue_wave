@@ -8,8 +8,9 @@ func _ready() -> void:
 	add_theme_stylebox_override("focus", empty_style)
 
 func _process(_delta: float) -> void:
-	if is_hovered() and Input.is_action_just_pressed("select"):
-		get_parent().get_parent().queue_free()
+	if (is_hovered() and Input.is_action_just_pressed("select")) or Input.is_action_just_pressed("esc"): #Mais GAMBIARRAS :)
+		_on_pressed()
+
 
 func _on_pressed() -> void:
 	get_parent().get_parent().queue_free()

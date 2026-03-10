@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cejbxgdvkinlm"]
+[gd_scene format=3 uid="uid://cejbxgdvkinlm"]
 
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="1_hkbxb"]
 [ext_resource type="Script" uid="uid://w5lkmw4ejef" path="res://scripts/menu.gd" id="1_moypc"]
@@ -15,7 +15,7 @@
 
 [sub_resource type="Theme" id="Theme_hvj2l"]
 
-[node name="Tela_inicial" type="Control"]
+[node name="Tela_inicial" type="Control" unique_id=1901983820]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,16 +23,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="fundo" type="ColorRect" parent="."]
+[node name="fundo" type="ColorRect" parent="." unique_id=1747417213]
 layout_mode = 0
 offset_right = 436.0
 offset_bottom = 285.0
 color = Color(0.06, 0.06, 0.06, 1)
 
-[node name="Menu" type="CanvasLayer" parent="."]
+[node name="Menu" type="CanvasLayer" parent="." unique_id=1261631175]
 script = ExtResource("1_moypc")
 
-[node name="black waves" type="Label" parent="Menu"]
+[node name="black waves" type="Label" parent="Menu" unique_id=174542586]
 offset_left = 104.0
 offset_top = 34.0
 offset_right = 252.0
@@ -42,7 +42,7 @@ theme_override_fonts/font = ExtResource("1_hkbxb")
 text = "Black Waves"
 metadata/_edit_use_anchors_ = true
 
-[node name="Version" type="Label" parent="Menu"]
+[node name="Version" type="Label" parent="Menu" unique_id=852562714]
 offset_left = 16.0
 offset_top = 207.00002
 offset_right = 190.0
@@ -52,27 +52,27 @@ theme_override_fonts/font = ExtResource("1_hkbxb")
 text = "Version : Beta"
 metadata/_edit_use_anchors_ = true
 
-[node name="baixo" type="TextureRect" parent="Menu"]
+[node name="baixo" type="TextureRect" parent="Menu" unique_id=127749872]
 offset_left = 98.0
 offset_top = 59.999996
 offset_right = 329.65002
 offset_bottom = 76.0
 texture = ExtResource("2_xo13d")
 
-[node name="cima" type="TextureRect" parent="Menu"]
+[node name="cima" type="TextureRect" parent="Menu" unique_id=1938397505]
 offset_left = 98.0
 offset_top = 11.0
 offset_right = 329.65002
 offset_bottom = 27.0
 texture = ExtResource("3_2o6u0")
 
-[node name="iluminação" type="PointLight2D" parent="Menu"]
+[node name="iluminação" type="PointLight2D" parent="Menu" unique_id=2113967044]
 position = Vector2(215.49998, 31.999985)
 scale = Vector2(2.6874998, 3.3214285)
 energy = 0.6
 texture = ExtResource("3_hvj2l")
 
-[node name="Start" type="Button" parent="Menu"]
+[node name="Start" type="Button" parent="Menu" unique_id=1372405738]
 offset_left = 169.0
 offset_top = 92.0
 offset_right = 311.0
@@ -82,7 +82,7 @@ theme_override_fonts/font = ExtResource("1_hkbxb")
 text = "Start game"
 script = ExtResource("5_whubj")
 
-[node name="Options" type="Button" parent="Menu"]
+[node name="Options" type="Button" parent="Menu" unique_id=390303607]
 offset_left = 169.00003
 offset_top = 124.000015
 offset_right = 311.0
@@ -94,11 +94,11 @@ text = "Options"
 script = ExtResource("6_8cyla")
 options = ExtResource("8_oab43")
 
-[node name="Selecionador" type="Node2D" parent="Menu"]
+[node name="Selecionador" type="Node2D" parent="Menu" unique_id=1383855344]
 position = Vector2(169, 92)
 script = ExtResource("7_j2f2k")
 
-[node name="Selecionar" type="TextureRect" parent="Menu/Selecionador"]
+[node name="Selecionar" type="TextureRect" parent="Menu/Selecionador" unique_id=1034764622]
 offset_left = -12.0
 offset_top = 3.0
 offset_right = 12.0
@@ -106,7 +106,7 @@ offset_bottom = 25.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_87508")
 
-[node name="Selecionar2" type="TextureRect" parent="Menu/Selecionador"]
+[node name="Selecionar2" type="TextureRect" parent="Menu/Selecionador" unique_id=486130405]
 offset_left = 102.0
 offset_top = 3.0
 offset_right = 126.0
@@ -115,11 +115,11 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_87508")
 flip_h = true
 
-[node name="wave1" type="Node2D" parent="."]
+[node name="wave1" type="Node2D" parent="." unique_id=611643115]
 position = Vector2(0, -112)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave1"]
+[node name="Shake_icon" type="TextureRect" parent="wave1" unique_id=629087840]
 modulate = Color(1, 1, 1, 0.19607843)
 offset_left = -93.0
 offset_top = 199.0
@@ -127,11 +127,11 @@ offset_right = 577.0
 offset_bottom = 239.0
 texture = ExtResource("10_moypc")
 
-[node name="wave2" type="Node2D" parent="."]
+[node name="wave2" type="Node2D" parent="." unique_id=1999104869]
 position = Vector2(0, -96)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave2"]
+[node name="Shake_icon" type="TextureRect" parent="wave2" unique_id=1863900295]
 modulate = Color(1, 1, 1, 0.3137255)
 offset_left = -93.0
 offset_top = 197.0
@@ -140,11 +140,11 @@ offset_bottom = 237.0
 texture = ExtResource("10_moypc")
 flip_h = true
 
-[node name="wave3" type="Node2D" parent="."]
+[node name="wave3" type="Node2D" parent="." unique_id=1115990775]
 position = Vector2(0, -80)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave3"]
+[node name="Shake_icon" type="TextureRect" parent="wave3" unique_id=2094990374]
 modulate = Color(1, 1, 1, 0.43137255)
 offset_left = -93.0
 offset_top = 197.0
@@ -152,11 +152,11 @@ offset_right = 577.0
 offset_bottom = 237.0
 texture = ExtResource("10_moypc")
 
-[node name="wave4" type="Node2D" parent="."]
+[node name="wave4" type="Node2D" parent="." unique_id=898876200]
 position = Vector2(0, -72)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave4"]
+[node name="Shake_icon" type="TextureRect" parent="wave4" unique_id=286665704]
 modulate = Color(1, 1, 1, 0.54901963)
 offset_left = -93.0
 offset_top = 197.0
@@ -165,11 +165,11 @@ offset_bottom = 237.0
 texture = ExtResource("10_moypc")
 flip_h = true
 
-[node name="wave5" type="Node2D" parent="."]
+[node name="wave5" type="Node2D" parent="." unique_id=416379006]
 position = Vector2(0, -72)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave5"]
+[node name="Shake_icon" type="TextureRect" parent="wave5" unique_id=2123412803]
 modulate = Color(1, 1, 1, 0.6666667)
 offset_left = -93.0
 offset_top = 213.0
@@ -178,11 +178,11 @@ offset_bottom = 253.0
 texture = ExtResource("10_moypc")
 metadata/_edit_use_anchors_ = true
 
-[node name="wave6" type="Node2D" parent="."]
+[node name="wave6" type="Node2D" parent="." unique_id=1175270807]
 position = Vector2(0, -41)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave6"]
+[node name="Shake_icon" type="TextureRect" parent="wave6" unique_id=1285924492]
 modulate = Color(1, 1, 1, 0.78431374)
 offset_left = -93.0
 offset_top = 199.0
@@ -191,11 +191,11 @@ offset_bottom = 239.0
 texture = ExtResource("10_moypc")
 metadata/_edit_use_anchors_ = true
 
-[node name="wave7" type="Node2D" parent="."]
+[node name="wave7" type="Node2D" parent="." unique_id=520393862]
 position = Vector2(0, -25)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave7"]
+[node name="Shake_icon" type="TextureRect" parent="wave7" unique_id=854204217]
 modulate = Color(1, 1, 1, 0.9019608)
 offset_left = -93.0
 offset_top = 197.0
@@ -205,11 +205,11 @@ texture = ExtResource("10_moypc")
 flip_h = true
 metadata/_edit_use_anchors_ = true
 
-[node name="wave8" type="Node2D" parent="."]
+[node name="wave8" type="Node2D" parent="." unique_id=514196897]
 position = Vector2(0, -9)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave8"]
+[node name="Shake_icon" type="TextureRect" parent="wave8" unique_id=1732492611]
 offset_left = -93.0
 offset_top = 197.0
 offset_right = 577.0
@@ -217,11 +217,11 @@ offset_bottom = 237.0
 texture = ExtResource("10_moypc")
 metadata/_edit_use_anchors_ = true
 
-[node name="wave9" type="Node2D" parent="."]
+[node name="wave9" type="Node2D" parent="." unique_id=1518096079]
 position = Vector2(0, -1)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave9"]
+[node name="Shake_icon" type="TextureRect" parent="wave9" unique_id=1052481853]
 offset_left = -93.0
 offset_top = 197.0
 offset_right = 577.0
@@ -230,11 +230,11 @@ texture = ExtResource("10_moypc")
 flip_h = true
 metadata/_edit_use_anchors_ = true
 
-[node name="wave10" type="Node2D" parent="."]
+[node name="wave10" type="Node2D" parent="." unique_id=609811400]
 position = Vector2(0, -1)
 script = ExtResource("9_oiiwr")
 
-[node name="Shake_icon" type="TextureRect" parent="wave10"]
+[node name="Shake_icon" type="TextureRect" parent="wave10" unique_id=1603052995]
 offset_left = -93.0
 offset_top = 213.0
 offset_right = 577.0
@@ -242,7 +242,7 @@ offset_bottom = 253.0
 texture = ExtResource("10_moypc")
 metadata/_edit_use_anchors_ = true
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1248015893]
 color = Color(0.067437746, 0.06743774, 0.06743772, 1)
 
 [connection signal="pressed" from="Menu/Start" to="Menu/Start" method="_on_pressed"]
