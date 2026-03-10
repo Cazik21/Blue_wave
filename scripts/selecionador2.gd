@@ -1,31 +1,19 @@
 extends Node2D
 
 @onready var resume: Button = $"../Resume"
-
 @onready var options: Button = $"../options"
-
 @onready var exit: Button = $"../Exit"
 
 
 func _ready() -> void:
-	Messenger.resume_selecionado.connect(resume_selecionado)
-	Messenger.options_selecionado.connect(options_selecionado)
-	Messenger.exit_selecionado.connect(exit_selecionado)
+	Messenger.resume_selecionado.connect(button_selection.bind(resume))
+	Messenger.options_selecionado.connect(button_selection.bind(options))
+	Messenger.exit_selecionado.connect(button_selection.bind(exit))
 
-func resume_selecionado():
-	if resume:
-		var tween = get_tree().create_tween()
-		tween.tween_property(self, "global_position", resume.global_position,
-		 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
-func options_selecionado():
-	if options:
+func button_selection(button_selected):
+	if button_selected:
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "global_position", options.global_position,
-		 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-
-func exit_selecionado():
-	if exit:
-		var tween = get_tree().create_tween()
-		tween.tween_property(self, "global_position", exit.global_position,
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		tween.tween_property(self, "global_position", button_selected.global_position,
 		 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)

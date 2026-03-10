@@ -50,20 +50,19 @@ func _ready() -> void:
 	org_color = Color.WHITE
 
 func _physics_process(delta: float) -> void:
-	if not Messenger.paused:
-		safe_delta = min(delta, 0.033)
-		move()
-		if Input.is_action_just_pressed("shoot") and can_shoot:
-			shoot()
-		
-		if Input.is_action_just_pressed("dash") and not Input.is_action_pressed("charge"):
-			dash()
-		create_miniwaves()
-		if Input.is_action_pressed("charge"):
-			energy_particles.emitting = true
-		
-		elif can_dash:
-			energy_particles.emitting = false
+	safe_delta = min(delta, 0.033)
+	move()
+	if Input.is_action_just_pressed("shoot") and can_shoot:
+		shoot()
+	
+	if Input.is_action_just_pressed("dash") and not Input.is_action_pressed("charge"):
+		dash()
+	create_miniwaves()
+	if Input.is_action_pressed("charge"):
+		energy_particles.emitting = true
+	
+	elif can_dash:
+		energy_particles.emitting = false
 
 func move() -> void:
 	if Messenger.player_lifes > 0 and not Input.is_action_pressed("charge"):
@@ -152,10 +151,9 @@ func _on_timer_dano_timeout() -> void:
 	can_dano = true
 
 func powerzasso():
-	if not Messenger.paused:
-		var power_wave = powerasso.instantiate()
-		get_tree().current_scene.add_child(power_wave)
-		power_wave.global_position = global_position
+	var power_wave = powerasso.instantiate()
+	get_tree().current_scene.add_child(power_wave)
+	power_wave.global_position = global_position
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):

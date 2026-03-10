@@ -51,13 +51,12 @@ func saiu_pq_meno():
 	frame = anim.frame
 
 func _physics_process(_delta: float) -> void:
-	if not Messenger.paused:
-		if global_position.distance_to(Messenger.tree.current_scene.get_node("Player").global_position) < 100 and name.contains("inimigo_atira"):
-			esta_atirando = true
-		if esta_atirando == false:
-			nao_atirar()
-		else:
-			atirar()
+	if global_position.distance_to(Messenger.tree.current_scene.get_node("Player").global_position) < 100 and name.contains("inimigo_atira"):
+		esta_atirando = true
+	if esta_atirando == false:
+		nao_atirar()
+	else:
+		atirar()
 
 func atirar():
 	if player:
@@ -73,26 +72,25 @@ func atirar():
 
 
 func nao_atirar():
-	if not Messenger.paused:
-		safe_delta = min(get_process_delta_time(), 0.03)
-		if knockback_velocity.length() > 1:
-			velocity = knockback_velocity
+	safe_delta = min(get_process_delta_time(), 0.03)
+	if knockback_velocity.length() > 1:
+		velocity = knockback_velocity
+		velocity = velocity * safe_delta * 60
+		move_and_slide()
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * safe_delta)
+	else:
+		if player:
+			direction = global_position.direction_to(player.global_position)
+			velocity = direction * speed
 			velocity = velocity * safe_delta * 60
 			move_and_slide()
-			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * safe_delta)
-		else:
-			if player:
-				direction = global_position.direction_to(player.global_position)
-				velocity = direction * speed
-				velocity = velocity * safe_delta * 60
-				move_and_slide()
-		if can_instantiate_waves:
-			can_instantiate_waves = false
-			var wave_instance = waves_scene.instantiate()
-			Messenger.tree.current_scene.add_child(wave_instance)
-			wave_instance.global_position = global_position
-			await Messenger.tree.create_timer(0.6).timeout
-			can_instantiate_waves = true
+	if can_instantiate_waves:
+		can_instantiate_waves = false
+		var wave_instance = waves_scene.instantiate()
+		Messenger.tree.current_scene.add_child(wave_instance)
+		wave_instance.global_position = global_position
+		await Messenger.tree.create_timer(0.6).timeout
+		can_instantiate_waves = true
 
 func apply_kockback(force : Vector2):
 	knockback_velocity = force

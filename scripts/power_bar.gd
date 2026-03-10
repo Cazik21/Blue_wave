@@ -22,10 +22,10 @@ func _process(_delta: float) -> void:
 	particles.position.y = pos_y
 	particles2.position.y = pos_y
 	
-	if Input.is_action_just_pressed("charge") and not Messenger.paused:
+	if Input.is_action_just_pressed("charge"):
 		timer.start()
 
-	if not (Input.is_action_pressed("charge") and not Messenger.paused):
+	if not (Input.is_action_pressed("charge")):
 		timer.stop()
 		particles.emitting = false
 		particles2.emitting = false
@@ -42,8 +42,7 @@ func _process(_delta: float) -> void:
 		animation.animation_finished.connect(_process)
 	
 	if progress_bar.value >= 92 and Input.is_action_just_pressed("power1"):
-		if not Messenger.paused:
-			Messenger.powerasso.emit()
+		Messenger.powerasso.emit()
 
 
 

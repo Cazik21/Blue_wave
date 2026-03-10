@@ -9,6 +9,7 @@
 blend_mode = 1
 
 [node name="Options" type="Control" unique_id=984898886]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

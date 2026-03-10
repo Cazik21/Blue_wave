@@ -12,10 +12,10 @@ func _process(_delta: float) -> void:
 		Messenger.resume_selecionado.emit()
 		if Input.is_action_just_pressed("select"):
 			Messenger.voltou_pro_game_brabo.emit()
-			Messenger.paused = false
+			Messenger.tree.paused = false
 			Messenger.resume.emit()
 
 func _on_pressed() -> void:
 	Messenger.voltou_pro_game_brabo.emit()
-	Messenger.paused = false
+	Messenger.tree.paused = false
 	Messenger.resume.emit()

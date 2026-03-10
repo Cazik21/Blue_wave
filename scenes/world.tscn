@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxghx7pn87w4x"]
+[gd_scene format=3 uid="uid://dxghx7pn87w4x"]
 
 [ext_resource type="Script" uid="uid://cq5nii0on47gt" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dqo6q3330yn1x" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://dgm3awym071gr" path="res://prefabs/enemy_atira.tscn" id="2_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://dfvu4r5emojw" path="res://prefabs/waves.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://cecommju7mhn1" path="res://prefabs/hearts.tscn" id="5_71j4m"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://63f3mphuupbb" path="res://scenes/pause_menu.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" uid="uid://cx1lnp1fcg0mt" path="res://scenes/bullet_ui.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cwwdknfywepyg" path="res://prefabs/max_bullets.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bhcql0foh0b1u" path="res://prefabs/power_bar.tscn" id="9_7r4gi"]
@@ -14,64 +14,64 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4gi"]
 size = Vector2(452, 20)
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" unique_id=642986207]
 script = ExtResource("1_4wyf3")
 enemy_scene = ExtResource("2_4mrxx")
 pause_menu = ExtResource("6_qfnet")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=138004858]
 offset_left = -85.0
 offset_top = -68.0
 offset_right = 509.0
 offset_bottom = 306.0
 color = Color(0.06, 0.06, 0.06, 1)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1732260298]
 color = Color(0.21376224, 0.21376224, 0.21376224, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_nnsk1")]
+[node name="Player" parent="." unique_id=1632392565 instance=ExtResource("1_nnsk1")]
 position = Vector2(208, 117)
 
-[node name="spawn_timer" type="Timer" parent="."]
+[node name="spawn_timer" type="Timer" parent="." unique_id=542306177]
 wait_time = 3.024
 autostart = true
 
-[node name="UI" type="Node2D" parent="."]
+[node name="UI" type="Node2D" parent="." unique_id=1689275756]
 
-[node name="waves" parent="UI" instance=ExtResource("4_k0juu")]
+[node name="waves" parent="UI" unique_id=1735337352 instance=ExtResource("4_k0juu")]
 
-[node name="hearts" parent="UI" instance=ExtResource("5_71j4m")]
+[node name="hearts" parent="UI" unique_id=927751004 instance=ExtResource("5_71j4m")]
 offset_left = 938.0
 offset_top = 41.0
 offset_right = 938.0
 offset_bottom = 41.0
 
-[node name="BulletUI" parent="UI" instance=ExtResource("7_4mrxx")]
+[node name="BulletUI" parent="UI" unique_id=1263778170 instance=ExtResource("7_4mrxx")]
 
-[node name="max_bullets" parent="UI" instance=ExtResource("8_4mrxx")]
+[node name="max_bullets" parent="UI" unique_id=1619316661 instance=ExtResource("8_4mrxx")]
 
-[node name="Power_bar" parent="UI" instance=ExtResource("9_7r4gi")]
+[node name="Power_bar" parent="UI" unique_id=1495057370 instance=ExtResource("9_7r4gi")]
 
-[node name="killed_enemies" parent="UI" instance=ExtResource("10_w7kh3")]
+[node name="killed_enemies" parent="UI" unique_id=407812093 instance=ExtResource("10_w7kh3")]
 
-[node name="walls" type="StaticBody2D" parent="."]
+[node name="walls" type="StaticBody2D" parent="." unique_id=242775147]
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls" unique_id=805820013]
 position = Vector2(208, -10)
 shape = SubResource("RectangleShape2D_7r4gi")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls" unique_id=166013921]
 position = Vector2(-10, 129)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_7r4gi")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls" unique_id=1144756837]
 position = Vector2(427, 119)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_7r4gi")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls" unique_id=1097510937]
 position = Vector2(211, 244)
 shape = SubResource("RectangleShape2D_7r4gi")
 

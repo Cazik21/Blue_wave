@@ -6,7 +6,7 @@ extends Control
 func _process(_delta: float) -> void:
 	killed.text = "Killed Enemies: " + str(Messenger.killed_enemies)
 	faltantes.text = "Remaining enemies: " + str(Messenger.enemies_f) 
-	if Messenger.paused:
+	if Messenger.tree.paused:
 		killed.visible = true
 		faltantes.visible = true
 	

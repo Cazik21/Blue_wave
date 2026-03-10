@@ -12,7 +12,6 @@ var killed_enemies = 0
 var org_color_for_enemy
 var type_of_the_bullet : String
 var cena_anterior : String
-var paused : bool = false
 var balas_q_tenho : Array = [32, 0, 0, 0, 0]
 var scroll_pos = 0
 var master_volume = 100.0

@@ -15,27 +15,24 @@ func _ready() -> void:
 	Messenger.balas_q_tenho = [32, 0, 0, 0, 0]
 	Messenger.diminuir_timer.connect(troca_de_wave)
 	Messenger.cena_anterior = "res://scenes/world.tscn"
-	if Messenger.paused:
-		var pause = pause_menu.instantiate()
-		add_child(pause)
-		Messenger.paused = true
+
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("esc") and not Messenger.paused:
+	if Input.is_action_just_pressed("esc") and not Messenger.tree.paused:
+		get_tree().paused = true
 		var pause = pause_menu.instantiate()
 		add_child(pause)
-		Messenger.paused = true
+
 
 func spawn_enemies():
-	if not Messenger.paused:
-		var enemy = enemy_scene.instantiate()
-		add_child(enemy)
-		enemy.global_position = calculate_spawn_pos()
-		enemy.player = player
-		if randi_range(0, ceil( (Messenger.wave - 3) / 1.06)) == 0 and Messenger.wave > 4:
-			enemy.name = "inimigo_atira"
-		else:
-			enemy.name = "inimigo_normal"
+	var enemy = enemy_scene.instantiate()
+	add_child(enemy)
+	enemy.global_position = calculate_spawn_pos()
+	enemy.player = player
+	if randi_range(0, ceil( (Messenger.wave - 3) / 1.06)) == 0 and Messenger.wave > 4:
+		enemy.name = "inimigo_atira"
+	else:
+		enemy.name = "inimigo_normal"
 
 	
 func calculate_spawn_pos() -> Vector2:

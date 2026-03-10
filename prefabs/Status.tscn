@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://4ai1mdhm2qmw"]
+[gd_scene format=3 uid="uid://4ai1mdhm2qmw"]
 
 [ext_resource type="Script" uid="uid://bqxvfsm6gbyg5" path="res://scripts/status.gd" id="1_6gqh0"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_82xpr"]
 
-[node name="Status" type="Control"]
+[node name="Status" type="Control" unique_id=2138655116]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,9 +13,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6gqh0")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1725010313]
 
-[node name="killed" type="Label" parent="CanvasLayer"]
+[node name="killed" type="Label" parent="CanvasLayer" unique_id=2093802748]
 offset_left = 297.0
 offset_top = 5.0
 offset_right = 535.0
@@ -23,7 +24,7 @@ scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_82xpr")
 text = "Killed Enemies: 100"
 
-[node name="faltantes" type="Label" parent="CanvasLayer"]
+[node name="faltantes" type="Label" parent="CanvasLayer" unique_id=1222092692]
 offset_left = 272.0
 offset_top = 18.0
 offset_right = 560.0
