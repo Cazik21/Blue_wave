@@ -38,14 +38,12 @@ func _ready() -> void:
 	anim.modulate = Color("ffffff")
 	anim.play("born")
 	anim.animation_finished.connect(restablecendo_animations)
-	anim.animation_finished.connect(desconect)
 	Messenger.org_color_for_enemy = anim.modulate
-	Messenger.voltou_pro_game_brabo.connect(voltando_pro_game)
 	Messenger.saiu_pq_meno.connect(saiu_pq_meno)
 	
 	rng.randomize()
 	player = Messenger.player
-	voltando_pro_game()
+
 
 func saiu_pq_meno():
 	frame = anim.frame
@@ -96,8 +94,6 @@ func apply_kockback(force : Vector2):
 	knockback_velocity = force
 
 
-func desconect():
-	anim.animation_finished.disconnect(anim.play)
 
 func hit_flash():
 	anim.modulate = Color.WHITE
@@ -124,7 +120,7 @@ func take_damage(amount: float, sourece_position: Vector2):
 		if randi_range(1, 3) == 1:
 			var bullet = bullet_scene.instantiate()
 			bullet.global_position = global_position
-			add_sibling(bullet)
+			call_deferred("add_sibling", bullet)
 			bullet.global_position = global_position
 		audio.play()
 		self.visible = false
@@ -133,9 +129,6 @@ func take_damage(amount: float, sourece_position: Vector2):
 		Messenger.killed_enemies += 1
 		queue_free()
 
-
-func voltando_pro_game():
-	anim.frame = frame
 
 
 func _on_timer_shoot_timeout() -> void:

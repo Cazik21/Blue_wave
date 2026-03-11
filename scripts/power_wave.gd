@@ -3,7 +3,6 @@ extends Area2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var light: PointLight2D = $PointLight2D
 
 
 # Called when the node enters the scene tree for the first time.

@@ -8,7 +8,8 @@ var tweenop
 
 func _ready() -> void:
 	label.visible = false
-	Messenger.max_bulletas.connect(_max)
+	if Messenger.max_bulletas.is_connected(_max):
+		Messenger.max_bulletas.connect(_max)
 
 func _on_timer_timeout() -> void:
 	tweenop = get_tree().create_tween()

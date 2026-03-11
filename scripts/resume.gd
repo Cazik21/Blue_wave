@@ -11,11 +11,13 @@ func _process(_delta: float) -> void:
 	if is_hovered():
 		Messenger.resume_selecionado.emit()
 		if Input.is_action_just_pressed("select"):
-			Messenger.voltou_pro_game_brabo.emit()
+			Messenger.tree.paused = false
+			Messenger.resume.emit()
+	
+	if Input.is_action_just_pressed("esc"):
 			Messenger.tree.paused = false
 			Messenger.resume.emit()
 
 func _on_pressed() -> void:
-	Messenger.voltou_pro_game_brabo.emit()
 	Messenger.tree.paused = false
 	Messenger.resume.emit()
