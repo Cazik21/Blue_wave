@@ -28,13 +28,12 @@ var frame = 0
 func _ready() -> void:
 	anim.play("jumping")
 	Messenger.org_color_for_enemy = anim.modulate
-	Messenger.voltou_pro_game_brabo.connect(voltando_pro_game)
 	Messenger.saiu_pq_meno.connect(saiu_pq_meno)
 	
 	rng.randomize()
 	player = Messenger.player
 	org_color = anim.modulate
-	voltando_pro_game()
+
 
 func saiu_pq_meno():
 	frame = anim.frame
@@ -114,7 +113,3 @@ func take_damage(amount: float, sourece_position: Vector2):
 		await Messenger.tree.create_timer(0.18).timeout
 		Messenger.killed_enemies += 1
 		queue_free()
-
-
-func voltando_pro_game():
-	anim.frame = frame

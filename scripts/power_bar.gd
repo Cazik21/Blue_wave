@@ -2,7 +2,6 @@ extends Control
 
 #region @onready's
 @onready var progress_bar: TextureProgressBar = $CanvasLayer/TextureProgressBar
-@onready var light: PointLight2D = $PointLight2D
 @onready var animation: AnimationPlayer = $CanvasLayer/AnimationPlayer
 @onready var particles: CPUParticles2D = $CanvasLayer/ChargeParticles
 @onready var particles2: CPUParticles2D = $CanvasLayer/ChargeParticles2
@@ -35,11 +34,10 @@ func _process(_delta: float) -> void:
 		particles.emitting = false
 		particles2.emitting = false
 		animation.play("bar_cheia")
-		animation.animation_finished.connect(_process)
 	
 	else:
 		animation.play("parado")
-		animation.animation_finished.connect(_process)
+
 	
 	if progress_bar.value >= 92 and Input.is_action_just_pressed("power1"):
 		Messenger.powerasso.emit()

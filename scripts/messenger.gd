@@ -39,8 +39,6 @@ signal resume_selecionado
 @warning_ignore("unused_signal")
 signal exit_selecionado
 @warning_ignore("unused_signal")
-signal voltou_pro_game_brabo
-@warning_ignore("unused_signal")
 signal saiu_pq_meno
 @warning_ignore("unused_signal")
 signal max_bulletas
@@ -49,3 +47,9 @@ signal powerasso
 
 func _ready() -> void:
 	tree = get_tree()
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 40) #linear_to_db(100) = 40
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), 40)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sfx"), 40)
+	master_volume = 100
+	music_volume = 100
+	sounds_volume = 100

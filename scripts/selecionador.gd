@@ -3,8 +3,7 @@ extends Node2D
 @onready var start: Button = $"../Start"
 @onready var options: Button = $"../Options"
 @onready var quit: Button = $"../Quit"
-@onready var resume: Button = $"../Resume"
-@onready var exit: Button = $"../Exit"
+
 
 
 func _ready() -> void:
