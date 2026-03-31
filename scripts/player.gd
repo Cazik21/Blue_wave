@@ -35,6 +35,8 @@ var org_color
 var speed : float = 100
 var can_dano : bool = true
 var can_dash : bool = true
+var can_particuzoles_exploideidesdess : bool = false
+var mouse_dentro : bool = false
 #endregion
 
 func _ready() -> void:
@@ -52,16 +54,16 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	safe_delta = min(delta, 0.033)
 	move()
-	if Input.is_action_just_pressed("shoot") and can_shoot:
+	if Input.is_action_just_pressed("shoot") and can_shoot and not mouse_dentro:
 		shoot()
 	
 	if Input.is_action_just_pressed("dash") and not Input.is_action_pressed("charge"):
 		dash()
 	create_miniwaves()
-	if Input.is_action_pressed("charge"):
+	if Input.is_action_pressed("charge") or can_particuzoles_exploideidesdess:
 		energy_particles.emitting = true
 	
-	elif can_dash:
+	elif can_dash or not can_particuzoles_exploideidesdess:
 		energy_particles.emitting = false
 
 func move() -> void:
@@ -151,10 +153,13 @@ func _on_timer_dano_timeout() -> void:
 	can_dano = true
 
 func powerzasso():
-	get_tree().create_tween().tween_property(point_light_2d, "energy", 65, 0.4)
+	can_particuzoles_exploideidesdess = true
+	get_tree().create_tween().tween_property(point_light_2d, "energy", 35, 0.8)
 	var power_wave = powerasso.instantiate()
 	get_tree().current_scene.add_child(power_wave)
 	power_wave.global_position = global_position
+	await get_tree().create_timer(1).timeout
+	can_particuzoles_exploideidesdess = false
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
@@ -173,3 +178,10 @@ func dash():
 
 func _on_timer_dash_timeout() -> void:
 	can_dash = true
+
+
+func _on_area_mouse_mouse_entered() -> void:
+	mouse_dentro = true
+
+func _on_area_mouse_mouse_exited() -> void:
+	mouse_dentro = false
