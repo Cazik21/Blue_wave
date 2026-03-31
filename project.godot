@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Black waves"
 run/main_scene="uid://cejbxgdvkinlm"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(1, 0.2763351, 0.27401027, 1)
 boot_splash/image="uid://dugfy5yahxp0y"

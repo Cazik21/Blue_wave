@@ -20,10 +20,10 @@ enemy_scene = ExtResource("2_4mrxx")
 pause_menu = ExtResource("6_qfnet")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=138004858]
-offset_left = -85.0
-offset_top = -68.0
-offset_right = 509.0
-offset_bottom = 306.0
+offset_left = -7260.0
+offset_top = -4135.0
+offset_right = 6315.0
+offset_bottom = 4825.0
 color = Color(0.06, 0.06, 0.06, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1732260298]

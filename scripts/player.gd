@@ -3,7 +3,7 @@ extends CharacterBody2D
 #region @onready's
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var point_light_2d: PointLight2D = $Camera/PointLight2D
 @onready var audio2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 @onready var collision_p: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
@@ -151,6 +151,7 @@ func _on_timer_dano_timeout() -> void:
 	can_dano = true
 
 func powerzasso():
+	get_tree().create_tween().tween_property(point_light_2d, "energy", 65, 0.4)
 	var power_wave = powerasso.instantiate()
 	get_tree().current_scene.add_child(power_wave)
 	power_wave.global_position = global_position
