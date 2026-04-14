@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://qu7yqlikb8fy"]
+
+[ext_resource type="Texture2D" uid="uid://b6dypvmdr3f46" path="res://assets/bullet_ui.png" id="1_a1j34"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_youir"]
+
+[node name="Power ui" type="Control" unique_id=1647727617]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1835738179]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_a1j34")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1167377087]
+sprite_frames = SubResource("SpriteFrames_youir")
