@@ -18,27 +18,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="bullet_enemy" type="Area2D" groups=["enemies"]]
+[node name="bullet_enemy" type="Area2D" unique_id=595477147 groups=["enemies"]]
 z_index = 1
 collision_layer = 4
-collision_mask = 12
+collision_mask = 14
 script = ExtResource("1_hmyi3")
 
-[node name="CollisionShape" type="CollisionShape2D" parent="." groups=["enemies"]]
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=586112817 groups=["enemies"]]
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_7y3u0")
 
-[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1240604639]
 rect = Rect2(-3, -3, 6, 6)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=78134483]
 position = Vector2(0.03999996, 0.04000008)
 scale = Vector2(1.5204082, 1.5204082)
 color = Color(0.38170326, 0.38170323, 0.38170323, 1)
 texture = ExtResource("2_a0ysx")
 texture_scale = 0.1
 
-[node name="Anim" type="AnimatedSprite2D" parent="."]
+[node name="Anim" type="AnimatedSprite2D" parent="." unique_id=2089581727]
 self_modulate = Color(0.18120003, 0.18120006, 0.18120003, 1)
 position = Vector2(-9.536743e-07, -9.536743e-07)
 scale = Vector2(0.84999985, 0.84999985)

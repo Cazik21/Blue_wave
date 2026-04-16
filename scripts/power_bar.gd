@@ -41,6 +41,9 @@ func _process(_delta: float) -> void:
 	
 	if progress_bar.value >= 92 and Input.is_action_just_pressed("power1"):
 		Messenger.powerasso.emit()
+	
+	if progress_bar.value >= 46 and Input.is_action_just_pressed("power2"):
+		Messenger.escudozasso.emit()
 
 
 

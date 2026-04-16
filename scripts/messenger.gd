@@ -44,6 +44,8 @@ signal saiu_pq_meno
 signal max_bulletas
 @warning_ignore("unused_signal")
 signal powerasso
+@warning_ignore("unused_signal")
+signal escudozasso
 
 func _ready() -> void:
 	tree = get_tree()

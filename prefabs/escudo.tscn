@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b3aq4a80236t3"]
+
+[ext_resource type="Script" uid="uid://crdayqq56fu6k" path="res://escudo.gd" id="1_i66gx"]
+[ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="2_qcltd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldfuw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qcltd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcltd"]
+size = Vector2(10, 62)
+
+[node name="Escudo" type="StaticBody2D" unique_id=1163270837 groups=["Player"]]
+position = Vector2(192, 104)
+collision_layer = 2
+collision_mask = 14
+script = ExtResource("1_i66gx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=61041231]
+position = Vector2(-48, 0)
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_ldfuw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1291529910 groups=["Player"]]
+position = Vector2(-47, 0)
+shape = SubResource("RectangleShape2D_qcltd")
+one_way_collision_margin = 0.0

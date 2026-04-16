@@ -41,6 +41,7 @@ var mouse_dentro : bool = false
 
 func _ready() -> void:
 	Messenger.powerasso.connect(powerzasso)
+	Messenger.escudozasso.connect(escudozasso)
 	timer.wait_time = wait_time_for_ground_enemys
 	reinice_timer()
 	Messenger.dano_player.connect(dano_player)
@@ -142,6 +143,9 @@ func spawn_grounded_enemy():
 		new_enemy_scene.get_node("anim").modulate = Color.WHITE
 		await get_tree().create_timer(0.8).timeout
 		new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
+
+func escudozasso():
+	pass
 
 func _on_timer_timeout() -> void:
 	Messenger.can_spawn_enemy = 1
