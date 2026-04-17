@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://edgrkbfpoiix"
+path="res://.godot/imported/Escudo ir.wav-4408062c4ea8d78b30e183bae7008517.sample"
+
+[deps]
+
+source_file="res://assets/Escudo ir.wav"
+dest_files=["res://.godot/imported/Escudo ir.wav-4408062c4ea8d78b30e183bae7008517.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

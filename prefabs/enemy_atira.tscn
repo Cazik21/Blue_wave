@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dgm3awym071gr"]
+[gd_scene format=3 uid="uid://dgm3awym071gr"]
 
 [ext_resource type="Script" uid="uid://db4nw25ges0ey" path="res://scripts/enemy.gd" id="1_ruvti"]
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="2_gds3x"]
@@ -169,7 +169,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="enemy" type="CharacterBody2D" unique_id=1993123437 groups=["enemies"]]
 z_index = 2
 collision_layer = 16
 collision_mask = 3
@@ -177,10 +177,10 @@ script = ExtResource("1_ruvti")
 waves_scene = ExtResource("2_gds3x")
 coraco_scene = ExtResource("3_1quym")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=88536487]
 shape = SubResource("RectangleShape2D_xwavj")
 
-[node name="anim" type="AnimatedSprite2D" parent="."]
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1950979068]
 modulate = Color(0.14901961, 0.14901961, 0.14901961, 1)
 position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
@@ -188,11 +188,11 @@ sprite_frames = SubResource("SpriteFrames_md484")
 animation = &"jumping"
 autoplay = "born"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1712331663]
 stream = ExtResource("9_72pe0")
 volume_db = -20.0
 
-[node name="Timer_shoot" type="Timer" parent="."]
+[node name="Timer_shoot" type="Timer" parent="." unique_id=571383382]
 wait_time = 3.0
 
 [connection signal="timeout" from="Timer_shoot" to="." method="_on_timer_shoot_timeout"]

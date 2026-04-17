@@ -31,9 +31,6 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(12, 12)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3v2ag"]
-radius = 50.01
-
 [node name="Player" type="CharacterBody2D" unique_id=338895861 groups=["Player"]]
 z_index = 5
 collision_mask = 28
@@ -110,16 +107,9 @@ energy = 200.0
 texture = ExtResource("3_qhqgy")
 texture_scale = 0.45
 
-[node name="area_mouse" type="Area2D" parent="." unique_id=132213973]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area_mouse" unique_id=865671558]
-shape = SubResource("CircleShape2D_3v2ag")
-
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="hurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerDano" to="." method="_on_timer_dano_timeout"]
 [connection signal="timeout" from="Timer_dash" to="." method="_on_timer_dash_timeout"]
-[connection signal="mouse_entered" from="area_mouse" to="." method="_on_area_mouse_mouse_entered"]
-[connection signal="mouse_exited" from="area_mouse" to="." method="_on_area_mouse_mouse_exited"]

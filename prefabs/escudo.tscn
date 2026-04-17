@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://crdayqq56fu6k" path="res://escudo.gd" id="1_i66gx"]
 [ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="2_qcltd"]
+[ext_resource type="AudioStream" uid="uid://edgrkbfpoiix" path="res://assets/Escudo ir.wav" id="3_lf2h0"]
+[ext_resource type="AudioStream" uid="uid://b0ekdc3uykte5" path="res://assets/Escudo voltar.wav" id="4_wube8"]
+[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="5_wube8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldfuw"]
 animations = [{
@@ -20,13 +23,19 @@ size = Vector2(10, 62)
 [node name="Escudo" type="StaticBody2D" unique_id=1163270837 groups=["Player"]]
 position = Vector2(192, 104)
 collision_layer = 2
-collision_mask = 14
+collision_mask = 30
 script = ExtResource("1_i66gx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=61041231]
 position = Vector2(-48, 0)
 rotation = -1.5707964
 sprite_frames = SubResource("SpriteFrames_ldfuw")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1545099951]
+position = Vector2(-0.49999237, 1)
+rotation = 1.5707964
+scale = Vector2(0.16071418, 0.66964287)
+texture = ExtResource("5_wube8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1291529910 groups=["Player"]]
 position = Vector2(-47, 0)
@@ -35,5 +44,13 @@ one_way_collision_margin = 0.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1400033782]
 wait_time = 30.0
+
+[node name="ir" type="AudioStreamPlayer2D" parent="." unique_id=397334686]
+stream = ExtResource("3_lf2h0")
+volume_db = -30.0
+
+[node name="voltar" type="AudioStreamPlayer2D" parent="." unique_id=1886972536]
+stream = ExtResource("4_wube8")
+volume_db = -30.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

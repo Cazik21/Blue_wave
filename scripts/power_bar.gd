@@ -11,7 +11,7 @@ extends Control
 
 func _ready() -> void:
 	Messenger.powerasso.connect(animationzinha_descendo_a_barra.bind(9.0))
-	Messenger.escudozasso.connect(animationzinha_descendo_a_barra.bind(46.0))
+	Messenger.escudozasso.connect(animationzinha_descendo_a_barra.bind(64))
 	decresing_particles.emitting = false
 	particles.emitting = false
 	particles2.emitting = false
@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 	if progress_bar.value >= 92 and Input.is_action_just_pressed("power1"):
 		Messenger.powerasso.emit()
 	
-	if progress_bar.value >= 46 and Input.is_action_just_pressed("power2"):
+	if progress_bar.value >= 92 and Input.is_action_just_pressed("power2"):
 		Messenger.escudozasso.emit()
 
 

@@ -160,6 +160,7 @@ func _on_timer_dano_timeout() -> void:
 	can_dano = true
 
 func powerzasso():
+	await get_tree().create_timer(0.15).timeout
 	can_particuzoles_exploideidesdess = true
 	get_tree().create_tween().tween_property(point_light_2d, "energy", 35, 0.8)
 	var power_wave = powerasso.instantiate()

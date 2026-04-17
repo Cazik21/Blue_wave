@@ -28,7 +28,7 @@ func spawn_enemies():
 	add_child(enemy)
 	enemy.global_position = calculate_spawn_pos()
 	enemy.player = player
-	if randi_range(0, ceil( (Messenger.wave - 3) / 1.06)) == 0 and Messenger.wave > 2:
+	if randi_range(0, 18) == 0 and Messenger.wave > 2:
 		enemy.name = "inimigo_atira"
 	else:
 		enemy.name = "inimigo_normal"

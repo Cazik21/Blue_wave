@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1y3hfcjmcrp7"]
+[gd_scene format=3 uid="uid://c1y3hfcjmcrp7"]
 
 [ext_resource type="Script" uid="uid://cagdxia2dgoqi" path="res://scripts/power_wave.gd" id="1_svabq"]
 [ext_resource type="Texture2D" uid="uid://dg5tayaek15j0" path="res://assets/Wave_bomb(4).png" id="2_41d84"]
 [ext_resource type="Texture2D" uid="uid://bea5exjfa8boo" path="res://assets/Wave_bomb(3).png" id="3_xux0k"]
 [ext_resource type="Texture2D" uid="uid://cit5o2xhpq7bv" path="res://assets/Wave_bomb(2).png" id="4_m1k2n"]
 [ext_resource type="Texture2D" uid="uid://beb4qv7sqykvj" path="res://assets/Wave_bomb(1).png" id="5_b5bi3"]
-[ext_resource type="AudioStream" uid="uid://bd256oayyry18" path="res://assets/freesound_community-medium-explosion-40472.mp3" id="6_xux0k"]
+[ext_resource type="AudioStream" uid="uid://rxo2dodrbnrp" path="res://assets/dragon-studio-boom-swoosh-02-416171.mp3" id="6_ji10r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pvwr7"]
 
@@ -29,24 +29,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="power_wave" type="Area2D"]
+[node name="power_wave" type="Area2D" unique_id=1482875778]
 collision_layer = 2
 collision_mask = 20
 script = ExtResource("1_svabq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=534509990]
 scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_pvwr7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1399574266]
+modulate = Color(3.417544, 3.417544, 3.417544, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_wlhue")
 animation = &"power"
 frame = 3
 frame_progress = 1.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_xux0k")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1747690241]
+stream = ExtResource("6_ji10r")
 volume_db = -30.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
