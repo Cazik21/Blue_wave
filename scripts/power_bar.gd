@@ -11,6 +11,7 @@ extends Control
 
 func _ready() -> void:
 	Messenger.powerasso.connect(animationzinha_descendo_a_barra.bind(9.0))
+	Messenger.escudozasso.connect(animationzinha_descendo_a_barra.bind(46.0))
 	decresing_particles.emitting = false
 	particles.emitting = false
 	particles2.emitting = false

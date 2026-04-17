@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ddojtmgtopup3" path="res://prefabs/miniwaves.tscn" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://by6tii7albfd4" path="res://scenes/enemy.tscn" id="4_smehm"]
 [ext_resource type="PackedScene" uid="uid://c1y3hfcjmcrp7" path="res://prefabs/power_wave.tscn" id="5_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://b3aq4a80236t3" path="res://prefabs/escudo.tscn" id="6_jej6c"]
 [ext_resource type="AudioStream" uid="uid://bvfugypp5rpwq" path="res://assets/tap.wav" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://5th6mihuaoge" path="res://prefabs/player_energy_particles.tscn" id="6_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://dt1g0mp28o2kv" path="res://assets/powerUp.wav" id="7_fjrip"]
@@ -42,6 +43,7 @@ bullet_scene = ExtResource("2_dqkch")
 waves_scene = ExtResource("3_qlg0r")
 enemy_scene = ExtResource("4_smehm")
 powerasso = ExtResource("5_ur7pv")
+escudo = ExtResource("6_jej6c")
 
 [node name="player_energy particles" parent="." unique_id=1391949253 instance=ExtResource("6_y4r1p")]
 position = Vector2(0, 5)

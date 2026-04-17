@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var waves_scene : PackedScene
 @export var enemy_scene : PackedScene
 @export var powerasso : PackedScene
+@export var escudo : PackedScene
 #endregion
 
 #region var's
@@ -145,7 +146,9 @@ func spawn_grounded_enemy():
 		new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
 
 func escudozasso():
-	pass
+	var new_escudo = escudo.instantiate()
+	add_sibling(new_escudo)
+	new_escudo.global_position = self.global_position
 
 func _on_timer_timeout() -> void:
 	Messenger.can_spawn_enemy = 1

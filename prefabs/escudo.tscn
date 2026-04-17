@@ -32,3 +32,8 @@ sprite_frames = SubResource("SpriteFrames_ldfuw")
 position = Vector2(-47, 0)
 shape = SubResource("RectangleShape2D_qcltd")
 one_way_collision_margin = 0.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1400033782]
+wait_time = 30.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dgm3awym071gr" path="res://prefabs/enemy_atira.tscn" id="2_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://dfvu4r5emojw" path="res://prefabs/waves.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://cecommju7mhn1" path="res://prefabs/hearts.tscn" id="5_71j4m"]
-[ext_resource type="PackedScene" uid="uid://b3aq4a80236t3" path="res://prefabs/escudo.tscn" id="5_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://63f3mphuupbb" path="res://scenes/pause_menu.tscn" id="6_qfnet"]
 [ext_resource type="PackedScene" uid="uid://cx1lnp1fcg0mt" path="res://scenes/bullet_ui.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cwwdknfywepyg" path="res://prefabs/max_bullets.tscn" id="8_4mrxx"]
@@ -32,9 +31,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." unique_id=1632392565 instance=ExtResource("1_nnsk1")]
 position = Vector2(208, 117)
-
-[node name="Escudo" parent="Player" unique_id=1163270837 instance=ExtResource("5_e3hyu")]
-position = Vector2(0, 0)
 
 [node name="spawn_timer" type="Timer" parent="." unique_id=542306177]
 wait_time = 3.024
