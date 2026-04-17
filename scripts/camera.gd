@@ -31,6 +31,6 @@ func zoom_out(balor : Vector2, time : float):
 
 func power1():
 	powerando = true
-	zoom_in(Vector2(1.4, 1.4), 0.6)
+	zoom_in(Vector2(1.1, 1.1), 0.6)
 	await get_tree().create_timer(0.7).timeout
 	powerando = false

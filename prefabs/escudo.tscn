@@ -32,9 +32,9 @@ rotation = -1.5707964
 sprite_frames = SubResource("SpriteFrames_ldfuw")
 
 [node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1545099951]
-position = Vector2(-0.49999237, 1)
+position = Vector2(-0.49999234, -4.7683716e-07)
 rotation = 1.5707964
-scale = Vector2(0.16071418, 0.66964287)
+scale = Vector2(0.17857134, 0.66964287)
 texture = ExtResource("5_wube8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1291529910 groups=["Player"]]

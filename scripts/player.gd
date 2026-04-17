@@ -143,7 +143,8 @@ func spawn_grounded_enemy():
 		add_sibling(new_enemy_scene)
 		new_enemy_scene.get_node("anim").modulate = Color.WHITE
 		await get_tree().create_timer(0.8).timeout
-		new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
+		if not new_enemy_scene.get_node("anim") == null:
+			new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
 
 func escudozasso():
 	var new_escudo = escudo.instantiate()
@@ -160,7 +161,9 @@ func _on_timer_dano_timeout() -> void:
 	can_dano = true
 
 func powerzasso():
-	await get_tree().create_timer(0.15).timeout
+	can_dano = false
+	await get_tree().create_timer(0.6).timeout
+	can_dano = true
 	can_particuzoles_exploideidesdess = true
 	get_tree().create_tween().tween_property(point_light_2d, "energy", 35, 0.8)
 	var power_wave = powerasso.instantiate()
