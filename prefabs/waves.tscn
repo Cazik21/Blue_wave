@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfvu4r5emojw"]
+[gd_scene format=3 uid="uid://dfvu4r5emojw"]
 
 [ext_resource type="Script" uid="uid://cyuud2d8xnc1h" path="res://scripts/waves.gd" id="1_c14bu"]
 [ext_resource type="FontFile" uid="uid://c3kajmqfy11vh" path="res://assets/PixelOperator8.ttf" id="2_cfukv"]
 
-[node name="UI" type="Control"]
+[node name="UI" type="Control" unique_id=1597535253]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,9 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c14bu")
 
-[node name="waves" type="CanvasLayer" parent="."]
+[node name="waves" type="CanvasLayer" parent="." unique_id=1651828106]
 
-[node name="text" type="Label" parent="waves"]
+[node name="text" type="Label" parent="waves" unique_id=1970486452]
 offset_left = 187.0
 offset_top = 8.0
 offset_right = 269.0

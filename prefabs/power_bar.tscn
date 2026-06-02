@@ -75,7 +75,7 @@ offset_right = 27.000002
 offset_bottom = 111.0
 min_value = 9.0
 max_value = 92.0
-step = 0.2
+step = 0.5
 value = 9.0
 fill_mode = 3
 nine_patch_stretch = true
@@ -107,6 +107,6 @@ position = Vector2(11, 82)
 amount = 35
 
 [node name="Timer" type="Timer" parent="." unique_id=376416190]
-wait_time = 3.0
+wait_time = 1.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

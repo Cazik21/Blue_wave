@@ -126,6 +126,9 @@ func dano_player(amont : int):
 			Messenger.player_lifes = 5
 			Messenger.wave = 1
 			Messenger.killed_enemies = 0
+			Messenger.ordem_waystones = 1
+			Messenger.in_combat = false
+			Messenger.qual_combat = ""
 			Messenger.tree.reload_current_scene()
 			timer_dano.start()
 
@@ -134,17 +137,18 @@ func reinice_timer():
 	timer.start()
 
 func spawn_grounded_enemy():
-	if Messenger.wave >= 5:
-		reinice_timer()
-		var globa_position = global_position
-		await get_tree().create_timer(1).timeout
-		var new_enemy_scene = enemy_scene.instantiate()
-		new_enemy_scene.global_position = globa_position
-		add_sibling(new_enemy_scene)
-		new_enemy_scene.get_node("anim").modulate = Color.WHITE
-		await get_tree().create_timer(0.8).timeout
-		if not new_enemy_scene.get_node("anim") == null:
-			new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
+	if Messenger.in_combat:
+		if Messenger.wave >= 5:
+			reinice_timer()
+			var globa_position = global_position
+			await get_tree().create_timer(1).timeout
+			var new_enemy_scene = enemy_scene.instantiate()
+			new_enemy_scene.global_position = globa_position
+			add_sibling(new_enemy_scene)
+			new_enemy_scene.get_node("anim").modulate = Color.WHITE
+			await get_tree().create_timer(0.8).timeout
+			if not new_enemy_scene.get_node("anim") == null:
+				new_enemy_scene.get_node("anim").modulate = Messenger.org_color_for_enemy
 
 func escudozasso():
 	var new_escudo = escudo.instantiate()

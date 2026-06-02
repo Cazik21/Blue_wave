@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://y3acwr5uo43"]
+
+[ext_resource type="Script" uid="uid://vy7sd08juyrd" path="res://scripts/combat_zone.gd" id="1_qgv3r"]
+[ext_resource type="Texture2D" uid="uid://cwqsvo25v6u5s" path="res://assets/Shadow Waystone.png" id="2_kmkby"]
+[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="3_je4y3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmkby"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ijna"]
+size = Vector2(452, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_je4y3"]
+size = Vector2(20, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ijna"]
+atlas = ExtResource("2_kmkby")
+region = Rect2(0, 0, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sahj"]
+atlas = ExtResource("2_kmkby")
+region = Rect2(12, 0, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on4io"]
+atlas = ExtResource("2_kmkby")
+region = Rect2(0, 14, 12, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cr58o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ijna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sahj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on4io")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Combat zone" type="Node2D" unique_id=325786482]
+script = ExtResource("1_qgv3r")
+
+[node name="Area" type="Area2D" parent="." unique_id=1997674709]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=2022590061]
+position = Vector2(208, 117)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_kmkby")
+debug_color = Color(1, 0, 0, 0.47058824)
+
+[node name="walls" type="StaticBody2D" parent="." unique_id=1250896227]
+collision_layer = 8
+
+[node name="1" type="CollisionShape2D" parent="walls" unique_id=1668102804]
+position = Vector2(208, -10)
+shape = SubResource("RectangleShape2D_6ijna")
+
+[node name="2" type="CollisionShape2D" parent="walls" unique_id=1610105005]
+position = Vector2(-10, 129)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6ijna")
+
+[node name="3" type="CollisionShape2D" parent="walls" unique_id=1909834506]
+position = Vector2(427, 119)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6ijna")
+
+[node name="4" type="CollisionShape2D" parent="walls" unique_id=63565654]
+position = Vector2(211, 244)
+shape = SubResource("RectangleShape2D_6ijna")
+
+[node name="Collison" type="StaticBody2D" parent="." unique_id=47595233]
+collision_layer = 7
+collision_mask = 19
+
+[node name="5" type="CollisionShape2D" parent="Collison" unique_id=736619992]
+position = Vector2(208, 117)
+shape = SubResource("RectangleShape2D_je4y3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1365004156]
+modulate = Color(0.63375676, 0.6337568, 0.63375676, 1)
+z_index = 10
+position = Vector2(208, 117)
+scale = Vector2(1.6, 1.6)
+sprite_frames = SubResource("SpriteFrames_cr58o")
+autoplay = "default"
+frame_progress = 0.34618884
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=530658021]
+color = Color(0.11858138, 0.11858138, 0.11858138, 1)
+texture = ExtResource("3_je4y3")
+texture_scale = 0.5
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

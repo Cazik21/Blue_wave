@@ -17,6 +17,10 @@ var scroll_pos = 0
 var master_volume = 100.0
 var sounds_volume = 100.0
 var music_volume = 100.0
+var in_combat : bool = false
+var qual_combat : String
+var player_pos_no_combat : Vector2
+var ordem_waystones = 1
 
 @warning_ignore("unused_signal")
 signal spawn_grounded_enemy

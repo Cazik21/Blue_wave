@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cwwdknfywepyg" path="res://prefabs/max_bullets.tscn" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://bhcql0foh0b1u" path="res://prefabs/power_bar.tscn" id="9_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://4ai1mdhm2qmw" path="res://prefabs/Status.tscn" id="10_w7kh3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4gi"]
-size = Vector2(452, 20)
+[ext_resource type="PackedScene" uid="uid://y3acwr5uo43" path="res://prefabs/combat_zone.tscn" id="11_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://df3vk3pvni536" path="res://assets/Pedra sombria.png" id="12_q5onr"]
+[ext_resource type="Texture2D" uid="uid://c6l1kp0bacsmk" path="res://assets/Grama.png" id="13_jhx03"]
 
 [node name="world" type="Node2D" unique_id=642986207]
 script = ExtResource("1_4wyf3")
@@ -54,25 +54,547 @@ offset_bottom = 41.0
 
 [node name="killed_enemies" parent="UI" unique_id=407812093 instance=ExtResource("10_w7kh3")]
 
-[node name="walls" type="StaticBody2D" parent="." unique_id=242775147]
-collision_layer = 8
+[node name="Combat zone" parent="." unique_id=325786482 instance=ExtResource("11_e3hyu")]
+position = Vector2(-208, 112)
+max_wave = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls" unique_id=805820013]
-position = Vector2(208, -10)
-shape = SubResource("RectangleShape2D_7r4gi")
+[node name="Combat zone2" parent="." unique_id=1187976517 instance=ExtResource("11_e3hyu")]
+position = Vector2(78, -4)
+max_wave = 6
+"posição_na_ordem" = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls" unique_id=166013921]
-position = Vector2(-10, 129)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_7r4gi")
+[node name="Combat zone3" parent="." unique_id=558960017 instance=ExtResource("11_e3hyu")]
+position = Vector2(-177, -201)
+max_wave = 9
+"posição_na_ordem" = 3
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls" unique_id=1144756837]
-position = Vector2(427, 119)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_7r4gi")
+[node name="Combat zone4" parent="." unique_id=392238791 instance=ExtResource("11_e3hyu")]
+position = Vector2(269, -133)
+max_wave = 4
+"posição_na_ordem" = 2
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls" unique_id=1097510937]
-position = Vector2(211, 244)
-shape = SubResource("RectangleShape2D_7r4gi")
+[node name="pedra" type="StaticBody2D" parent="." unique_id=2113136003]
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra" unique_id=433378881]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra" unique_id=454230824]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra2" type="StaticBody2D" parent="." unique_id=1233236076]
+position = Vector2(121, 71)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra2" unique_id=407813718]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra2" unique_id=64416181]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra3" type="StaticBody2D" parent="." unique_id=507528403]
+position = Vector2(174, 312)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra3" unique_id=210789810]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra3" unique_id=708834605]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra4" type="StaticBody2D" parent="." unique_id=130052530]
+position = Vector2(-51, 433)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra4" unique_id=397957718]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra4" unique_id=365688641]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra5" type="StaticBody2D" parent="." unique_id=1275834681]
+position = Vector2(-174, 265)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra5" unique_id=1515252034]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra5" unique_id=134880950]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra6" type="StaticBody2D" parent="." unique_id=688565139]
+position = Vector2(395, 309)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra6" unique_id=310642142]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra6" unique_id=1014024964]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra7" type="StaticBody2D" parent="." unique_id=245779844]
+position = Vector2(438, 202)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra7" unique_id=295287257]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra7" unique_id=1621993349]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra8" type="StaticBody2D" parent="." unique_id=1130577590]
+position = Vector2(137, 224)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra8" unique_id=1697597760]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra8" unique_id=625436133]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra9" type="StaticBody2D" parent="." unique_id=1849794706]
+position = Vector2(-8, 152)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra9" unique_id=832312625]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra9" unique_id=1338506940]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra10" type="StaticBody2D" parent="." unique_id=2144981307]
+position = Vector2(-208, 136)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra10" unique_id=1563720367]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra10" unique_id=1806076201]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra11" type="StaticBody2D" parent="." unique_id=1389600129]
+position = Vector2(-81, 46)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra11" unique_id=1292708177]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra11" unique_id=1213625287]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra12" type="StaticBody2D" parent="." unique_id=1051818114]
+position = Vector2(-122, 178)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra12" unique_id=1724209718]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra12" unique_id=897952585]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra13" type="StaticBody2D" parent="." unique_id=1473100974]
+position = Vector2(-298, 29)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra13" unique_id=656108412]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra13" unique_id=611092570]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra14" type="StaticBody2D" parent="." unique_id=1579996404]
+position = Vector2(-308, 162)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra14" unique_id=1691043071]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra14" unique_id=437372195]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra15" type="StaticBody2D" parent="." unique_id=1611040468]
+position = Vector2(-39, -17)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra15" unique_id=1378942107]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra15" unique_id=327033094]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra16" type="StaticBody2D" parent="." unique_id=1786856768]
+position = Vector2(422, 422)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra16" unique_id=353775549]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra16" unique_id=1376125318]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra17" type="StaticBody2D" parent="." unique_id=1659337532]
+position = Vector2(154, 454)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra17" unique_id=1124848633]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra17" unique_id=658441814]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra18" type="StaticBody2D" parent="." unique_id=814028789]
+position = Vector2(653, 218)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra18" unique_id=26407383]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra18" unique_id=278924908]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra19" type="StaticBody2D" parent="." unique_id=1036405920]
+position = Vector2(424, 17)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra19" unique_id=835866198]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra19" unique_id=241549814]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra20" type="StaticBody2D" parent="." unique_id=608317600]
+position = Vector2(274, -77)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra20" unique_id=1538093481]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra20" unique_id=1490035989]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra21" type="StaticBody2D" parent="." unique_id=666372574]
+position = Vector2(763, 118)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra21" unique_id=1562447425]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra21" unique_id=1931783224]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra22" type="StaticBody2D" parent="." unique_id=1675258596]
+position = Vector2(559, -38)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra22" unique_id=846219516]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra22" unique_id=349866096]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra23" type="StaticBody2D" parent="." unique_id=221551336]
+position = Vector2(538, 106)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra23" unique_id=1418689066]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra23" unique_id=1151523735]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra24" type="StaticBody2D" parent="." unique_id=899648115]
+position = Vector2(141, -85)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra24" unique_id=1168304334]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra24" unique_id=860423101]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="pedra25" type="StaticBody2D" parent="." unique_id=1883972733]
+position = Vector2(-296, 316)
+collision_layer = 7
+collision_mask = 31
+
+[node name="PedraSombria" type="Sprite2D" parent="pedra25" unique_id=2070270922]
+texture = ExtResource("12_q5onr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pedra25" unique_id=1322769369]
+position = Vector2(-150, -120)
+polygon = PackedVector2Array(147, 124, 150, 124, 154, 123, 156, 121, 156, 119, 155, 117, 158, 116, 158, 114, 156, 114, 155, 115, 153, 116, 149, 115, 145, 115, 143, 114, 142, 114, 142, 120, 143, 122, 144, 123)
+
+[node name="Grama" type="Sprite2D" parent="." unique_id=1558734595]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(171, 115)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama2" type="Sprite2D" parent="." unique_id=1342217234]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(39, 193)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama3" type="Sprite2D" parent="." unique_id=214335538]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(159, 165)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama4" type="Sprite2D" parent="." unique_id=1448205545]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(278, 199)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama5" type="Sprite2D" parent="." unique_id=298163075]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(260, 58)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama6" type="Sprite2D" parent="." unique_id=2041010978]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(154, 70)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama7" type="Sprite2D" parent="." unique_id=801884283]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(36, 184)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama8" type="Sprite2D" parent="." unique_id=446120336]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-27, 231)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama9" type="Sprite2D" parent="." unique_id=862686066]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-57, 103)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama10" type="Sprite2D" parent="." unique_id=1026032345]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-54, 218)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama11" type="Sprite2D" parent="." unique_id=1023026100]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(59, 284)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama12" type="Sprite2D" parent="." unique_id=201460613]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(325, 261)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama13" type="Sprite2D" parent="." unique_id=91861479]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(442, 125)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama14" type="Sprite2D" parent="." unique_id=1739350568]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(447, -14)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama15" type="Sprite2D" parent="." unique_id=1279030812]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(315, -51)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama16" type="Sprite2D" parent="." unique_id=1038857189]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(170, -23)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama17" type="Sprite2D" parent="." unique_id=1142504710]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(73, -44)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama18" type="Sprite2D" parent="." unique_id=1385571515]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-58, -58)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama19" type="Sprite2D" parent="." unique_id=2061570234]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-47, 119)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama20" type="Sprite2D" parent="." unique_id=493715299]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(64, 179)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama21" type="Sprite2D" parent="." unique_id=1840688757]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(107, 149)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama22" type="Sprite2D" parent="." unique_id=363780863]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(318, 201)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama23" type="Sprite2D" parent="." unique_id=164467935]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(272, 187)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama24" type="Sprite2D" parent="." unique_id=1630445257]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(352, 122)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama25" type="Sprite2D" parent="." unique_id=1790996984]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(351, 69)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama26" type="Sprite2D" parent="." unique_id=443243634]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(392, 33)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama27" type="Sprite2D" parent="." unique_id=1395366336]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(497, 87)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama28" type="Sprite2D" parent="." unique_id=1649631173]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(493, 204)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama29" type="Sprite2D" parent="." unique_id=1690452299]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(483, 279)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama30" type="Sprite2D" parent="." unique_id=1764147778]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(341, 259)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama31" type="Sprite2D" parent="." unique_id=850154790]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(221, -71)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama32" type="Sprite2D" parent="." unique_id=1095285526]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(645, 251)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama33" type="Sprite2D" parent="." unique_id=1033819580]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(630, 140)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama34" type="Sprite2D" parent="." unique_id=1051362767]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(538, 21)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama35" type="Sprite2D" parent="." unique_id=1522254413]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(525, 381)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama36" type="Sprite2D" parent="." unique_id=1447434506]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(194, 442)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama37" type="Sprite2D" parent="." unique_id=669046646]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(316, 340)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama38" type="Sprite2D" parent="." unique_id=1277014861]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(492, 377)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama39" type="Sprite2D" parent="." unique_id=932483786]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(492, 377)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama40" type="Sprite2D" parent="." unique_id=126139053]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(56, 332)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama41" type="Sprite2D" parent="." unique_id=84152100]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-169, 336)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama42" type="Sprite2D" parent="." unique_id=928973387]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-229, 241)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama43" type="Sprite2D" parent="." unique_id=1831901187]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-293, 84)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama44" type="Sprite2D" parent="." unique_id=1780909470]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-70, 108)
+texture = ExtResource("13_jhx03")
+
+[node name="Grama45" type="Sprite2D" parent="." unique_id=1231112797]
+modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+position = Vector2(-70, 108)
+texture = ExtResource("13_jhx03")
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

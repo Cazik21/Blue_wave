@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dt1g0mp28o2kv" path="res://assets/powerUp.wav" id="7_fjrip"]
 [ext_resource type="Script" uid="uid://c8mvb52lxiggc" path="res://scripts/camera.gd" id="11_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://dbecl8lriry7e" path="res://assets/dash.wav" id="12_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://rxo2dodrbnrp" path="res://assets/dragon-studio-boom-swoosh-02-416171.mp3" id="13_f1ej7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
@@ -86,7 +87,7 @@ limit_top = 0
 limit_right = 416
 limit_bottom = 234
 position_smoothing_enabled = true
-position_smoothing_speed = 1.0
+position_smoothing_speed = 4.0
 rotation_smoothing_speed = 2.0
 script = ExtResource("11_d2wvv")
 
@@ -94,6 +95,9 @@ script = ExtResource("11_d2wvv")
 energy = 2.0
 texture = ExtResource("2_g2els")
 texture_scale = 2.0
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Camera" unique_id=1592212588]
+stream = ExtResource("13_f1ej7")
 
 [node name="Timer_dash" type="Timer" parent="." unique_id=404314226]
 wait_time = 0.55

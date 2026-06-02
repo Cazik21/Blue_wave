@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvedovtjluph"]
+[gd_scene format=3 uid="uid://bvedovtjluph"]
 
 [ext_resource type="Script" uid="uid://0askscbgtuuu" path="res://scripts/bullet.gd" id="1_lv25w"]
 [ext_resource type="Texture2D" uid="uid://j0spbwhtmfkn" path="res://assets/bullet.png" id="2_7rc6x"]
@@ -159,25 +159,25 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="bullet" type="Area2D"]
-z_index = 1
+[node name="bullet" type="Area2D" unique_id=891364518]
+z_index = 11
 collision_layer = 2
 collision_mask = 20
 script = ExtResource("1_lv25w")
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1592809212]
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_44iiu")
 
-[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1452926975]
 rect = Rect2(-3, -3, 6, 6)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1045918386]
 energy = 5.0
 texture = ExtResource("3_7rc6x")
 texture_scale = 0.07
 
-[node name="Anim" type="AnimatedSprite2D" parent="."]
+[node name="Anim" type="AnimatedSprite2D" parent="." unique_id=1583573863]
 scale = Vector2(4.2, 4.2)
 sprite_frames = SubResource("SpriteFrames_3ts6m")
 animation = &"big_onda"

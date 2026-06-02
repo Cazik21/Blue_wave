@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3aq4a80236t3"]
 
-[ext_resource type="Script" uid="uid://crdayqq56fu6k" path="res://escudo.gd" id="1_i66gx"]
+[ext_resource type="Script" uid="uid://crdayqq56fu6k" path="res://scripts/escudo.gd" id="1_i66gx"]
 [ext_resource type="Texture2D" uid="uid://dpctplt7bex4q" path="res://assets/nengociu da tela inicial cima.png" id="2_qcltd"]
 [ext_resource type="AudioStream" uid="uid://edgrkbfpoiix" path="res://assets/Escudo ir.wav" id="3_lf2h0"]
 [ext_resource type="AudioStream" uid="uid://b0ekdc3uykte5" path="res://assets/Escudo voltar.wav" id="4_wube8"]

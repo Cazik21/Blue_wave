@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dbqwm76eu7hhp"]
+
+[ext_resource type="Texture2D" uid="uid://c6l1kp0bacsmk" path="res://assets/Grama.png" id="1_y7a5j"]
+
+[node name="Grama" type="Polygon2D" unique_id=656079831]
+position = Vector2(174, 64)
+texture = ExtResource("1_y7a5j")
+skeleton = NodePath("Skeleton2D")
+polygon = PackedVector2Array(8, 8, 8.085823, -4.357134, 5, -8, -3.5, -8, -7, -8, -8, -7, -8, 8, 1.7701225, -8.140122, 7.9576683, 0.92754555, -8.042332, -0.03245449)
+uv = PackedVector2Array(16, 16, 16, 3.2, 11.4, 0, 4.5, 0, 0.9, 1, 0, 1, 0, 16, 1.7701225, -8.140122, 7.9576683, 0.92754555, -8.042332, -0.03245449)
+polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6)]
+bones = ["Bone2D", PackedFloat32Array(0.5, 1, 1, 1, 1, 1, 0.5, 1, 0.5, 0.5)]
+internal_vertex_count = 3
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=1755876944]
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D" unique_id=1331849847]
+position = Vector2(0, 8)
+rotation = -0.68591446
+scale = Vector2(0.86, 0.86)
+rest = Transform2D(-3.7591793e-08, -0.86, 0.86, -3.7591793e-08, 0, 8)
