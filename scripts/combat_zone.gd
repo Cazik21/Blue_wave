@@ -39,12 +39,12 @@ func _on_area_body_entered(body: Node2D) -> void:
 		Messenger.qual_combat = self.name
 		if not ja_enviei_pos and Messenger.ordem_waystones >= posição_na_ordem:
 			Messenger.in_combat = true
-			if Messenger.player_lifes < 5:
-				Messenger.player_lifes = 5
 			Messenger.wave = 0
 			Messenger.enemies_f = 0
-			Messenger.killed_enemies = 0
+			Messenger.enemies_p_wave = 3
 			spawn_timer.wait_time = 3.024
+			if Messenger.player_lifes < 5:
+				Messenger.player_lifes = 5
 			body.global_position = collision_shape.global_position
 			Messenger.player_pos_no_combat = body.global_position
 			ja_enviei_pos = true
