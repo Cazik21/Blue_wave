@@ -19,7 +19,7 @@ func _ready() -> void:
 	_4.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Messenger.in_combat and Messenger.qual_combat == self.name:
 		_1.disabled = false
 		_2.disabled = false
