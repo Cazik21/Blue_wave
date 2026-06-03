@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://c1yh0cli405eq"]
+
+[ext_resource type="Script" uid="uid://badjf3xwi181a" path="res://scripts/bullet_data.gd" id="1_pkt1s"]
+
+[resource]
+script = ExtResource("1_pkt1s")
+type_name = "bomb"
+direct_damage = 3
+ground_damage = 3
+wave_scale = 15.0
+anim_scale_on_finish = Vector2(1.5, 1.5)
+metadata/_custom_type_script = "uid://badjf3xwi181a"

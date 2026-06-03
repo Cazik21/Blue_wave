@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://gukjva4cdx6b"]
+
+[ext_resource type="Script" uid="uid://badjf3xwi181a" path="res://scripts/bullet_data.gd" id="1_awxyd"]
+
+[resource]
+script = ExtResource("1_awxyd")
+type_name = "big"
+wave_scale = 15.0
+metadata/_custom_type_script = "uid://badjf3xwi181a"

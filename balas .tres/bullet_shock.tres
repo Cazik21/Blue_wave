@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BulletData" format=3 uid="uid://dkxxebspaa6v2"]
+
+[ext_resource type="Script" uid="uid://badjf3xwi181a" path="res://scripts/bullet_data.gd" id="1_tfr5l"]
+
+[resource]
+script = ExtResource("1_tfr5l")
+type_name = "shock"
+direct_damage = 4
+ground_damage = 3
+wave_scale = 25.0
+metadata/_custom_type_script = "uid://badjf3xwi181a"

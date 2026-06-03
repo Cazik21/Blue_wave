@@ -21,6 +21,7 @@ extends CharacterBody2D
 @export var enemy_scene : PackedScene
 @export var powerasso : PackedScene
 @export var escudo : PackedScene
+@export var lista_de_balas : Array[BulletData] = []
 #endregion
 
 #region var's
@@ -85,15 +86,34 @@ func move() -> void:
 
 func shoot():
 	if Messenger.player_lifes > 0:
+		# Verificação de segurança para o jogo não quebrar caso o Array de recursos esteja vazio no Inspetor
+		if lista_de_balas.is_empty():
+			push_error("ERRO: Você esqueceu de arrastar os arquivos .tres para a lista_de_balas no Inspetor do Player!")
+			return
+
 		if Messenger.balas_q_tenho[Messenger.scroll_pos] > 0:
 			can_shoot = false
 			audio.play()
+			
+			# 1. Instanciamos a cena base da bala
 			var bullet_instance = bullet_scene.instantiate()
-			get_tree().current_scene.add_child(bullet_instance)
+			
+			# 2. Pegamos a "ficha técnica" (.tres) correspondente à arma selecionada na rolagem
+			var bala_selecionada = lista_de_balas[Messenger.scroll_pos]
+			
+			# 3. Injetamos esses dados específicos na bala para que ela saiba o próprio dano e velocidade
+			bullet_instance.data = bala_selecionada
+			
+			# 4. Definimos a posição de largada diretamente no centro do Player ANTES de colocá-la na árvore
 			bullet_instance.global_position = global_position
+			
+			# 5. Adicionamos a bala pronta no cenário principal
+			get_tree().current_scene.add_child(bullet_instance)
 	
+		# Sistema de colldown do tiro original mantido perfeitamente
 		await get_tree().create_timer(shoot_colldown).timeout
 		can_shoot = true
+
 
 func create_miniwaves():
 	if can_instantiate_waves and walking:

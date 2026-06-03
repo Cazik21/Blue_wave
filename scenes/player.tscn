@@ -10,9 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://b3aq4a80236t3" path="res://prefabs/escudo.tscn" id="6_jej6c"]
 [ext_resource type="AudioStream" uid="uid://bvfugypp5rpwq" path="res://assets/tap.wav" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://5th6mihuaoge" path="res://prefabs/player_energy_particles.tscn" id="6_y4r1p"]
+[ext_resource type="Script" uid="uid://badjf3xwi181a" path="res://scripts/bullet_data.gd" id="7_60mlk"]
 [ext_resource type="AudioStream" uid="uid://dt1g0mp28o2kv" path="res://assets/powerUp.wav" id="7_fjrip"]
+[ext_resource type="Resource" uid="uid://6g2jud6t44nk" path="res://balas .tres/bullet_normal.tres" id="8_i4ail"]
+[ext_resource type="Resource" uid="uid://gukjva4cdx6b" path="res://balas .tres/bullet_big.tres" id="9_a38lo"]
+[ext_resource type="Resource" uid="uid://5hni4re8g6tn" path="res://balas .tres/bullet_small.tres" id="10_4ni07"]
 [ext_resource type="Script" uid="uid://c8mvb52lxiggc" path="res://scripts/camera.gd" id="11_d2wvv"]
+[ext_resource type="Resource" uid="uid://c1yh0cli405eq" path="res://balas .tres/bullet_bomb.tres" id="11_l71n6"]
 [ext_resource type="AudioStream" uid="uid://dbecl8lriry7e" path="res://assets/dash.wav" id="12_3v2ag"]
+[ext_resource type="Resource" uid="uid://dkxxebspaa6v2" path="res://balas .tres/bullet_shock.tres" id="12_ke2ow"]
 [ext_resource type="AudioStream" uid="uid://rxo2dodrbnrp" path="res://assets/dragon-studio-boom-swoosh-02-416171.mp3" id="13_f1ej7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
@@ -42,6 +48,7 @@ waves_scene = ExtResource("3_qlg0r")
 enemy_scene = ExtResource("4_smehm")
 powerasso = ExtResource("5_ur7pv")
 escudo = ExtResource("6_jej6c")
+lista_de_balas = Array[ExtResource("7_60mlk")]([ExtResource("8_i4ail"), ExtResource("9_a38lo"), ExtResource("10_4ni07"), ExtResource("11_l71n6"), ExtResource("12_ke2ow")])
 
 [node name="player_energy particles" parent="." unique_id=1391949253 instance=ExtResource("6_y4r1p")]
 position = Vector2(0, 5)
