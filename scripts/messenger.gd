@@ -50,6 +50,8 @@ signal max_bulletas
 signal powerasso
 @warning_ignore("unused_signal")
 signal escudozasso
+@warning_ignore("unused_signal")
+signal lazerrasso
 
 func _ready() -> void:
 	tree = get_tree()

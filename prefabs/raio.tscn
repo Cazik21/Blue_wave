@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bvpvh3vj0eh5r"]
+
+[ext_resource type="Script" uid="uid://dfyc6yeuqh7vh" path="res://scripts/poder_raio.gd" id="1_nrd5w"]
+[ext_resource type="Texture2D" uid="uid://cpsq4xcv2non1" path="res://assets/light.png" id="2_4mfir"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mfir"]
+radius = 5.0
+height = 402.0
+
+[node name="Raio" type="Area2D" unique_id=107709100]
+position = Vector2(208, 117)
+collision_layer = 255
+collision_mask = 255
+script = ExtResource("1_nrd5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1682451206]
+position = Vector2(201, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4mfir")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=553070439]
+z_index = -1
+offset_top = -5.0
+offset_right = 400.0
+offset_bottom = 5.0
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1529750451]
+z_index = 20
+position = Vector2(200.50003, -2.3841858e-06)
+scale = Vector2(3.5625002, 0.28571436)
+energy = 2.0
+texture = ExtResource("2_4mfir")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

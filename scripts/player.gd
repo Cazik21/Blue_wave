@@ -21,6 +21,7 @@ extends CharacterBody2D
 @export var enemy_scene : PackedScene
 @export var powerasso : PackedScene
 @export var escudo : PackedScene
+@export var lazer : PackedScene
 @export var lista_de_balas : Array[BulletData] = []
 #endregion
 
@@ -44,6 +45,7 @@ var mouse_dentro : bool = false
 func _ready() -> void:
 	Messenger.powerasso.connect(powerzasso)
 	Messenger.escudozasso.connect(escudozasso)
+	Messenger.lazerrasso.connect(lazerrasso)
 	timer.wait_time = wait_time_for_ground_enemys
 	reinice_timer()
 	Messenger.dano_player.connect(dano_player)
@@ -210,6 +212,11 @@ func dash():
 		speed = 100
 		energy_particles.emitting = false
 		timer_dash.start()
+
+func lazerrasso():
+	var new_lazer = lazer.instantiate()
+	add_child(new_lazer)
+	new_lazer.global_position = self.global_position
 
 func _on_timer_dash_timeout() -> void:
 	can_dash = true

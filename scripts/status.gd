@@ -8,7 +8,8 @@ func _process(_delta: float) -> void:
 	faltantes.text = "Remaining enemies: " + str(Messenger.enemies_f) 
 	if Messenger.tree.paused:
 		killed.visible = true
-		faltantes.visible = true
+		if Messenger.in_combat:
+			faltantes.visible = true
 	
 	else:
 		killed.visible = false

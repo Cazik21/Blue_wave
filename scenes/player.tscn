@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dbecl8lriry7e" path="res://assets/dash.wav" id="12_3v2ag"]
 [ext_resource type="Resource" uid="uid://dkxxebspaa6v2" path="res://balas .tres/bullet_shock.tres" id="12_ke2ow"]
 [ext_resource type="AudioStream" uid="uid://rxo2dodrbnrp" path="res://assets/dragon-studio-boom-swoosh-02-416171.mp3" id="13_f1ej7"]
+[ext_resource type="PackedScene" uid="uid://bvpvh3vj0eh5r" path="res://prefabs/raio.tscn" id="21_i4ail"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
@@ -48,6 +49,7 @@ waves_scene = ExtResource("3_qlg0r")
 enemy_scene = ExtResource("4_smehm")
 powerasso = ExtResource("5_ur7pv")
 escudo = ExtResource("6_jej6c")
+lazer = ExtResource("21_i4ail")
 lista_de_balas = Array[ExtResource("7_60mlk")]([ExtResource("8_i4ail"), ExtResource("9_a38lo"), ExtResource("10_4ni07"), ExtResource("11_l71n6"), ExtResource("12_ke2ow")])
 
 [node name="player_energy particles" parent="." unique_id=1391949253 instance=ExtResource("6_y4r1p")]
