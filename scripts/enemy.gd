@@ -1,24 +1,30 @@
 extends CharacterBody2D
 
 
+#region const
 const PARTICLES = preload("res://prefabs/particles.tscn")
+const BULLET_ENEMY = preload("res://scenes/bullet_enemy.tscn")
+enum State {ANDANDO, ATIRANDO}
+#endregion
 
-
+#region @export
 @export var speed : float = 20
 @export var health : float = 4
 @export var waves_scene : PackedScene
 @export var coraco_scene : PackedScene
-const BULLET_ENEMY = preload("res://scenes/bullet_enemy.tscn")
+#endregion
 
-
+#region @onready
 @onready var anim: AnimatedSprite2D = $anim
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var timer_shoot: Timer = $Timer_shoot
+#endregion
 
-
+#region var
 var bullet_scene = preload("res://prefabs/bullet_collect.tscn")
-var esta_atirando : bool = false
+#var esta_atirando : bool = false
+var state : State = State.ANDANDO
 var safe_delta : float
 var direction : Vector2 = Vector2.ZERO
 var player = null
@@ -31,7 +37,7 @@ var can_shoot : bool = true
 var rng = RandomNumberGenerator.new()
 var org_color
 var frame = 0
-
+#endregion
 
 func _ready() -> void:
 	org_color = anim.modulate
@@ -44,16 +50,15 @@ func _ready() -> void:
 	rng.randomize()
 	player = Messenger.player
 
-
 func saiu_pq_meno():
 	frame = anim.frame
 
 func _physics_process(_delta: float) -> void:
 	if global_position.distance_to(Messenger.tree.current_scene.get_node("Player").global_position) < 100 and name.contains("inimigo_atira"):
-		esta_atirando = true
-	if esta_atirando == false:
+		state = State.ATIRANDO
+	if state == State.ANDANDO:
 		nao_atirar()
-	else:
+	elif state == State.ATIRANDO:
 		atirar()
 
 func atirar():
@@ -67,7 +72,6 @@ func atirar():
 			bullet_enemy.global_position = global_position
 	else:
 		anim.stop()
-
 
 func nao_atirar():
 	safe_delta = min(get_process_delta_time(), 0.03)
@@ -92,8 +96,6 @@ func nao_atirar():
 
 func apply_kockback(force : Vector2):
 	knockback_velocity = force
-
-
 
 func hit_flash():
 	anim.modulate = Color.WHITE
@@ -128,8 +130,6 @@ func take_damage(amount: float, sourece_position: Vector2):
 		await Messenger.tree.create_timer(0.18).timeout
 		Messenger.killed_enemies += 1
 		queue_free()
-
-
 
 func _on_timer_shoot_timeout() -> void:
 	can_shoot = true
